@@ -316,11 +316,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const cpu = hwCpu.value;
       const gpu = hwGpu.value;
       
-      let tier = 'esports'; // Default
-      let fps = '90 FPS';
-      let desc = 'Optimal Settings: Smooth + 90 FPS • 8GB RAM Alloc • DirectX+';
+      let tier = 'Esports Tier';
+      let fps = '120 FPS';
+      let desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
       let color = 'var(--color-cyan)';
       let shadowColor = 'rgba(0, 229, 255, 0.4)';
+      let bgColor = 'rgba(0, 229, 255, 0.05)';
+      let borderColor = 'rgba(0, 229, 255, 0.3)';
 
       // Logic Evaluation
       if (cpu === 'budget' || gpu === 'budget') {
@@ -329,6 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
         desc = 'Optimal Settings: Smooth + Extreme (60 FPS) • 4 Cores • 6GB RAM Alloc';
         color = 'var(--text-primary)';
         shadowColor = 'rgba(255, 255, 255, 0.2)';
+        bgColor = 'rgba(255, 255, 255, 0.05)';
+        borderColor = 'rgba(255, 255, 255, 0.2)';
         if (cpu === 'flagship' && gpu === 'budget') {
            fps = '60 FPS (GPU Bottleneck)';
         }
@@ -338,12 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
         desc = 'Optimal Settings: Ultra HDR + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
         color = 'var(--color-green)';
         shadowColor = 'rgba(0, 255, 102, 0.4)';
-      } else {
-        tier = 'Esports Tier';
-        fps = '120 FPS';
-        desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
-        color = 'var(--color-cyan)';
-        shadowColor = 'rgba(0, 229, 255, 0.4)';
+        bgColor = 'rgba(0, 255, 102, 0.05)';
+        borderColor = 'rgba(0, 255, 102, 0.3)';
       }
 
       // Display Results with Animation
@@ -353,8 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
       hwResFps.style.color = color;
       hwResFps.style.textShadow = `0 0 20px ${shadowColor}`;
       hwResDesc.innerText = desc;
-      hwResultBox.style.background = color.replace('var(--color-', 'rgba(').replace(')', ', 0.05)');
-      hwResultBox.style.borderColor = color.replace('var(--color-', 'rgba(').replace(')', ', 0.3)');
+      hwResultBox.style.background = bgColor;
+      hwResultBox.style.borderColor = borderColor;
 
       hwResultBox.animate([
         { opacity: 0, transform: 'scale(0.95)' },
