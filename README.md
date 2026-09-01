@@ -1,7 +1,7 @@
 # 🥊 Fist Tool
 
 <p align="center">
-  <img src="logo.png" alt="Fist Tool Logo" width="128" height="128">
+  <img src="assets/animated_logo.gif" alt="Fist Tool Animated Logo" width="160" height="160">
 </p>
 
 <p align="center">
@@ -53,5 +53,7 @@
 
 ### 🌐 Official Links
 - **Discord:** [discord.gg/gzq7RHqfxw](https://discord.gg/gzq7RHqfxw)
+- **YouTube:** [@FerrumFist](https://www.youtube.com/@FerrumFist)
+- **Support:** [ko-fi.com/ferrumfist](https://ko-fi.com/ferrumfist)
 - **YouTube:** [@FerrumFist](https://www.youtube.com/@FerrumFist)
 - **Support:** [ko-fi.com/ferrumfist](https://ko-fi.com/ferrumfist)
