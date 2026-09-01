@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.py
+
+# Custom Tab & Module Code
+tabs/
+utils/
+scratch/
+*.spec
+*.iss
+version.txt
+
+# Environments & App Data
+app_settings.json
+restore_points/
+*.log
+*.tmp
+
+# PyInstaller & Compiler Build Artifacts
+build/
+dist/Fist Tool/
+dist/*.zip
+dist/*.tar.gz
+
+# Allow Readme, Assets, and Git config
+!README.md
+!assets/
+!.gitignore
