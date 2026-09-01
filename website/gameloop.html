@@ -8,6 +8,21 @@
   <meta name="theme-color" content="#0c0d12">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fist Tool Optimizer">
+  <meta property="og:title" content="Ferrum Fist • Push Beyond Hardware Limits">
+  <meta property="og:description" content="The ultimate low-latency Windows, GameLoop, and PUBG Mobile performance optimizer suite. Achieve 120 FPS, zero input lag, and buttery smooth gameplay.">
+  <meta property="og:image" content="https://ferrumfist.vercel.app/assets/og-banner.jpg">
+  <meta property="og:url" content="https://ferrumfist.vercel.app/">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ferrum Fist • Fist Tool Optimizer">
+  <meta name="twitter:description" content="Push Beyond Hardware Limits. Download Fist Tool for GameLoop, Windows, and PUBG Mobile.">
+  <meta name="twitter:image" content="https://ferrumfist.vercel.app/assets/og-banner.jpg">
+
 </head>
 <body>
 
@@ -74,9 +89,58 @@
     <div class="container">
 
       <!-- ================================================================
-           PART 1: GAMELOOP ENGINE PRESETS & SETTINGS
+           INTERACTIVE FPS & HARDWARE CHECKER
            ================================================================ -->
-      <div class="section-header">
+      <div class="hardware-checker-wrapper" style="margin-bottom: 70px;" data-animate="fade-up">
+        <div class="section-header">
+          <span class="section-tag" style="color: var(--color-cyan);">// PERFORMANCE ESTIMATOR</span>
+          <h2>Hardware & FPS Checker</h2>
+          <p>Select your hardware to instantly see your optimal GameLoop preset and estimated PUBG Mobile FPS.</p>
+        </div>
+        
+        <div class="hw-checker-card">
+          <div class="hw-inputs">
+            <div class="hw-form-group">
+              <label for="hw-cpu">Select Processor (CPU)</label>
+              <div class="select-wrapper">
+                <select id="hw-cpu" class="hw-select">
+                  <option value="budget">Core i3 / Ryzen 3 (or older i5)</option>
+                  <option value="esports" selected>Core i5 / Ryzen 5 (10th/12th Gen+)</option>
+                  <option value="flagship">Core i7/i9 / Ryzen 7/9 / X3D</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="hw-form-group">
+              <label for="hw-gpu">Select Graphics (GPU)</label>
+              <div class="select-wrapper">
+                <select id="hw-gpu" class="hw-select">
+                  <option value="budget">GTX 750Ti / 1050 / Intel UHD</option>
+                  <option value="esports" selected>GTX 1660 / RTX 2060 / RX 580</option>
+                  <option value="flagship">RTX 3060+ / 4070+ / RX 6600+</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+            <div class="hw-btn-wrapper">
+              <button id="hw-check-btn" class="btn btn-primary" style="width: 100%; justify-content: center; height: 46px; margin-top: 26px;">Check Performance</button>
+            </div>
+          </div>
+          
+          <div class="hw-result-box" id="hw-result-box">
+            <div class="hw-result-content">
+              <h3 id="hw-res-tier" style="color: var(--color-cyan); margin-bottom: 2px; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Esports Tier</h3>
+              <div class="hw-res-fps" id="hw-res-fps" style="font-size: 42px; font-weight: 800; font-family: var(--font-display); color: var(--color-green); margin-bottom: 6px; text-shadow: 0 0 20px rgba(0, 255, 102, 0.4); line-height: 1;">120 FPS</div>
+              <p id="hw-res-desc" style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0;">Optimal Settings: Smooth + 120 FPS • 8GB RAM Alloc • DirectX+</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           PART 1: OPTIMIZED HARDWARE PRESETS
+           ================================================================ -->
+      <div class="section-header" data-animate="fade-up">
         <span class="section-tag">// SECTION 01: ENGINE TUNING</span>
         <h2 class="section-title">OPTIMIZED HARDWARE PRESETS</h2>
       </div>

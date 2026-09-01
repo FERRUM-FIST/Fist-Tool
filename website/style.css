@@ -1457,3 +1457,299 @@ kbd {
   .spec-grid { grid-template-columns: repeat(2, 1fr); }
   .guide-grid { grid-template-columns: 1fr; }
 }
+/* ==========================================================================
+   INTERACTIVE HARDWARE CHECKER
+   ========================================================================== */
+.hw-checker-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hw-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hw-form-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.hw-select {
+  width: 100%;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  cursor: url('assets/cursor-pointer.svg') 16 16, pointer;
+  transition: var(--transition-fast);
+}
+
+.hw-select:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.hw-result-box {
+  background: rgba(0, 255, 102, 0.05);
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 30px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hw-result-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-green), transparent);
+}
+
+@media (max-width: 768px) {
+  .hw-checker-card { grid-template-columns: 1fr; gap: 20px; }
+  .hw-result-box { padding: 20px; }
+}
+
+/* ==========================================================================
+   FAQ ACCORDION
+   ========================================================================== */
+.faq-container.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordion .faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  padding: 0;
+  transition: border-color var(--transition-fast);
+}
+
+.accordion .faq-item:focus-within {
+  border-color: var(--color-cyan);
+}
+
+.faq-header {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: url('assets/cursor-pointer.svg') 16 16, pointer;
+  color: #fff;
+}
+
+.faq-header h4 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.faq-icon {
+  color: var(--text-secondary);
+  transition: transform 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-header[aria-expanded="true"] .faq-icon {
+  transform: rotate(180deg);
+  color: var(--color-cyan);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-content p {
+  padding: 0 24px 24px 24px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   DYNAMIC CHANGELOG / TIMELINE
+   ========================================================================== */
+.changelog-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.changelog-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.changelog-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-subtle);
+}
+
+.changelog-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.changelog-item::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--color-cyan);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  z-index: 2;
+}
+
+.changelog-date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.version-badge {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--color-cyan);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+
+.date-text {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.changelog-content-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+
+.changelog-content-box h4 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.changelog-content-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.changelog-content-box li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.changelog-content-box strong {
+  color: #fff;
+}
+
+.tag-added {
+  background: rgba(0, 255, 102, 0.1);
+  color: var(--color-green);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tag-improved {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--color-cyan);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tag-fixed {
+  background: rgba(255, 53, 71, 0.1);
+  color: var(--color-red);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .changelog-timeline::before { left: 10px; }
+  .changelog-timeline { padding-left: 30px; }
+  .changelog-item::before { left: -25px; }
+}

@@ -8,6 +8,21 @@
   <meta name="theme-color" content="#0c0d12">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fist Tool Optimizer">
+  <meta property="og:title" content="Ferrum Fist • Push Beyond Hardware Limits">
+  <meta property="og:description" content="The ultimate low-latency Windows, GameLoop, and PUBG Mobile performance optimizer suite. Achieve 120 FPS, zero input lag, and buttery smooth gameplay.">
+  <meta property="og:image" content="https://ferrumfist.vercel.app/assets/og-banner.jpg">
+  <meta property="og:url" content="https://ferrumfist.vercel.app/">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ferrum Fist • Fist Tool Optimizer">
+  <meta name="twitter:description" content="Push Beyond Hardware Limits. Download Fist Tool for GameLoop, Windows, and PUBG Mobile.">
+  <meta name="twitter:image" content="https://ferrumfist.vercel.app/assets/og-banner.jpg">
+
 </head>
 <body>
 
@@ -107,26 +122,56 @@
         <h2 class="section-title">TROUBLESHOOTING & FAQ</h2>
       </div>
 
-      <div class="faq-container" data-animate="fade-up">
+      <div class="faq-container accordion" data-animate="fade-up">
 
         <div class="faq-item">
-          <h4>Q: Is Fist Tool safe to use? Will I get banned in PUBG Mobile?</h4>
-          <p><strong>A:</strong> 100% Safe. Fist Tool does not inject any DLLs, memory hacks, or modified game binaries into PUBG Mobile. It strictly optimizes external Windows kernel parameters, emulator engine settings, and Android OS latency props (which are standard ADB commands).</p>
+          <button class="faq-header" aria-expanded="false">
+            <h4>Is Fist Tool safe to use? Will I get banned in PUBG Mobile?</h4>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-content">
+            <p>100% Safe. Fist Tool does not inject any DLLs, memory hacks, or modified game binaries into PUBG Mobile. It strictly optimizes external Windows kernel parameters, emulator engine settings, and Android OS latency props (which are standard ADB commands).</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h4>Q: Windows SmartScreen shows "Windows protected your PC". What do I do?</h4>
-          <p><strong>A:</strong> Because Fist Tool is a newly released independent gaming optimizer, Windows SmartScreen flags it until enough downloads build Microsoft reputation. Simply click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.</p>
+          <button class="faq-header" aria-expanded="false">
+            <h4>Windows SmartScreen shows "Windows protected your PC". What do I do?</h4>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-content">
+            <p>Because Fist Tool is a newly released independent gaming optimizer, Windows SmartScreen flags it until enough downloads build Microsoft reputation. Simply click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-header" aria-expanded="false">
+            <h4>GameLoop gets stuck at 98% loading screen. How do I fix it?</h4>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-content">
+            <p>This happens when Windows hypervisor interferes with GameLoop's engine. Use Fist Tool's <strong>Dashboard</strong> > <strong>Engine Repair</strong> to reset the AOW engine, or manually disable Hyper-V in Windows Features.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h4>Q: How do updates work?</h4>
-          <p><strong>A:</strong> Fist Tool has a built-in GitHub Release Checker. Whenever a new version is released on GitHub, the app will automatically notify you and offer 1-click download of the latest installer.</p>
+          <button class="faq-header" aria-expanded="false">
+            <h4>How do updates work?</h4>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-content">
+            <p>Fist Tool has a built-in GitHub Release Checker. Whenever a new version is released on GitHub, the app will automatically notify you and offer 1-click download of the latest installer.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <h4>Q: Can I revert the tweaks back to default Windows settings?</h4>
-          <p><strong>A:</strong> Yes! Every single tweak in Fist Tool has an individual <strong>Revert</strong> button, or you can restore your entire PC to its previous snapshot using the Windows System Restore tool.</p>
+          <button class="faq-header" aria-expanded="false">
+            <h4>Can I revert the tweaks back to default Windows settings?</h4>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-content">
+            <p>Yes! Every single tweak in Fist Tool has an individual <strong>Revert</strong> button, or you can restore your entire PC to its previous snapshot using the Windows System Restore tool.</p>
+          </div>
         </div>
 
       </div>

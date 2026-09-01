@@ -301,3 +301,90 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+  // 7. HARDWARE FPS CHECKER
+  const hwCheckBtn = document.getElementById('hw-check-btn');
+  const hwCpu = document.getElementById('hw-cpu');
+  const hwGpu = document.getElementById('hw-gpu');
+  const hwResultBox = document.getElementById('hw-result-box');
+  const hwResTier = document.getElementById('hw-res-tier');
+  const hwResFps = document.getElementById('hw-res-fps');
+  const hwResDesc = document.getElementById('hw-res-desc');
+
+  if (hwCheckBtn) {
+    hwCheckBtn.addEventListener('click', () => {
+      const cpu = hwCpu.value;
+      const gpu = hwGpu.value;
+      
+      let tier = 'esports'; // Default
+      let fps = '90 FPS';
+      let desc = 'Optimal Settings: Smooth + 90 FPS • 8GB RAM Alloc • DirectX+';
+      let color = 'var(--color-cyan)';
+      let shadowColor = 'rgba(0, 229, 255, 0.4)';
+
+      // Logic Evaluation
+      if (cpu === 'budget' || gpu === 'budget') {
+        tier = 'Budget Tier';
+        fps = '60 FPS';
+        desc = 'Optimal Settings: Smooth + Extreme (60 FPS) • 4 Cores • 6GB RAM Alloc';
+        color = 'var(--text-primary)';
+        shadowColor = 'rgba(255, 255, 255, 0.2)';
+        if (cpu === 'flagship' && gpu === 'budget') {
+           fps = '60 FPS (GPU Bottleneck)';
+        }
+      } else if (cpu === 'flagship' && gpu === 'flagship') {
+        tier = 'Flagship Tier';
+        fps = '120 FPS';
+        desc = 'Optimal Settings: Ultra HDR + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
+        color = 'var(--color-green)';
+        shadowColor = 'rgba(0, 255, 102, 0.4)';
+      } else {
+        tier = 'Esports Tier';
+        fps = '120 FPS';
+        desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
+        color = 'var(--color-cyan)';
+        shadowColor = 'rgba(0, 229, 255, 0.4)';
+      }
+
+      // Display Results with Animation
+      hwResTier.innerText = tier;
+      hwResTier.style.color = color;
+      hwResFps.innerText = fps;
+      hwResFps.style.color = color;
+      hwResFps.style.textShadow = \  0 20px \\;
+      hwResDesc.innerText = desc;
+      hwResultBox.style.background = color.replace('var(--color-', 'rgba(').replace(')', ', 0.05)');
+      hwResultBox.style.borderColor = color.replace('var(--color-', 'rgba(').replace(')', ', 0.3)');
+
+      hwResultBox.animate([
+        { opacity: 0, transform: 'scale(0.95)' },
+        { opacity: 1, transform: 'scale(1)' }
+      ], { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    });
+  }
+
+  // 8. FAQ ACCORDION LOGIC
+  const faqHeaders = document.querySelectorAll('.faq-header');
+  faqHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      const content = header.nextElementSibling;
+      
+      // Close all others
+      faqHeaders.forEach(otherHeader => {
+        if (otherHeader !== header) {
+          otherHeader.setAttribute('aria-expanded', 'false');
+          otherHeader.nextElementSibling.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      if (isExpanded) {
+        header.setAttribute('aria-expanded', 'false');
+        content.style.maxHeight = null;
+      } else {
+        header.setAttribute('aria-expanded', 'true');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
