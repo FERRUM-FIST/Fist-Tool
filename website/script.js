@@ -325,7 +325,46 @@ document.addEventListener('DOMContentLoaded', () => {
       let borderColor = 'rgba(0, 229, 255, 0.3)';
 
       // Logic Evaluation
-      if (cpu === 'budget' || gpu === 'budget') {
+      if (cpu === 'flagship') {
+        if (gpu === 'flagship') {
+          tier = 'Flagship Tier';
+          fps = '120 FPS';
+          desc = 'Optimal Settings: Ultra HDR + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
+          color = 'var(--color-green)';
+          shadowColor = 'rgba(0, 255, 102, 0.4)';
+          bgColor = 'rgba(0, 255, 102, 0.05)';
+          borderColor = 'rgba(0, 255, 102, 0.3)';
+        } else {
+          // Flagship CPU with lower-end GPUs
+          tier = 'Esports Tier';
+          fps = '120 FPS';
+          desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
+          color = 'var(--color-cyan)';
+          shadowColor = 'rgba(0, 229, 255, 0.4)';
+          bgColor = 'rgba(0, 229, 255, 0.05)';
+          borderColor = 'rgba(0, 229, 255, 0.3)';
+        }
+      } else if (cpu === 'esports') {
+        if (gpu === 'flagship' || gpu === 'esports') {
+          tier = 'Esports Tier';
+          fps = '120 FPS';
+          desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
+          color = 'var(--color-cyan)';
+          shadowColor = 'rgba(0, 229, 255, 0.4)';
+          bgColor = 'rgba(0, 229, 255, 0.05)';
+          borderColor = 'rgba(0, 229, 255, 0.3)';
+        } else {
+          // Esports CPU with Budget GPU
+          tier = 'Budget Tier';
+          fps = '90 FPS';
+          desc = 'Optimal Settings: Smooth + 90 FPS • 6 Cores • 6GB RAM Alloc';
+          color = 'var(--text-primary)';
+          shadowColor = 'rgba(255, 255, 255, 0.2)';
+          bgColor = 'rgba(255, 255, 255, 0.05)';
+          borderColor = 'rgba(255, 255, 255, 0.2)';
+        }
+      } else {
+        // Budget CPU (Bottlenecks everything else)
         tier = 'Budget Tier';
         fps = '60 FPS';
         desc = 'Optimal Settings: Smooth + Extreme (60 FPS) • 4 Cores • 6GB RAM Alloc';
@@ -333,17 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
         shadowColor = 'rgba(255, 255, 255, 0.2)';
         bgColor = 'rgba(255, 255, 255, 0.05)';
         borderColor = 'rgba(255, 255, 255, 0.2)';
-        if (cpu === 'flagship' && gpu === 'budget') {
-           fps = '60 FPS (GPU Bottleneck)';
-        }
-      } else if (cpu === 'flagship' && gpu === 'flagship') {
-        tier = 'Flagship Tier';
-        fps = '120 FPS';
-        desc = 'Optimal Settings: Ultra HDR + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
-        color = 'var(--color-green)';
-        shadowColor = 'rgba(0, 255, 102, 0.4)';
-        bgColor = 'rgba(0, 255, 102, 0.05)';
-        borderColor = 'rgba(0, 255, 102, 0.3)';
       }
 
       // Display Results with Animation
