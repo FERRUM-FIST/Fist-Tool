@@ -1,0 +1,64 @@
+<Item ApkName="com.tencent.igce" 备注="">
+<StartInfo StartTimes="18"/>
+<LastMode ModeID="1" EnableTips="0" EnableGameKeyDT="0" TipsTransparent="0.500000" Lightness="1.000000" EnableSwitchViewLockMethod="0"/>
+<KeyMapMode ModeID="1" Name="NormalMode">
+<KeyMapping ItemName="Right Click" Point_X="0.971094" Point_Y="0.647222" Description="Scope" MiniVisiable="false" MiniDisable="false" AutoCancel="0" ShowOnLockAsciiCode="192" AsciiCode="-2"/>
+<KeyMapping ItemName="Tab" Point_X="0.053367" Point_Y="0.936652" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="9"/>
+<KeyMapping ItemName="Shift" Point_X="0.768277" Point_Y="0.881671" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="16"/>
+<KeyMapping ItemName="Space" Point_X="0.971053" Point_Y="0.759953" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="32"/>
+<KeyMapping ItemName="↑" Point_X="0.864954" Point_Y="0.788056" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="38"/>
+<KeyMapping ItemName="↓" Point_X="0.923584" Point_Y="0.859485" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="40"/>
+<KeyMapping ItemName="1" Point_X="0.455527" Point_Y="0.925339" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="49"/>
+<KeyMapping ItemName="2" Point_X="0.552097" Point_Y="0.926471" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="50"/>
+<KeyMapping ItemName="3" Point_X="0.590078" Point_Y="0.878190" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="51"/>
+<KeyMapping ItemName="4" Point_X="0.640990" Point_Y="0.856618" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="52" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.640990,0.943627,0)(0.640990,0.942402,31)(0.640990,0.938725,15)(0.640990,0.924020,16)(0.640990,0.901961,16)(0.640990,0.876225,15)(0.640990,0.856618,16)"/>
+<KeyMapping ItemName="5" Point_X="0.667125" Point_Y="0.901961" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="53" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.644429,0.944853,0)(0.644429,0.946078,31)(0.645805,0.944853,16)(0.651994,0.931373,15)(0.661623,0.914216,16)(0.667125,0.903186,16)(0.667125,0.901961,0)"/>
+<KeyMapping ItemName="6" Point_X="0.612792" Point_Y="0.884804" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="54" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.638239,0.946078,0)(0.637552,0.944853,15)(0.634801,0.938725,16)(0.632050,0.932598,16)(0.627923,0.922794,15)(0.623109,0.910539,16)(0.617607,0.897059,16)(0.613480,0.886029,15)(0.612792,0.884804,0)"/>
+<KeyMapping ItemName="7" Point_X="0.398212" Point_Y="0.949755" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="55" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.363136,0.948529,0)(0.363824,0.948529,78)(0.369326,0.948529,16)(0.385144,0.949755,15)(0.398212,0.949755,0)"/>
+<KeyMapping ItemName="8" Point_X="0.360385" Point_Y="0.857843" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="56" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.360385,0.941176,0)(0.360385,0.939951,93)(0.360385,0.933824,16)(0.360385,0.922794,16)(0.360385,0.906863,15)(0.360385,0.887255,16)(0.360385,0.868873,15)(0.360385,0.857843,0)"/>
+<KeyMapping ItemName="9" Point_X="0.304677" Point_Y="0.949755" Description="字母键划线" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="57" KeyMouseSlideType="1" KeyMouseSlidePoints="(0.357634,0.949755,0)(0.356259,0.949755,62)(0.352132,0.949755,16)(0.334938,0.949755,15)(0.311554,0.949755,16)(0.304677,0.949755,0)"/>
+<KeyMapping ItemName="C" Point_X="0.967262" Point_Y="0.861782" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="67"/>
+<KeyMapping ItemName="E" Point_X="0.164549" Point_Y="0.532805" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="69"/>
+<KeyMapping ItemName="H" Point_X="0.745431" Point_Y="0.381671" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="72"/>
+<KeyMapping ItemName="I" Point_X="0.865887" Point_Y="0.888480" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="73"/>
+<KeyMapping ItemName="M" Point_X="0.993122" Point_Y="0.013480" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="77"/>
+<KeyMapping ItemName="O" Point_X="0.857634" Point_Y="0.677696" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="79"/>
+<KeyMapping ItemName="Q" Point_X="0.106099" Point_Y="0.526018" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="81"/>
+<KeyMapping ItemName="R" Point_X="0.824651" Point_Y="0.953620" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="82"/>
+<KeyMapping ItemName="T" Point_X="0.758486" Point_Y="0.446636" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="84"/>
+<KeyMapping ItemName="V" Point_X="0.193774" Point_Y="0.890271" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="86"/>
+<KeyMapping ItemName="X" Point_X="0.886842" Point_Y="0.950820" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="88"/>
+<KeyMapping ItemName="Y" Point_X="0.641678" Point_Y="0.952206" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="89"/>
+<KeyMapping ItemName="Z" Point_X="0.964237" Point_Y="0.935049" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="90"/>
+<KeyMapping ItemName="\" Point_X="0.852605" Point_Y="0.158371" Description="字母键" MiniVisiable="true" MiniDisable="false" AutoCancel="0" AsciiCode="187"/>
+<KeyMappingEx ItemName="WASD" Point_X="0.160938" Point_Y="0.756944" Description="移动" MiniVisiable="false" MiniDisable="false" HideTipsAlways="1" Type="CrossKey" speed="100" UP_AsciiCode="87" DOWN_AsciiCode="83" LEFT_AsciiCode="65" RIGHT_AsciiCode="68" Offset="0.070258" ShiftOffset="0.060000"/>
+<KeyMappingEx ItemName="Left Mouse Button" Point_X="0.049219" Point_Y="0.506944" Description="开火" MiniVisiable="false" MiniDisable="false" AutoActive="1" Type="LClick" LOCK_AsciiCode="192"/>
+<KeyMappingEx ItemName="Move with Mouse" Point_X="0.516406" Point_Y="0.333333" Description="视角" MiniVisiable="false" MiniDisable="false" HideTipsAlways="1" AutoActive="1" Raw="1" Type="RClick" Offset="0.050000" LOCK_AsciiCode="192" AsciiCode="17" Sensi_X="1.000000" Sensi_Y="1.000000"/>
+<KeyMappingEx ItemName="Alt" Point_X="0.834375" Point_Y="0.230556" Description="Free view" MiniVisiable="false" MiniDisable="false" NoDelete="1" SpecialFunc="0" OpGuidClass="0" HideTipsAlways="1" InUseDisableView="1" Type="KeyMove" Offset="0.490000" Click_X="0.834375" Click_Y="0.230556" Click_Offset="0.450000" AsciiCode="18" Cancel_X="-0.911133" Cancel_Y="-0.277778" Click_Left="1" ReleaseNow="0" Center_X="0.000000" Center_Y="0.000000" StopMoving="0" NeedPressed="1" Center_XY_Disable="1" Delay="50"/>
+<KeyMappingEx ItemName="Space" Point_X="0.971053" Point_Y="0.759953" Description="单发/连发" MiniVisiable="true" MiniDisable="false" HideTipsAlways="1" Type="MultiPoint" AsciiCode="32">
+<Point Point_X="0.857634" Point_Y="0.677696" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+<KeyMappingEx ItemName="B" Point_X="0.437500" Point_Y="0.879167" Description="单发/连发" MiniVisiable="false" MiniDisable="false" HideTipsAlways="1" Type="MultiPoint" AsciiCode="66">
+<Point Point_X="0.513605" Point_Y="0.880484" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+<KeyMappingEx ItemName="F" Point_X="0.747682" Point_Y="0.258824" Description="单发/连发" MiniVisiable="true" MiniDisable="false" HideTipsAlways="1" Type="MultiPoint" AsciiCode="70">
+<Point Point_X="0.500662" Point_Y="0.712941" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.762914" Point_Y="0.574118" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.761589" Point_Y="0.764706" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.705960" Point_Y="0.801176" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.707947" Point_Y="0.723529" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.904700" Point_Y="0.589327" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.500000" Point_Y="0.655452" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+<KeyMappingEx ItemName="G" Point_X="0.746084" Point_Y="0.321346" Description="单发/连发" MiniVisiable="true" MiniDisable="false" HideTipsAlways="1" Type="MultiPoint" AsciiCode="71">
+<Point Point_X="0.577676" Point_Y="0.714617" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+<Point Point_X="0.766319" Point_Y="0.657773" Delay="0" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+<KeyMappingEx ItemName="F2" Point_X="0.970717" Point_Y="0.261719" Description="快速说话" MiniVisiable="false" MiniDisable="false" InUseDisableView="1" Type="MultiPoint" AsciiCode="113">
+<Point Point_X="0.867969" Point_Y="0.130556" Delay="300" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+<KeyMappingEx ItemName="F3" Point_X="0.939844" Point_Y="0.251389" Description="快速说话" MiniVisiable="false" MiniDisable="false" HideTipsAlways="1" InUseDisableView="1" Type="MultiPoint" AsciiCode="114">
+<Point Point_X="0.867188" Point_Y="0.193056" Delay="300" IsMutex="0" MutexVal="0" IsRepeat="0"/>
+</KeyMappingEx>
+</KeyMapMode>
+</Item>

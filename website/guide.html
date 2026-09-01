@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup & Optimization Guide • Fist Tool Optimizer</title>
+  <meta name="description" content="Step-by-step guide to achieving 120 FPS in GameLoop, configuring PUBG Mobile graphics, and optimizing Windows with Fist Tool.">
+  <meta name="theme-color" content="#0c0d12">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- Animated Background Elements -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+        <span>FERRUM FIST</span>
+      </a>
+
+                        <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gameloop.html" class="nav-link">GameLoop</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="benchmarks.html" class="nav-link">Benchmarks</a></li>
+        <li><a href="guide.html" class="nav-link active">Guide</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="community.html" class="nav-link">Community</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="download.html" class="btn btn-primary" id="nav-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get Fist Tool
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-tag">// USER DOCUMENTATION & FAQ</span>
+      <h1 class="page-title">OPTIMIZATION GUIDE</h1>
+      <p class="page-subtitle">Learn how to configure GameLoop for solid 120 FPS, apply latency tweaks, and resolve common troubleshooting questions.</p>
+    </div>
+  </header>
+
+  <!-- GUIDE CONTENT -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Guide Chapters -->
+      <div class="guide-grid" data-animate="fade-up">
+
+        <!-- Chapter 1 -->
+        <article class="guide-card">
+          <span class="guide-step">CHAPTER 01</span>
+          <h3>Step 1: Create a System Restore Point</h3>
+          <p>Before applying any deep Windows registry or system service tweaks, always open the <strong>Tools Tab</strong> or click <strong>Create Restore Point</strong>. Fist Tool will automatically create an elevated Windows snapshot allowing 1-click rollback at any time.</p>
+        </article>
+
+        <!-- Chapter 2 -->
+        <article class="guide-card">
+          <span class="guide-step">CHAPTER 02</span>
+          <h3>Step 2: GameLoop 120 FPS Setup</h3>
+          <p>Navigate to the <strong>GameLoop Tab</strong> and follow these recommendations:</p>
+          <ul class="feature-list" style="margin-top: 10px;">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>Renderer:</strong> Select <code>DirectX+</code> (or <code>OpenGL+</code> for AMD GPUs).</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>Memory:</strong> Allocate half your physical RAM (e.g., 8192 MB for a 16GB PC).</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>CPU Cores:</strong> Assign all physical performance cores (e.g. 6 or 8 Cores).</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Click <strong>Apply to GameLoop</strong> to write the optimized settings.</li>
+          </ul>
+        </article>
+
+        <!-- Chapter 3 -->
+        <article class="guide-card">
+          <span class="guide-step">CHAPTER 03</span>
+          <h3>Step 3: TVM Keymapping Backup</h3>
+          <p>GameLoop updates frequently wipe custom keybinds. Go to <strong>Tools Tab &rarr; Card 4</strong> and click <strong>Backup TVM Keymapping</strong>. If your keys ever stop responding, click <strong>Restore TVM Keymapping</strong> to fix them instantly without re-binding in-game.</p>
+        </article>
+
+        <!-- Chapter 4 -->
+        <article class="guide-card">
+          <span class="guide-step">CHAPTER 04</span>
+          <h3>Step 4: Windows Latency Tweaks</h3>
+          <p>In the <strong>Tweaks Tab</strong>, select the <em>Windows</em>, <em>CPU</em>, <em>GPU</em>, and <em>Network</em> sub-tabs. Select the tweaks recommended for your hardware tier and click <strong>Apply Selected</strong>.</p>
+        </article>
+
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="section-header" style="margin-top: 70px;">
+        <span class="section-tag">// FREQUENTLY ASKED QUESTIONS</span>
+        <h2 class="section-title">TROUBLESHOOTING & FAQ</h2>
+      </div>
+
+      <div class="faq-container" data-animate="fade-up">
+
+        <div class="faq-item">
+          <h4>Q: Is Fist Tool safe to use? Will I get banned in PUBG Mobile?</h4>
+          <p><strong>A:</strong> 100% Safe. Fist Tool does not inject any DLLs, memory hacks, or modified game binaries into PUBG Mobile. It strictly optimizes external Windows kernel parameters, emulator engine settings, and Android OS latency props (which are standard ADB commands).</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: Windows SmartScreen shows "Windows protected your PC". What do I do?</h4>
+          <p><strong>A:</strong> Because Fist Tool is a newly released independent gaming optimizer, Windows SmartScreen flags it until enough downloads build Microsoft reputation. Simply click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: How do updates work?</h4>
+          <p><strong>A:</strong> Fist Tool has a built-in GitHub Release Checker. Whenever a new version is released on GitHub, the app will automatically notify you and offer 1-click download of the latest installer.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Q: Can I revert the tweaks back to default Windows settings?</h4>
+          <p><strong>A:</strong> Yes! Every single tweak in Fist Tool has an individual <strong>Revert</strong> button, or you can restore your entire PC to its previous snapshot using the Windows System Restore tool.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <div class="container">
+      <h2>READY TO GET STARTED?</h2>
+      <p>Download Fist Tool and follow this guide to maximize your performance.</p>
+      <a href="download.html" class="btn btn-primary btn-lg">Download Fist Tool Now →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+          <span>FERRUM FIST</span>
+        </a>
+
+                                <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gameloop.html">GameLoop</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="benchmarks.html">Benchmarks</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        <p>© 2026 <strong>Ferrum Fist</strong>. All rights reserved. Fist Tool is an independent optimization utility.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

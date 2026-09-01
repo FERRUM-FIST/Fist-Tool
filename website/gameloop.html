@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameLoop & Keymappings Hub • Fist Tool Suite</title>
+  <meta name="description" content="Complete GameLoop optimization suite: 120 FPS engine presets, custom 4:3 iPad View resolutions, and 12 pre-aligned TVM_100.xml keymapping downloads.">
+  <meta name="theme-color" content="#0c0d12">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- Animated Background Elements -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+        <span>FERRUM FIST</span>
+      </a>
+
+            <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gameloop.html" class="nav-link active">GameLoop</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="benchmarks.html" class="nav-link">Benchmarks</a></li>
+        <li><a href="guide.html" class="nav-link">Guide</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="community.html" class="nav-link">Community</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="download.html" class="btn btn-primary" id="nav-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get Fist Tool
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-tag">// ENGINE TUNING & IPAD VIEW KEYMAPS</span>
+      <h1 class="page-title">GAMELOOP & KEYMAPPINGS</h1>
+      <p class="page-subtitle">Lock in 120 FPS, configure low-latency rendering engines, master 4:3 iPad View aspect ratios, and download pre-aligned <code>TVM_100.xml</code> keymapping schemes.</p>
+      
+      <div style="margin-top: 24px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="#keymappings" class="btn btn-secondary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Jump to iPad Keymaps
+        </a>
+        <a href="assets/iPadView_All_Keymappings.zip" download class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download All 12 Keymaps (.ZIP)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- GAMELOOP SETTINGS CONTENT -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- ================================================================
+           PART 1: GAMELOOP ENGINE PRESETS & SETTINGS
+           ================================================================ -->
+      <div class="section-header">
+        <span class="section-tag">// SECTION 01: ENGINE TUNING</span>
+        <h2 class="section-title">OPTIMIZED HARDWARE PRESETS</h2>
+      </div>
+
+      <div class="features-grid" data-animate="fade-up">
+
+        <!-- Preset 1: Budget / Low-End -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>Budget Tier (Core i3 / Ryzen 3)</h4>
+          <p>Target: <code>i3-10100 / Ryzen 3 3100 / i5 (4th-8th Gen)</code> + <code>8GB RAM</code> + <code>GTX 750Ti / 1050</code></p>
+          <ul class="feature-list" style="margin-top: 14px; font-size: 13px;">
+            <li><strong>CPU Target:</strong> <code>Intel Core i3 / AMD Ryzen 3</code></li>
+            <li><strong>Processor Allocation:</strong> <code>2 or 4 Cores</code></li>
+            <li><strong>Memory Allocation:</strong> <code>4096 MB</code></li>
+            <li><strong>Rendering Engine:</strong> <code>DirectX+</code> (or Auto)</li>
+            <li><strong>Resolution:</strong> <code>1280x720 (720p)</code></li>
+            <li><strong>Screen DPI:</strong> <code>240 DPI</code></li>
+            <li><strong>In-Game:</strong> <code>Smooth + Extreme (60 FPS)</code></li>
+          </ul>
+        </div>
+
+        <!-- Preset 2: Mid-Range Esports -->
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--cyan">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>Esports 90 FPS (Core i5 / Ryzen 5)</h4>
+          <p>Target: <code>i5-10400/11400/12400 / Ryzen 5 3600/5600</code> + <code>16GB RAM</code> + <code>GTX 1660 / RTX 2060</code></p>
+          <ul class="feature-list" style="margin-top: 14px; font-size: 13px;">
+            <li><strong>CPU Target:</strong> <code>Intel Core i5 / AMD Ryzen 5</code></li>
+            <li><strong>Processor Allocation:</strong> <code>4 or 6 Cores</code></li>
+            <li><strong>Memory Allocation:</strong> <code>8192 MB</code></li>
+            <li><strong>Rendering Engine:</strong> <code>DirectX+</code></li>
+            <li><strong>Resolution:</strong> <code>1920x1080 (1080p)</code></li>
+            <li><strong>Screen DPI:</strong> <code>320 DPI</code></li>
+            <li><strong>In-Game:</strong> <code>Smooth + 90 FPS</code></li>
+          </ul>
+        </div>
+
+        <!-- Preset 3: High-End Flagship 120 FPS -->
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Flagship 120 FPS (Core i7/i9 / Ryzen 7/9)</h4>
+          <p>Target: <code>i7-12700K/13700K / Ryzen 7 5700X3D/7800X3D</code> + <code>16GB-32GB RAM</code> + <code>RTX 3060+/4070+ / RX 6600+</code></p>
+          <ul class="feature-list" style="margin-top: 14px; font-size: 13px;">
+            <li><strong>CPU Target:</strong> <code>Intel Core i7/i9 / AMD Ryzen 7/9 / X3D</code></li>
+            <li><strong>Processor Allocation:</strong> <code>8 Cores</code></li>
+            <li><strong>Memory Allocation:</strong> <code>12288 MB</code></li>
+            <li><strong>Rendering Engine:</strong> <code>DirectX+ (NVIDIA) / OpenGL+ (AMD)</code></li>
+            <li><strong>Resolution:</strong> <code>1920x1080 or 2560x1440</code></li>
+            <li><strong>Screen DPI:</strong> <code>345 / 480 DPI</code></li>
+            <li><strong>In-Game:</strong> <code>Smooth + Extreme+ (120 FPS)</code></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Engine Settings Breakdown Table -->
+      <div class="benchmark-card" data-animate="fade-up" style="margin: 40px 0;">
+        <table class="req-table" style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left;">
+              <th style="padding: 14px 8px; color: var(--color-cyan);">GameLoop Setting</th>
+              <th style="padding: 14px 8px; color: var(--color-cyan);">Optimal Value</th>
+              <th style="padding: 14px 8px; color: var(--color-accent);">Technical Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <td style="padding: 12px 8px; font-weight: 700;">Rendering Engine</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">DirectX+ (NVIDIA) / OpenGL+ (AMD)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">DirectX+ provides lower CPU overhead on NVIDIA GPUs; OpenGL+ compiles faster on AMD Radeon.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <td style="padding: 12px 8px; font-weight: 700;">Prioritize Discrete GPU</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">Checked (GpuPreference=2)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">Forces the Windows DWM compositor and emulator to lock onto your high-performance discrete GPU.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <td style="padding: 12px 8px; font-weight: 700;">Memory Allocation</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">8192 MB (or 12288 MB)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">Allocates dedicated RAM buffer for the Android virtual machine to eliminate Garbage Collection hitches.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <td style="padding: 12px 8px; font-weight: 700;">Processor Cores Allocation</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">4, 6, or 8 Cores (Match Physical Cores)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">4-Core CPUs (i3/Ryzen 3) allocate 2-4 cores; 6-Core CPUs (i5/Ryzen 5) allocate 4-6 cores; 8+ Core CPUs allocate 8 cores for zero thread stalling.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <td style="padding: 12px 8px; font-weight: 700;">Intel P-Core / E-Core Affinity</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">P-Cores Only (Managed by Fist Tool)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">On Intel 12th/13th/14th Gen, Fist Tool pins GameLoop threads strictly to Performance (P) Cores to prevent micro-stutter from Efficiency (E) cores.</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 8px; font-weight: 700;">Device Model Profile</td>
+              <td style="padding: 12px 8px; color: var(--color-green);">REDMAGIC 9 Pro (nubia NX809J)</td>
+              <td style="padding: 12px 8px; color: var(--text-secondary);">Emulates high-tier gaming smartphone signature required by PUBG Mobile to unlock the 120 FPS option.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ================================================================
+           PART 2: IPAD VIEW & 12-RESOLUTION KEYMAPPINGS
+           ================================================================ -->
+      <div class="section-header" id="keymappings" style="margin-top: 80px; padding-top: 20px;">
+        <span class="section-tag">// SECTION 02: IPAD VIEW & KEYMAPS</span>
+        <h2 class="section-title">12 PRE-CONFIGURED IPAD VIEW KEYMAPPINGS</h2>
+        <p class="section-desc">All profiles updated with <strong>WASD Speed = 100</strong> for instantaneous zero-latency movement. Click below to download individual <code>TVM_100.xml</code> keymaps.</p>
+      </div>
+
+      <!-- 12 Resolution Cards Grid -->
+      <div class="keymap-grid" data-animate="fade-up">
+
+        <!-- 1. 1440x1080 -->
+        <div class="keymap-card popular">
+          <span class="keymap-badge">POPULAR ESPORTS</span>
+          <h3>1440 x 1080</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 4:3 Stretched</span>
+            <span><strong>Monitor:</strong> 1080p (FHD)</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>The standard tournament competitive resolution. Crisp visuals with wide enemy models.</p>
+          <a href="assets/iPadView/1440x1080/TVM_100.xml" download="TVM_100_1440x1080.xml" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 2. 1920x1440 -->
+        <div class="keymap-card popular">
+          <span class="keymap-badge">2K FLAGSHIP</span>
+          <h3>1920 x 1440</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 4:3 Stretched</span>
+            <span><strong>Monitor:</strong> 1440p (2K QHD)</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Crystal-clear 2K resolution with massive FOV and zero pixel blur.</p>
+          <a href="assets/iPadView/1920x1440/TVM_100.xml" download="TVM_100_1920x1440.xml" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 3. 1280x1024 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">5:4 CLASSIC</span>
+          <h3>1280 x 1024</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 5:4 Aspect</span>
+            <span><strong>Monitor:</strong> 1080p / 720p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Maximum width player models with extreme horizontal stretch.</p>
+          <a href="assets/iPadView/1280x1024/TVM_100.xml" download="TVM_100_1280x1024.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 4. 1280x1080 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">CUSTOM NARROW</span>
+          <h3>1280 x 1080</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> Narrow 4:3</span>
+            <span><strong>Monitor:</strong> 1080p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Ultra-wide character hitboxes with high vertical sharpness.</p>
+          <a href="assets/iPadView/1280x1080/TVM_100.xml" download="TVM_100_1280x1080.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 5. 1280x960 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">LOW-END FPS</span>
+          <h3>1280 x 960</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 4:3 Standard</span>
+            <span><strong>Monitor:</strong> 1080p / 720p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Lowest rendering overhead for low-end GPUs like GTX 750 / 1050.</p>
+          <a href="assets/iPadView/1280x960/TVM_100.xml" download="TVM_100_1280x960.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 6. 1600x1200 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">HIGH RES 4:3</span>
+          <h3>1600 x 1200</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 4:3 Crisp</span>
+            <span><strong>Monitor:</strong> 1440p / 1080p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Super sharp textures and player edges for competitive sniping.</p>
+          <a href="assets/iPadView/1600x1200/TVM_100.xml" download="TVM_100_1600x1200.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 7. 1800x1440 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">2K ESPORTS</span>
+          <h3>1800 x 1440</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 5:4 High Res</span>
+            <span><strong>Monitor:</strong> 1440p (2K)</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>High vertical resolution with stretched horizontal models.</p>
+          <a href="assets/iPadView/1800x1440/TVM_100.xml" download="TVM_100_1800x1440.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 8. 1420x1400 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">SQUARE VIEW</span>
+          <h3>1420 x 1400</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> ~1:1 Square</span>
+            <span><strong>Monitor:</strong> 1440p / 1080p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Extreme vertical field of view to see over tall buildings.</p>
+          <a href="assets/iPadView/1420x1400/TVM_100.xml" download="TVM_100_1420x1400.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 9. 1920x1620 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">TALL VIEW</span>
+          <h3>1920 x 1620</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 4:3.3</span>
+            <span><strong>Monitor:</strong> 2K / 4K</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Tall camera view with natural horizontal weapon proportion.</p>
+          <a href="assets/iPadView/1920x1620/TVM_100.xml" download="TVM_100_1920x1620.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 10. 1920x1900 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">IPAD PRO FULL</span>
+          <h3>1920 x 1900</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 1:1 iPad Pro</span>
+            <span><strong>Monitor:</strong> 2K / 4K</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Closest 1:1 replica to an actual Apple iPad Pro 12.9" display.</p>
+          <a href="assets/iPadView/1920x1900/TVM_100.xml" download="TVM_100_1920x1900.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 11. 1920x1080 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">16:9 NATIVE</span>
+          <h3>1920 x 1080</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 16:9 Native</span>
+            <span><strong>Monitor:</strong> 1080p</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Stock 1080p keymapping fix if your keys ever get corrupted.</p>
+          <a href="assets/iPadView/1920x1080/TVM_100.xml" download="TVM_100_1920x1080.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+        <!-- 12. 2560x1440 -->
+        <div class="keymap-card">
+          <span class="keymap-tag">16:9 2K QHD</span>
+          <h3>2560 x 1440</h3>
+          <div class="keymap-meta">
+            <span><strong>Aspect:</strong> 16:9 2K</span>
+            <span><strong>Monitor:</strong> 1440p (2K)</span>
+            <span><strong>WASD Speed:</strong> 100 (Instant)</span>
+          </div>
+          <p>Native 1440p widescreen keybind alignment profile.</p>
+          <a href="assets/iPadView/2560x1440/TVM_100.xml" download="TVM_100_2560x1440.xml" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download TVM_100.xml
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <div class="container">
+      <h2>LOCK IN YOUR 120 FPS & IPAD VIEW NOW</h2>
+      <p>Download Fist Tool and experience maximum competitive responsiveness.</p>
+      <a href="download.html" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Fist Tool Now
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+          <span>FERRUM FIST</span>
+        </a>
+
+                <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gameloop.html">GameLoop</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="benchmarks.html">Benchmarks</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        <p>© 2026 <strong>Ferrum Fist</strong>. All rights reserved. Fist Tool is an independent optimization utility.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features & Architecture • Fist Tool Optimizer</title>
+  <meta name="description" content="Explore all 130+ hardware-filtered Windows tweaks, GameLoop engine optimizations, and PUBG Mobile latency tools in Fist Tool.">
+  <meta name="theme-color" content="#0c0d12">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- Animated Background Elements -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+        <span>FERRUM FIST</span>
+      </a>
+
+                        <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gameloop.html" class="nav-link">GameLoop</a></li>
+        <li><a href="features.html" class="nav-link active">Features</a></li>
+        <li><a href="benchmarks.html" class="nav-link">Benchmarks</a></li>
+        <li><a href="guide.html" class="nav-link">Guide</a></li>
+        <li><a href="download.html" class="nav-link">Download</a></li>
+        <li><a href="community.html" class="nav-link">Community</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="download.html" class="btn btn-primary" id="nav-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get Fist Tool
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-tag">// FULL ARCHITECTURE BREAKDOWN</span>
+      <h1 class="page-title">COMPLETE FEATURE SUITE</h1>
+      <p class="page-subtitle">A comprehensive breakdown of all modules, engine tuners, and 130+ hardware-filtered tweaks packed into Fist Tool.</p>
+    </div>
+  </header>
+
+  <!-- FEATURES DEEP DIVE -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Section 1: GameLoop Engine -->
+      <div class="feature-module" data-animate="fade-up">
+        <div class="module-text">
+          <span class="badge-module">MODULE 01</span>
+          <h2>GameLoop Direct Engine Manager</h2>
+          <p>Direct registry injection and Android subsystem tuning engineered specifically for PUBG Mobile and competitive emulation.</p>
+          <div class="module-bullets">
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Discrete GPU Allocation:</strong> Sets <code>GpuPreference=2;</code> in the Windows registry, forcing GameLoop to use your high-performance discrete GPU instead of integrated graphics.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Renderer Switching:</strong> One-click toggle between DirectX+ and OpenGL+ rendering pipelines with fast cache buffers.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>ADB Latency Props:</strong> Injects low-latency touch dispatch props and optimizes SurfaceFlinger composition rates for zero input delay.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>120 FPS Unlocked:</strong> Forces emulator frame pacing and unlocks 90 / 120 FPS profiles regardless of default device limitations.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="module-image">
+          <img src="assets/preview_gameloop.png" alt="GameLoop Engine Manager" class="feature-screenshot">
+        </div>
+      </div>
+
+      <!-- Section 2: Windows Tweaks -->
+      <div class="feature-module reverse" data-animate="fade-up">
+        <div class="module-text">
+          <span class="badge-module">MODULE 02</span>
+          <h2>130+ Hardware-Filtered Windows Tweaks</h2>
+          <p>Intelligent system optimizations that adapt dynamically based on your detected CPU architecture, GPU vendor, and RAM capacity.</p>
+          <div class="module-bullets">
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>RAM-Aware Memory Management:</strong> Low-RAM systems (&le;8GB) receive memory compression and swapfile buffers; High-End systems (&gt;8GB) lock kernel executives into physical RAM with zero pagefile latency.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Windows Graphics Pipeline:</strong> Hardware-Accelerated GPU Scheduling (HAGS), Variable Refresh Rate (VRR), and Multiplane Overlay (MPO) disable to eliminate windowed stutter.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Network Latency:</strong> Optimized TCP window auto-tuning, Nagle's algorithm disable, MTU discovery, and DNS cache flushing.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>1-Click Safety Restore Point:</strong> Automated Windows restore point creation prior to applying system-level tweaks.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="module-image">
+          <img src="assets/preview_tweaks.png" alt="Windows Tweaks Suite" class="feature-screenshot">
+        </div>
+      </div>
+
+      <!-- Section 3: PUBG & Tools -->
+      <div class="feature-module" data-animate="fade-up">
+        <div class="module-text">
+          <span class="badge-module">MODULE 03</span>
+          <h2>PUBG Mobile Data Hub & Keymapping</h2>
+          <p>Protect your custom configurations, eliminate shader micro-stutters, and easily synchronize game files.</p>
+          <div class="module-bullets">
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>TVM Keymapping Safe-Guard:</strong> One-click backup and instant restore for GameLoop keybinding layouts (<code>TVM_100.xml</code>).
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Active.sav & Paks Manager:</strong> Easy visual backup, import, and synchronization of 90/120 FPS config files.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Shader & Log Purge:</strong> Cleans compiled shader caches and bloated debug logs to prevent in-fight FPS drops.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Complete GameLoop Uninstaller:</strong> Safely terminates locked background services (<code>QMEmulatorService</code>, <code>aow_drv</code>, <code>TGuard</code>) and cleans leftover registry trees.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="module-image">
+          <img src="assets/preview_graphics.png" alt="PUBG Graphics & Visual Settings" class="feature-screenshot">
+        </div>
+      </div>
+
+      <!-- Section 4: Live Telemetry -->
+      <div class="feature-module reverse" data-animate="fade-up">
+        <div class="module-text">
+          <span class="badge-module">MODULE 04</span>
+          <h2>Diagnostic Telemetry & Discord RPC</h2>
+          <p>Real-time system telemetry gauges, interactive process manager, and rich gamer presence on Discord.</p>
+          <div class="module-bullets">
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>60 FPS Telemetry Gauges:</strong> Hardware diagnostics for CPU Load, GPU 3D engine utilization, and RAM allocation.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Discord Rich Presence:</strong> Broadcasts live optimization status and in-game performance presence to friends.
+              </div>
+            </div>
+            <div class="bullet-item">
+              <span class="bullet-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <div>
+                <strong>Custom Glassmorphic Theme Engine:</strong> 8 vibrant neon accent presets with interactive breathing glow animations.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="module-image">
+          <img src="assets/preview_dashboard.png" alt="Telemetry Dashboard" class="feature-screenshot">
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <div class="container">
+      <h2>READY TO EXPERIENCE THE FULL SUITE?</h2>
+      <p>Download Fist Tool v1.0.0 now — 100% free with automatic updates.</p>
+      <a href="download.html" class="btn btn-primary btn-lg">Download Fist Tool Now →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+          <span>FERRUM FIST</span>
+        </a>
+
+                                <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gameloop.html">GameLoop</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="benchmarks.html">Benchmarks</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        <p>© 2026 <strong>Ferrum Fist</strong>. All rights reserved. Fist Tool is an independent optimization utility.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

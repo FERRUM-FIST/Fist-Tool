@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Fist Tool • Official Installer & Releases</title>
+  <meta name="description" content="Download the official Fist Tool v1.0.0 production installer. 100% clean, standalone, with automatic GitHub release updates.">
+  <meta name="theme-color" content="#0c0d12">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- Animated Background Elements -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+        <span>FERRUM FIST</span>
+      </a>
+
+                        <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gameloop.html" class="nav-link">GameLoop</a></li>
+        <li><a href="features.html" class="nav-link">Features</a></li>
+        <li><a href="benchmarks.html" class="nav-link">Benchmarks</a></li>
+        <li><a href="guide.html" class="nav-link">Guide</a></li>
+        <li><a href="download.html" class="nav-link active">Download</a></li>
+        <li><a href="community.html" class="nav-link">Community</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="download.html" class="btn btn-primary" id="nav-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Get Fist Tool
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="section-tag">// OFFICIAL PRODUCTION BUILD</span>
+      <h1 class="page-title">DOWNLOAD FIST TOOL</h1>
+      <p class="page-subtitle">Get the latest stable production release with built-in GitHub auto-updates and safety restore mechanisms.</p>
+    </div>
+  </header>
+
+  <!-- DOWNLOAD HUB CONTENT -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Primary Download Card -->
+      <div class="download-box" data-animate="fade-up">
+        <div class="download-glow" aria-hidden="true"></div>
+        <div class="hero-badge-wrap" style="margin-bottom: 20px;">
+          <span class="badge-pulse"></span>
+          <span class="badge-text">v1.0.0 Production Stable</span>
+        </div>
+
+        <h2 class="section-title" style="margin-bottom: 10px;">FistTool_Setup.exe</h2>
+        <p class="section-desc">Standalone installer packaged with Inno Setup. No extra dependencies required.</p>
+
+        <div class="download-details">
+          <div class="detail-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>File: <strong>FistTool_Setup.exe</strong></span>
+          </div>
+          <div class="detail-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Size: <strong>66.0 MB</strong></span>
+          </div>
+          <div class="detail-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Architecture: <strong>Windows 10 / 11 64-Bit</strong></span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://github.com/FERRUM-FIST/Optimizer-App/releases/latest" class="btn btn-primary btn-lg" id="direct-dl-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download via GitHub Releases
+          </a>
+          <a href="https://github.com/FERRUM-FIST/Optimizer-App" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Repository
+          </a>
+        </div>
+      </div>
+
+      <!-- Installation Guide Steps -->
+      <div class="section-header" style="margin-top: 70px;">
+        <span class="section-tag">// 3-STEP QUICK SETUP</span>
+        <h2 class="section-title">HOW TO INSTALL</h2>
+      </div>
+
+      <div class="features-grid" data-animate="fade-up">
+        <div class="feature-card">
+          <div class="feature-icon">1</div>
+          <h4>Run the Setup Installer</h4>
+          <p>Launch <code>FistTool_Setup.exe</code>. If prompted by Windows SmartScreen, click <em>More Info</em> &rarr; <em>Run anyway</em>.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--cyan">2</div>
+          <h4>Launch as Administrator</h4>
+          <p>Run Fist Tool with Administrator privileges so it can safely configure GameLoop registry keys and Windows latency services.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--green">3</div>
+          <h4>Apply Tweaks & Play</h4>
+          <p>Create a 1-click restore point, enable your desired optimizations in the Tweaks and GameLoop tabs, and launch your match!</p>
+        </div>
+      </div>
+
+      <!-- System Requirements -->
+      <div class="section-header" style="margin-top: 70px;">
+        <span class="section-tag">// COMPATIBILITY CHECK</span>
+        <h2 class="section-title">SYSTEM REQUIREMENTS</h2>
+      </div>
+
+      <div class="benchmark-card" data-animate="fade-up">
+        <table class="req-table" style="width: 100%; border-collapse: collapse;">
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left;">
+            <th style="padding: 14px 8px; color: var(--color-cyan);">Component</th>
+            <th style="padding: 14px 8px; color: var(--color-cyan);">Minimum Requirement</th>
+            <th style="padding: 14px 8px; color: var(--color-accent);">Recommended for 120 FPS</th>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <td style="padding: 12px 8px; font-weight: 700;">Operating System</td>
+            <td style="padding: 12px 8px; color: var(--text-secondary);">Windows 10 (64-Bit)</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">Windows 10 / 11 (22H2 or newer)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <td style="padding: 12px 8px; font-weight: 700;">Processor (CPU)</td>
+            <td style="padding: 12px 8px; color: var(--text-secondary);">Intel Core i3 / AMD Ryzen 3</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">Intel Core i5/i7 (10th+ Gen) or AMD Ryzen 5000+</td>
+          </tr>
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+            <td style="padding: 12px 8px; font-weight: 700;">Graphics (GPU)</td>
+            <td style="padding: 12px 8px; color: var(--text-secondary);">GTX 750 Ti / AMD RX 550</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">NVIDIA GTX 1660 / RTX 3060+ or AMD RX 6600+</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 8px; font-weight: 700;">RAM</td>
+            <td style="padding: 12px 8px; color: var(--text-secondary);">8 GB DDR4</td>
+            <td style="padding: 12px 8px; color: var(--text-primary);">16 GB Dual-Channel DDR4/DDR5</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Ferrum Fist Logo" class="brand-emblem">
+          <span>FERRUM FIST</span>
+        </a>
+
+                                <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gameloop.html">GameLoop</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="benchmarks.html">Benchmarks</a></li>
+          <li><a href="guide.html">Guide</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        <p>© 2026 <strong>Ferrum Fist</strong>. All rights reserved. Fist Tool is an independent optimization utility.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
