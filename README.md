@@ -55,5 +55,3 @@
 - **Discord:** [discord.gg/gzq7RHqfxw](https://discord.gg/gzq7RHqfxw)
 - **YouTube:** [@FerrumFist](https://www.youtube.com/@FerrumFist)
 - **Support:** [ko-fi.com/ferrumfist](https://ko-fi.com/ferrumfist)
-- **YouTube:** [@FerrumFist](https://www.youtube.com/@FerrumFist)
-- **Support:** [ko-fi.com/ferrumfist](https://ko-fi.com/ferrumfist)
