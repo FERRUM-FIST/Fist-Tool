@@ -1509,6 +1509,12 @@ kbd {
   box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
+.hw-select option {
+  background: #0c0d12;
+  color: #fff;
+  padding: 10px;
+}
+
 .select-icon {
   position: absolute;
   right: 16px;
