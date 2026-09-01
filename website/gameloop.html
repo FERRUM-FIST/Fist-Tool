@@ -140,45 +140,50 @@
       </div>
 
       <!-- Engine Settings Breakdown Table -->
-      <div class="benchmark-card" data-animate="fade-up" style="margin: 40px 0;">
-        <table class="req-table" style="width: 100%; border-collapse: collapse;">
+      <div class="benchmark-card" data-animate="fade-up" style="margin: 40px 0; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px 22px; overflow-x: auto;">
+        <table class="req-table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+          <colgroup>
+            <col style="width: 22%;">
+            <col style="width: 30%;">
+            <col style="width: 48%;">
+          </colgroup>
           <thead>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left;">
-              <th style="padding: 14px 8px; color: var(--color-cyan);">GameLoop Setting</th>
-              <th style="padding: 14px 8px; color: var(--color-cyan);">Optimal Value</th>
-              <th style="padding: 14px 8px; color: var(--color-accent);">Technical Impact</th>
+              <th style="padding: 14px 10px; color: var(--color-cyan); font-size: 13px;">GameLoop Setting</th>
+              <th style="padding: 14px 10px; color: var(--color-cyan); font-size: 13px;">Optimal Value</th>
+              <th style="padding: 14px 10px; color: var(--color-accent); font-size: 13px;">Technical Impact</th>
             </tr>
           </thead>
           <tbody>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <td style="padding: 12px 8px; font-weight: 700;">Rendering Engine</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">DirectX+ or OpenGL+ (NVIDIA) / DirectX+ (AMD)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">NVIDIA GPUs support both DirectX+ and OpenGL+ rendering backends; AMD Radeon GPUs work best with DirectX+ only.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Rendering Engine</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">DirectX+ or OpenGL+ (NVIDIA) / DirectX+ (AMD)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">NVIDIA GPUs support both DirectX+ and OpenGL+ rendering backends; AMD Radeon GPUs work best with DirectX+ only.</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <td style="padding: 12px 8px; font-weight: 700;">Prioritize Discrete GPU</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">Checked (GpuPreference=2)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">Forces the Windows DWM compositor and emulator to lock onto your high-performance discrete GPU.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Prioritize Discrete GPU</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">Checked (GpuPreference=2)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">Forces the Windows DWM compositor and emulator to lock onto your high-performance discrete GPU.</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <td style="padding: 12px 8px; font-weight: 700;">Memory Allocation</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">8192 MB (or 12288 MB)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">Allocates dedicated RAM buffer for the Android virtual machine to eliminate Garbage Collection hitches.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Memory Allocation</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">8192 MB (or 12288 MB)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">Allocates dedicated RAM buffer for the Android virtual machine to eliminate Garbage Collection hitches.</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <td style="padding: 12px 8px; font-weight: 700;">Processor Cores Allocation</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">4, 6, or 8 Cores (Match Physical Cores)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">4-Core CPUs (i3/Ryzen 3) allocate 2-4 cores; 6-Core CPUs (i5/Ryzen 5) allocate 4-6 cores; 8+ Core CPUs allocate 8 cores for zero thread stalling.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Processor Cores Allocation</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">4, 6, or 8 Cores (Match Physical Cores)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">4-Core CPUs (i3/Ryzen 3) allocate 2-4; 6-Core CPUs (i5/Ryzen 5) allocate 4-6; 8+ Core CPUs allocate 8 cores for zero thread stalling.</td>
             </tr>
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-              <td style="padding: 12px 8px; font-weight: 700;">Intel P-Core / E-Core Affinity</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">P-Cores Only (Managed by Fist Tool)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">On Intel 12th/13th/14th Gen, Fist Tool pins GameLoop threads strictly to Performance (P) Cores to prevent micro-stutter from Efficiency (E) cores.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Intel P-Core / E-Core Affinity</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">P-Cores Only (Managed by Fist Tool)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">On Intel 12th/13th/14th Gen, Fist Tool pins GameLoop threads strictly to Performance (P) Cores to prevent micro-stutter from Efficiency (E) cores.</td>
             </tr>
             <tr>
-              <td style="padding: 12px 8px; font-weight: 700;">Device Model Profile</td>
-              <td style="padding: 12px 8px; color: var(--color-green);">REDMAGIC 9 Pro (nubia NX809J)</td>
-              <td style="padding: 12px 8px; color: var(--text-secondary);">Emulates high-tier gaming smartphone signature required by PUBG Mobile to unlock the 120 FPS option.</td>
+              <td style="padding: 12px 10px; font-weight: 700; vertical-align: top;">Device Model Profile</td>
+              <td style="padding: 12px 10px; color: var(--color-green); vertical-align: top;">REDMAGIC 9 Pro (nubia NX809J)</td>
+              <td style="padding: 12px 10px; color: var(--text-secondary); vertical-align: top;">Emulates high-tier gaming smartphone signature required by PUBG Mobile to unlock the 120 FPS option.</td>
             </tr>
           </tbody>
         </table>

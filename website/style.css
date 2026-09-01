@@ -596,6 +596,8 @@ code {
   transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card::before {
@@ -735,6 +737,7 @@ code {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: auto;
 }
 
 .feature-list li {
@@ -1419,6 +1422,7 @@ code {
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 18px;
+  flex-grow: 1;
 }
 
 .btn-sm {
