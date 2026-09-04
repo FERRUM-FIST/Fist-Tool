@@ -3578,10 +3578,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // ⚡ Real Auto-Detect Hardware Engine from Browser APIs & Micro-Benchmarks
+    // Real Auto-Detect Hardware Engine from Browser APIs & Micro-Benchmarks
     if (autodetectBtn) {
       autodetectBtn.addEventListener('click', async () => {
-        autodetectBtn.innerText = '⚡ Scanning CPU, GPU, RAM & Disk...';
+        autodetectBtn.innerHTML = `
+          <svg class="btn-icon hw-detect-spinner" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+          <span>Scanning Specs...</span>
+        `;
         autodetectBtn.disabled = true;
 
         // 1. Detect Cores & Single-Core Speed via Micro-Benchmark
@@ -3832,9 +3835,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         calculatePerformance();
 
-        autodetectBtn.innerText = '⚡ Hardware & RAM Detected!';
+        autodetectBtn.innerHTML = `
+          <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Hardware & RAM Detected!</span>
+        `;
         setTimeout(() => {
-          autodetectBtn.innerText = '⚡ Auto-Detect';
+          autodetectBtn.innerHTML = `
+            <svg class="btn-icon hw-detect-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Auto-Detect</span>
+          `;
           autodetectBtn.disabled = false;
         }, 2200);
       });

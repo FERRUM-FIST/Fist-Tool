@@ -1933,3 +1933,60 @@ kbd {
 .hw-input-detected {
   animation: hwDetectedGlow 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+
+/* ==========================================================================
+   VECTOR ICONS & MICRO-INTERACTIONS
+   ========================================================================== */
+.btn-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.btn-arrow-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 6px;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn-arrow-icon {
+  transform: translateX(4px);
+}
+
+.inline-arrow-icon {
+  display: inline-block;
+  vertical-align: -1px;
+  margin: 0 4px;
+  color: var(--color-cyan);
+}
+
+.hw-detail-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.hw-label-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cyan);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+@keyframes hwDetectSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hw-detect-spinner {
+  animation: hwDetectSpin 0.9s linear infinite;
+}
