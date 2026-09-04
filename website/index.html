@@ -343,8 +343,130 @@
   </section>
 
   <!-- ========================================================================
-       DOWNLOAD HUB
+       UNIVERSAL HARDWARE & FPS CHECKER
        ======================================================================== -->
+  <section class="section" id="fps-checker" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" style="color: var(--color-cyan);">// UNIVERSAL RIG SIMULATOR</span>
+        <h2 class="section-title">HARDWARE & FPS CHECKER</h2>
+        <p class="section-desc">Select your PC configuration and target game to instantly calculate estimated framerates, rendering APIs, and optimal Fist Tool tuning presets.</p>
+      </div>
+
+      <div class="hw-checker-card" data-animate="fade-up">
+        <div class="hw-inputs">
+          <div class="hw-inputs-grid">
+            <div class="hw-form-group full-width">
+              <label for="hw-game">Target Game / Workload</label>
+              <div class="select-wrapper">
+                <select id="hw-game" class="hw-select">
+                  <option value="gameloop" selected>PUBG Mobile (GameLoop 32/64-Bit)</option>
+                  <option value="esports">Competitive Esports (Valorant, CS2, Overwatch 2)</option>
+                  <option value="br">Battle Royale (Apex Legends, Warzone, Fortnite)</option>
+                  <option value="aaa">Open World & AAA (GTA V, Cyberpunk 2077, RDR2)</option>
+                  <option value="general">Windows System Latency & General Gaming</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="hw-form-group">
+              <label for="hw-cpu">Processor (CPU)</label>
+              <div class="select-wrapper">
+                <select id="hw-cpu" class="hw-select">
+                  <option value="quad">Quad-Core (Core i3 / Ryzen 3 / Older i5)</option>
+                  <option value="hexa" selected>Hexa-Core (Core i5 8th-14th Gen / Ryzen 5)</option>
+                  <option value="octa">Octa-Core (Core i7 / Ryzen 7 / X3D)</option>
+                  <option value="multi">Multi-Core 12+ (Core i9 / Ryzen 9 / Threadripper)</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="hw-form-group">
+              <label for="hw-gpu">Graphics Card (GPU)</label>
+              <div class="select-wrapper">
+                <select id="hw-gpu" class="hw-select">
+                  <option value="integrated">Integrated (Intel UHD/Iris, AMD Vega)</option>
+                  <option value="entry_nvidia">NVIDIA Entry (GTX 750Ti / 1050 / 1650)</option>
+                  <option value="entry_amd">AMD Entry (RX 460 / 550 / 560 / Vega)</option>
+                  <option value="mid_nvidia" selected>NVIDIA Mid-Range (GTX 1660 / RTX 2060 / 3060)</option>
+                  <option value="mid_amd">AMD Mid-Range (RX 580 / 5500XT / 6600)</option>
+                  <option value="high_nvidia">NVIDIA High-End (RTX 3070 / 4070 / 4080 / 4090)</option>
+                  <option value="high_amd">AMD High-End (RX 6700XT / 7800XT / 7900XTX)</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="hw-form-group">
+              <label for="hw-ram">System Memory (RAM)</label>
+              <div class="select-wrapper">
+                <select id="hw-ram" class="hw-select">
+                  <option value="8gb">8 GB (or less)</option>
+                  <option value="16gb" selected>16 GB Dual-Channel</option>
+                  <option value="32gb">32 GB+ High-Speed</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="hw-form-group">
+              <label for="hw-res">Target Resolution</label>
+              <div class="select-wrapper">
+                <select id="hw-res" class="hw-select">
+                  <option value="720p">720p HD (Ultra Smooth)</option>
+                  <option value="1080p" selected>1080p Full HD (Competitive)</option>
+                  <option value="1440p">1440p 2K (High Resolution)</option>
+                  <option value="4k">4K Ultra HD (Heavy Load)</option>
+                </select>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="hw-btn-wrapper">
+            <button id="hw-check-btn" class="btn btn-primary" style="width: 100%; justify-content: center; height: 46px; margin-top: 8px;">Calculate Optimal Settings</button>
+          </div>
+        </div>
+        
+        <div class="hw-result-box" id="hw-result-box">
+          <div class="hw-res-header">
+            <span class="hw-res-tier-badge" id="hw-res-tier">ESPORTS 120 FPS READY</span>
+            <div class="hw-res-fps" id="hw-res-fps">120 FPS</div>
+            <p class="hw-res-summary" id="hw-res-desc">Smooth + Ultra Extreme • Zero Stutter Guaranteed</p>
+          </div>
+
+          <div class="hw-details-grid">
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">In-Game Preset</div>
+              <div class="hw-detail-val" id="hw-detail-preset">Smooth + 120 FPS</div>
+            </div>
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">Rendering Engine</div>
+              <div class="hw-detail-val" id="hw-detail-engine">DirectX+ / OpenGL+</div>
+            </div>
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">CPU Allocation</div>
+              <div class="hw-detail-val" id="hw-detail-cpu">4 Cores</div>
+            </div>
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">Memory Allocation</div>
+              <div class="hw-detail-val" id="hw-detail-ram">8192 MB (8GB)</div>
+            </div>
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">Resolution & DPI</div>
+              <div class="hw-detail-val" id="hw-detail-dpi">1080p • 240 DPI</div>
+            </div>
+            <div class="hw-detail-item">
+              <div class="hw-detail-label">Input Latency</div>
+              <div class="hw-detail-val" id="hw-detail-latency" style="color: var(--color-green);">~2.8ms (-78%)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="section" id="download">
     <div class="container">
       <div class="download-box">

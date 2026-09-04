@@ -302,94 +302,297 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-  // 7. HARDWARE FPS CHECKER
-  const hwCheckBtn = document.getElementById('hw-check-btn');
-  const hwCpu = document.getElementById('hw-cpu');
-  const hwGpu = document.getElementById('hw-gpu');
-  const hwResultBox = document.getElementById('hw-result-box');
-  const hwResTier = document.getElementById('hw-res-tier');
-  const hwResFps = document.getElementById('hw-res-fps');
-  const hwResDesc = document.getElementById('hw-res-desc');
+  // 7. UNIVERSAL HARDWARE & FPS CHECKER
+  const hwCheckerCards = document.querySelectorAll('.hw-checker-card');
 
-  if (hwCheckBtn) {
-    hwCheckBtn.addEventListener('click', () => {
-      const cpu = hwCpu.value;
-      const gpu = hwGpu.value;
-      
-      let tier = 'Esports Tier';
-      let fps = '120 FPS';
-      let desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
-      let color = 'var(--color-cyan)';
-      let shadowColor = 'rgba(0, 229, 255, 0.4)';
-      let bgColor = 'rgba(0, 229, 255, 0.05)';
-      let borderColor = 'rgba(0, 229, 255, 0.3)';
+  hwCheckerCards.forEach(card => {
+    const gameSelect = card.querySelector('#hw-game');
+    const cpuSelect = card.querySelector('#hw-cpu');
+    const gpuSelect = card.querySelector('#hw-gpu');
+    const ramSelect = card.querySelector('#hw-ram');
+    const resSelect = card.querySelector('#hw-res');
+    const checkBtn = card.querySelector('#hw-check-btn');
 
-      // Logic Evaluation
-      if (cpu === 'flagship') {
-        if (gpu === 'flagship') {
-          tier = 'Flagship Tier';
-          fps = '120 FPS';
-          desc = 'Optimal Settings: Ultra HDR + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
-          color = 'var(--color-green)';
-          shadowColor = 'rgba(0, 255, 102, 0.4)';
-          bgColor = 'rgba(0, 255, 102, 0.05)';
-          borderColor = 'rgba(0, 255, 102, 0.3)';
-        } else {
-          // Flagship CPU with lower-end GPUs
-          tier = 'Esports Tier';
-          fps = '120 FPS';
-          desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 8 Cores • 8GB RAM Alloc';
-          color = 'var(--color-cyan)';
-          shadowColor = 'rgba(0, 229, 255, 0.4)';
-          bgColor = 'rgba(0, 229, 255, 0.05)';
-          borderColor = 'rgba(0, 229, 255, 0.3)';
-        }
-      } else if (cpu === 'esports') {
-        if (gpu === 'flagship' || gpu === 'esports') {
-          tier = 'Esports Tier';
-          fps = '120 FPS';
-          desc = 'Optimal Settings: Smooth + Ultra Extreme (120 FPS) • 6 Cores • 8GB RAM Alloc';
-          color = 'var(--color-cyan)';
-          shadowColor = 'rgba(0, 229, 255, 0.4)';
-          bgColor = 'rgba(0, 229, 255, 0.05)';
-          borderColor = 'rgba(0, 229, 255, 0.3)';
-        } else {
-          // Esports CPU with Budget GPU
-          tier = 'Budget Tier';
-          fps = '90 FPS';
-          desc = 'Optimal Settings: Smooth + 90 FPS • 6 Cores • 6GB RAM Alloc';
-          color = 'var(--text-primary)';
-          shadowColor = 'rgba(255, 255, 255, 0.2)';
-          bgColor = 'rgba(255, 255, 255, 0.05)';
-          borderColor = 'rgba(255, 255, 255, 0.2)';
-        }
+    const resultBox = card.querySelector('#hw-result-box');
+    const tierBadge = card.querySelector('#hw-res-tier');
+    const fpsBadge = card.querySelector('#hw-res-fps');
+    const summaryText = card.querySelector('#hw-res-desc');
+
+    const detailPreset = card.querySelector('#hw-detail-preset');
+    const detailEngine = card.querySelector('#hw-detail-engine');
+    const detailCpu = card.querySelector('#hw-detail-cpu');
+    const detailRam = card.querySelector('#hw-detail-ram');
+    const detailDpi = card.querySelector('#hw-detail-dpi');
+    const detailLatency = card.querySelector('#hw-detail-latency');
+
+    function calculatePerformance() {
+      const game = gameSelect ? gameSelect.value : 'gameloop';
+      const cpu = cpuSelect ? cpuSelect.value : 'hexa';
+      const gpu = gpuSelect ? gpuSelect.value : 'mid_nvidia';
+      const ram = ramSelect ? ramSelect.value : '16gb';
+      const res = resSelect ? resSelect.value : '1080p';
+
+      const isAmdGpu = gpu.includes('amd');
+      const isNvidiaGpu = gpu.includes('nvidia');
+      const isIntegrated = gpu === 'integrated';
+      const isEntryGpu = gpu.includes('entry') || isIntegrated;
+      const isMidGpu = gpu.includes('mid');
+      const isHighGpu = gpu.includes('high');
+
+      const isHighCpu = cpu === 'octa' || cpu === 'multi';
+      const isHexaCpu = cpu === 'hexa';
+      const isQuadCpu = cpu === 'quad';
+
+      // Processor Allocation (User Rule: 4 for 4-6 cores, 6 for 8 cores, 8 for 12+ cores)
+      let cpuAlloc = '4 Cores';
+      if (cpu === 'octa') cpuAlloc = '6 Cores (8-Core CPU)';
+      else if (cpu === 'multi') cpuAlloc = '8 Cores (12+ Core CPU)';
+      else if (cpu === 'hexa') cpuAlloc = '4 Cores (Hexa-Core)';
+      else cpuAlloc = '4 Cores (Quad-Core)';
+
+      // Memory Allocation (User Rule: 6GB for 8GB RAM, 8GB for >8GB RAM)
+      let ramAlloc = '8192 MB (8GB)';
+      if (ram === '8gb') ramAlloc = '6144 MB (6GB)';
+      else if (ram === '32gb') ramAlloc = '8192 MB (High Cache)';
+
+      // Rendering Engine (User Rule: DirectX+ for AMD, DirectX+/OpenGL+ for Nvidia)
+      let engine = 'DirectX+';
+      if (isAmdGpu) {
+        engine = 'DirectX+ (Optimized for AMD)';
+      } else if (isNvidiaGpu) {
+        engine = 'DirectX+ / OpenGL+ (NVIDIA)';
       } else {
-        // Budget CPU (Bottlenecks everything else)
-        tier = 'Budget Tier';
-        fps = '60 FPS';
-        desc = 'Optimal Settings: Smooth + Extreme (60 FPS) • 4 Cores • 6GB RAM Alloc';
-        color = 'var(--text-primary)';
-        shadowColor = 'rgba(255, 255, 255, 0.2)';
-        bgColor = 'rgba(255, 255, 255, 0.05)';
-        borderColor = 'rgba(255, 255, 255, 0.2)';
+        engine = 'DirectX+ (Low Overhead)';
       }
 
-      // Display Results with Animation
-      hwResTier.innerText = tier;
-      hwResTier.style.color = color;
-      hwResFps.innerText = fps;
-      hwResFps.style.color = color;
-      hwResFps.style.textShadow = `0 0 20px ${shadowColor}`;
-      hwResDesc.innerText = desc;
-      hwResultBox.style.background = bgColor;
-      hwResultBox.style.borderColor = borderColor;
+      // DPI & Resolution (User Rule: 160 low end, 240 mid, 400/480 high end)
+      let dpiStr = '1080p • 240 DPI';
+      let dpiVal = '240 DPI';
+      if (isHighCpu && isHighGpu) {
+        dpiVal = (res === '1440p' || res === '4k') ? '480 DPI' : '400 DPI';
+      } else if (isQuadCpu && isEntryGpu) {
+        dpiVal = '160 DPI';
+      } else {
+        dpiVal = '240 DPI';
+      }
+      dpiStr = `${res.toUpperCase()} • ${dpiVal}`;
 
-      hwResultBox.animate([
-        { opacity: 0, transform: 'scale(0.95)' },
-        { opacity: 1, transform: 'scale(1)' }
-      ], { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+      // Default visual theme
+      let tier = 'Esports Tier';
+      let fps = '120 FPS';
+      let summary = 'Optimal Settings: Smooth + 120 FPS • Zero Stutter Guaranteed';
+      let preset = 'Smooth + Ultra Extreme (120 FPS)';
+      let latency = '~2.8ms (-78% Fist Tool)';
+      let color = 'var(--color-cyan)';
+      let shadowColor = 'rgba(0, 229, 255, 0.45)';
+      let bgColor = 'rgba(0, 229, 255, 0.04)';
+      let borderColor = 'rgba(0, 229, 255, 0.28)';
+
+      if (game === 'gameloop') {
+        // CPU plays paramount role in GameLoop smoothness
+        if (isHighCpu) {
+          if (isHighGpu) {
+            tier = 'Flagship Tier';
+            fps = '120 FPS';
+            preset = 'Ultra HDR + Ultra Extreme (120 FPS)';
+            summary = 'Flagship Dominance: Ultra HDR 120 FPS with max graphic fidelity';
+            color = 'var(--color-green)';
+            shadowColor = 'rgba(0, 255, 102, 0.45)';
+            bgColor = 'rgba(0, 255, 102, 0.04)';
+            borderColor = 'rgba(0, 255, 102, 0.3)';
+          } else {
+            // High end processor with lower end GPU (User requirement: 120 FPS with high end CPU + low end GPU)
+            tier = 'Esports Smooth Tier';
+            fps = '120 FPS';
+            preset = 'Smooth + Ultra Extreme (120 FPS)';
+            summary = 'CPU-Driven Smoothness: Flawless 120 FPS frame timing & zero micro-stutter';
+            color = 'var(--color-cyan)';
+            shadowColor = 'rgba(0, 229, 255, 0.45)';
+            bgColor = 'rgba(0, 229, 255, 0.04)';
+            borderColor = 'rgba(0, 229, 255, 0.28)';
+          }
+        } else if (isHexaCpu) {
+          if (isHighGpu || isMidGpu) {
+            tier = 'Esports Tier';
+            fps = '120 FPS';
+            preset = 'Smooth + Ultra Extreme (120 FPS)';
+            summary = 'Esports Ready: Stable 120 FPS locked in competitive encounters';
+            color = 'var(--color-cyan)';
+            shadowColor = 'rgba(0, 229, 255, 0.45)';
+            bgColor = 'rgba(0, 229, 255, 0.04)';
+            borderColor = 'rgba(0, 229, 255, 0.28)';
+          } else {
+            tier = 'Budget Esports';
+            fps = '90 FPS';
+            preset = 'Smooth + 90 FPS';
+            summary = 'Solid Framerates: Smooth 90 FPS performance with optimized memory allocation';
+            color = 'var(--text-primary)';
+            shadowColor = 'rgba(255, 255, 255, 0.25)';
+            bgColor = 'rgba(255, 255, 255, 0.03)';
+            borderColor = 'rgba(255, 255, 255, 0.18)';
+          }
+        } else {
+          // Quad-core CPU
+          tier = 'Budget Tier';
+          fps = isEntryGpu ? '60 FPS' : '90 FPS';
+          preset = isEntryGpu ? 'Smooth + Extreme (60 FPS)' : 'Smooth + 90 FPS';
+          summary = 'Budget Optimization: Optimized background overhead to eliminate CPU bottleneck';
+          color = 'var(--text-primary)';
+          shadowColor = 'rgba(255, 255, 255, 0.25)';
+          bgColor = 'rgba(255, 255, 255, 0.03)';
+          borderColor = 'rgba(255, 255, 255, 0.18)';
+        }
+      } else if (game === 'esports') {
+        // Valorant / CS2 / Overwatch 2
+        engine = isAmdGpu ? 'DirectX 11 / Vulkan' : 'DirectX 11 (Reflex ON)';
+        if (isHighCpu && (isHighGpu || isMidGpu)) {
+          tier = 'Competitive Elite';
+          fps = '360+ FPS';
+          preset = 'Low / Competitive (Max FPS)';
+          summary = 'Esports God Tier: Sub-2ms click-to-shoot responsiveness & 360Hz display readiness';
+          color = 'var(--color-green)';
+          shadowColor = 'rgba(0, 255, 102, 0.45)';
+          bgColor = 'rgba(0, 255, 102, 0.04)';
+          borderColor = 'rgba(0, 255, 102, 0.3)';
+          latency = '~1.8ms Click-to-Shoot';
+        } else if (isHighCpu || isMidGpu) {
+          tier = 'Esports High';
+          fps = '240 FPS';
+          preset = 'Competitive Low (Optimized)';
+          summary = '240Hz Ready: Ultra low latency with timer resolution set to 0.5ms';
+          color = 'var(--color-cyan)';
+          latency = '~2.2ms Click-to-Shoot';
+        } else {
+          tier = 'Competitive Standard';
+          fps = '144 FPS';
+          preset = 'Competitive Low';
+          summary = '144Hz Smoothness: Clean frame delivery with zero background interrupts';
+          color = 'var(--text-primary)';
+          latency = '~3.4ms Click-to-Shoot';
+        }
+      } else if (game === 'br') {
+        // Battle Royale (Warzone / Apex / Fortnite)
+        engine = isAmdGpu ? 'DirectX 12 / Vulkan' : 'DirectX 12 (NVIDIA Reflex)';
+        if (isHighCpu && isHighGpu) {
+          tier = 'Apex Dominance';
+          fps = '165+ FPS';
+          preset = 'Optimized High / Comp';
+          summary = 'Battle Royale Master: Consistent 165+ FPS in end-game combat clusters';
+          color = 'var(--color-green)';
+          shadowColor = 'rgba(0, 255, 102, 0.45)';
+          bgColor = 'rgba(0, 255, 102, 0.04)';
+          borderColor = 'rgba(0, 255, 102, 0.3)';
+          latency = '~2.5ms Frame Latency';
+        } else if (isHighCpu || isMidGpu) {
+          tier = 'BR Competitive';
+          fps = '120–144 FPS';
+          preset = 'Competitive Medium / Low';
+          summary = 'Solid Framerates: 1% low frame stabilization via Fist Tool memory cleanup';
+          color = 'var(--color-cyan)';
+          latency = '~3.1ms Frame Latency';
+        } else {
+          tier = 'BR Performance';
+          fps = '60–90 FPS';
+          preset = 'Performance Mode / 720p Scaling';
+          summary = 'Playable Competitive: Maximum shader cache and thread unpark optimizations';
+          color = 'var(--text-primary)';
+          latency = '~4.8ms Frame Latency';
+        }
+      } else if (game === 'aaa') {
+        // AAA / Cyberpunk / GTA V
+        engine = 'DirectX 12 Ultimate / Vulkan';
+        if (isHighCpu && isHighGpu) {
+          tier = 'Ultra Fidelity';
+          fps = (res === '4k') ? '75–90 FPS' : '120+ FPS';
+          preset = 'High / Ultra + DLSS/FSR Quality';
+          summary = 'Max Fidelity: Silky smooth AAA frame pacing with DWM stutter mitigation';
+          color = 'var(--color-green)';
+          shadowColor = 'rgba(0, 255, 102, 0.45)';
+          bgColor = 'rgba(0, 255, 102, 0.04)';
+          borderColor = 'rgba(0, 255, 102, 0.3)';
+          latency = '~3.8ms Smooth Pacing';
+        } else if (isMidGpu) {
+          tier = 'Optimized Fidelity';
+          fps = '60–80 FPS';
+          preset = 'Medium-High / Balanced Scaling';
+          summary = 'Stable Cinematic: 60+ FPS lock with GPU hardware scheduling active';
+          color = 'var(--color-cyan)';
+          latency = '~5.2ms Smooth Pacing';
+        } else {
+          tier = 'Standard Gaming';
+          fps = '45–60 FPS';
+          preset = 'Low-Medium + FSR Performance';
+          summary = 'Playable Frame Rate: Aggressive background service trimming for max VRAM headroom';
+          color = 'var(--text-primary)';
+          latency = '~7.1ms Smooth Pacing';
+        }
+      } else {
+        // General Windows System Latency
+        engine = 'Win32 Kernel / DWM Tweaks';
+        tier = 'Zero-Stutter OS';
+        fps = '0.5ms Ping';
+        preset = 'Fist Ultimate Power Plan';
+        summary = 'System Responsiveness: 78% lower DWM input latency, 85% fewer kernel interrupts';
+        cpuAlloc = 'All Cores Unparked';
+        ramAlloc = 'Cleaned & Standby Cleared';
+        dpiStr = `${res.toUpperCase()} • Native`;
+        latency = '0.500ms Timer Resolution';
+        color = 'var(--color-cyan)';
+      }
+
+      // Update UI elements in the card
+      if (tierBadge) {
+        tierBadge.innerText = tier;
+        tierBadge.style.color = color;
+        tierBadge.style.borderColor = borderColor;
+        tierBadge.style.background = bgColor;
+      }
+
+      if (fpsBadge) {
+        fpsBadge.innerText = fps;
+        fpsBadge.style.color = color;
+        fpsBadge.style.textShadow = `0 0 25px ${shadowColor}`;
+      }
+
+      if (summaryText) {
+        summaryText.innerText = summary;
+      }
+
+      if (detailPreset) detailPreset.innerText = preset;
+      if (detailEngine) detailEngine.innerText = engine;
+      if (detailCpu) detailCpu.innerText = cpuAlloc;
+      if (detailRam) detailRam.innerText = ramAlloc;
+      if (detailDpi) detailDpi.innerText = dpiStr;
+      if (detailLatency) {
+        detailLatency.innerText = latency;
+        detailLatency.style.color = color;
+      }
+
+      if (resultBox) {
+        resultBox.style.background = bgColor;
+        resultBox.style.borderColor = borderColor;
+
+        resultBox.animate([
+          { opacity: 0.7, transform: 'scale(0.98)' },
+          { opacity: 1, transform: 'scale(1)' }
+        ], { duration: 250, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+      }
+    }
+
+    // Attach reactive listeners to all selects
+    [gameSelect, cpuSelect, gpuSelect, ramSelect, resSelect].forEach(sel => {
+      if (sel) {
+        sel.addEventListener('change', calculatePerformance);
+      }
     });
-  }
+
+    if (checkBtn) {
+      checkBtn.addEventListener('click', calculatePerformance);
+    }
+
+    // Run initial calculation once on load
+    calculatePerformance();
+  });
 
   // 8. FAQ ACCORDION LOGIC
   const faqHeaders = document.querySelectorAll('.faq-header');
