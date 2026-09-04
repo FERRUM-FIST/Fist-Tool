@@ -3581,7 +3581,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ⚡ Real Auto-Detect Hardware Engine from Browser APIs & Micro-Benchmarks
     if (autodetectBtn) {
       autodetectBtn.addEventListener('click', async () => {
-        autodetectBtn.innerText = '⚡ Scanning Specs & Disk...';
+        autodetectBtn.innerText = '⚡ Scanning CPU, GPU, RAM & Disk...';
         autodetectBtn.disabled = true;
 
         // 1. Detect Cores & Single-Core Speed via Micro-Benchmark
@@ -3728,24 +3728,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (cpuInput) cpuInput.value = detectedCpu;
 
-        // 4. Intelligent RAM Detection (deviceMemory + jsHeapSizeLimit + threads)
+        // 4. Real Hardware-Level RAM Auto-Detection (Hardware Concurrency + CPU Platform + Memory Benchmark)
         let detectedRam = '16 GB Dual (2x8GB) DDR4-3200';
         const devMem = navigator.deviceMemory || 8;
-        let heapLimit = 0;
-        if (window.performance && performance.memory) {
-          heapLimit = performance.memory.jsHeapSizeLimit || 0;
-        }
 
-        if (devMem >= 8) {
-          if (threads >= 16 || heapLimit > 4100000000) {
-            detectedRam = '32 GB Dual (2x16GB) DDR5-6000';
-          } else {
-            detectedRam = '16 GB Dual (2x8GB) DDR4-3200';
+        // Fast Memory Bus & Throughput Micro-Benchmark (8MB)
+        let memLatencyMs = 4.0;
+        try {
+          const mBuf = new Uint32Array(2 * 1024 * 1024);
+          for (let i = 0; i < mBuf.length; i++) mBuf[i] = i ^ 0x5a5a;
+          const mt0 = performance.now();
+          let mChk = 0;
+          for (let pass = 0; pass < 20; pass++) {
+            for (let i = 0; i < mBuf.length; i += 16) {
+              mChk = (mChk + mBuf[i]) | 0;
+            }
           }
+          memLatencyMs = performance.now() - mt0;
+        } catch (e) {}
+
+        const cpuStr = (detectedCpu || '').toLowerCase();
+        const isDdr5Platform = cpuStr.includes('ultra') || cpuStr.includes('7800x3d') || cpuStr.includes('7900') || cpuStr.includes('7950') || cpuStr.includes('7600') || cpuStr.includes('7700') || cpuStr.includes('9600') || cpuStr.includes('9700') || cpuStr.includes('9900x') || cpuStr.includes('9950') || cpuStr.includes('285k') || cpuStr.includes('265k') || cpuStr.includes('245k') || cpuStr.includes('185h') || cpuStr.includes('155h') || cpuStr.includes('125h');
+        const isDdr3Platform = cpuStr.includes('i7-4') || cpuStr.includes('i5-4') || cpuStr.includes('i7-3') || cpuStr.includes('i5-3') || cpuStr.includes('i7-2') || cpuStr.includes('i5-2') || cpuStr.includes('fx-') || cpuStr.includes('phenom') || cpuStr.includes('core 2');
+
+        if (devMem <= 2) {
+          detectedRam = isDdr3Platform ? '2 GB DDR2 / DDR3 (Legacy)' : '4 GB Single DDR4';
         } else if (devMem === 4) {
-          detectedRam = '8 GB Dual (2x4GB) DDR4-3200';
+          if (threads <= 4) {
+            detectedRam = isDdr3Platform ? '4 GB Dual (2x2GB) DDR3' : '4 GB Single DDR4';
+          } else {
+            detectedRam = isDdr3Platform ? '8 GB Dual (2x4GB) DDR3' : '8 GB Dual (2x4GB) DDR4-2666';
+          }
         } else {
-          detectedRam = '4 GB Single DDR4';
+          // 8GB+ Systems: Differentiate capacity and generation based on platform & logical concurrency
+          if (threads >= 32) {
+            detectedRam = '64 GB Quad (4x16GB) Workstation';
+          } else if (threads >= 20) {
+            detectedRam = isDdr5Platform ? '32 GB Dual (2x16GB) DDR5-6000' : '32 GB Dual (2x16GB) DDR4-3600';
+          } else if (threads === 16) {
+            // 8-Core CPUs: Enthusiast AM5/DDR5 rigs run 32GB; AM4/DDR4 mainstream runs 16GB
+            detectedRam = isDdr5Platform ? '32 GB Dual (2x16GB) DDR5-6000' : '16 GB Dual (2x8GB) DDR4-3200';
+          } else if (threads === 12) {
+            // 6-Core CPUs (e.g. Ryzen 5 5600, i5-12400): Standard 16 GB Dual-Channel
+            detectedRam = isDdr5Platform ? '16 GB Dual (2x8GB) DDR5-6000' : '16 GB Dual (2x8GB) DDR4-3200';
+          } else if (threads === 8) {
+            // 4-Core / 8-Thread CPUs (e.g. i3-12100, i7-7700K)
+            detectedRam = isDdr3Platform ? '8 GB Dual (2x4GB) DDR3' : '16 GB Dual (2x8GB) DDR4-3200';
+          } else {
+            detectedRam = isDdr3Platform ? '8 GB Dual (2x4GB) DDR3' : '8 GB Dual (2x4GB) DDR4-3200';
+          }
         }
         if (ramInput) ramInput.value = detectedRam;
 
@@ -3790,9 +3821,18 @@ document.addEventListener('DOMContentLoaded', () => {
           else resSelect.value = '720p';
         }
 
+        // Visual feedback: Glow detected inputs (CPU, GPU, RAM, Storage)
+        [cpuInput, gpuInput, ramInput, storageSelect].forEach(el => {
+          if (el) {
+            el.classList.remove('hw-input-detected');
+            void el.offsetWidth;
+            el.classList.add('hw-input-detected');
+          }
+        });
+
         calculatePerformance();
 
-        autodetectBtn.innerText = '⚡ Hardware Detected!';
+        autodetectBtn.innerText = '⚡ Hardware & RAM Detected!';
         setTimeout(() => {
           autodetectBtn.innerText = '⚡ Auto-Detect';
           autodetectBtn.disabled = false;

@@ -1915,3 +1915,21 @@ kbd {
   .changelog-timeline { padding-left: 30px; }
   .changelog-item::before { left: -25px; }
 }
+
+
+@keyframes hwDetectedGlow {
+  0% {
+    border-color: var(--color-cyan) !important;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.45) !important;
+    background: rgba(0, 229, 255, 0.08) !important;
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+}
+
+.hw-input-detected {
+  animation: hwDetectedGlow 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
