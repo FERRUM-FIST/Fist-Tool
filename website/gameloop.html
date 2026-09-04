@@ -136,7 +136,7 @@
                           <div class="hw-form-group">
               <label for="hw-ram">Search / Select Memory (RAM)</label>
               <div class="select-wrapper">
-                <input type="text" id="hw-ram" class="hw-select hw-search-input" list="hw-ram-list" placeholder="Search / Select RAM (e.g. 16 GB Dual-Channel)..." value="16 GB Dual-Channel DDR4-3200 / DDR5-5200 (Recommended)" autocomplete="off">
+                <input type="text" id="hw-ram" class="hw-select hw-search-input" list="hw-ram-list" placeholder="Search / Select RAM (e.g. 16 GB Dual-Channel)..." value="16 GB Dual-Channel (2x8GB) DDR4-3200 CL16 (Standard Gaming)" autocomplete="off">
                 <datalist id="hw-ram-list"></datalist>
                 <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               </div>
@@ -145,11 +145,32 @@
             <div class="hw-form-group">
               <label for="hw-storage">Primary Storage Drive</label>
               <div class="select-wrapper">
-                <select id="hw-storage" class="hw-select">
-                  <option value="nvme_gen4" selected>NVMe PCIe 4.0 / 5.0 SSD (Ultra Fast)</option>
-                  <option value="nvme_gen3">NVMe PCIe 3.0 SSD (Fast Streaming)</option>
-                  <option value="sata_ssd">2.5" SATA III SSD (Standard Solid State)</option>
-                  <option value="hdd">Mechanical HDD (7200 / 5400 RPM)</option>
+                                <select id="hw-storage" class="hw-select">
+                  <optgroup label="⚡ Ultra High-Speed NVMe PCIe 5.0 / 4.0">
+                    <option value="nvme_gen4_pro" selected>NVMe PCIe 4.0 x4 Pro (7,000+ MB/s, Samsung 990 Pro / WD SN850X)</option>
+                    <option value="nvme_gen5">NVMe PCIe 5.0 x4 SSD (14,000+ MB/s, Gen 5 DirectStorage Ultra)</option>
+                    <option value="nvme_gen4">NVMe PCIe 4.0 x4 SSD (5,000 MB/s, Crucial P3 Plus / WD SN770)</option>
+                    <option value="nvme_gen4_dramless">NVMe PCIe 4.0 DRAM-less HMB SSD (4,000–5,000 MB/s)</option>
+                  </optgroup>
+                  <optgroup label="🚀 Mainstream NVMe PCIe 3.0">
+                    <option value="nvme_gen3_pro">NVMe PCIe 3.0 x4 SSD (3,500 MB/s, Samsung 970 EVO Plus / SN570)</option>
+                    <option value="nvme_gen3">NVMe PCIe 3.0 x2 / Budget M.2 NVMe (1,800–2,400 MB/s)</option>
+                  </optgroup>
+                  <optgroup label="💾 2.5&quot; &amp; M.2 SATA III Solid State Drives (SSD)">
+                    <option value="sata_ssd_pro">2.5&quot; SATA III SSD with DRAM (560 MB/s, Samsung 870 EVO / MX500)</option>
+                    <option value="sata_ssd">2.5&quot; SATA III SSD DRAM-less (500 MB/s, Kingston A400 / WD Green)</option>
+                    <option value="m2_sata">M.2 SATA III SSD (500–550 MB/s, M.2 Solid State)</option>
+                  </optgroup>
+                  <optgroup label="📦 External USB Portable SSDs">
+                    <option value="usb_nvme">External USB 3.2 Gen 2x2 Portable NVMe (2,000 MB/s, SanDisk Extreme)</option>
+                    <option value="usb_sata_ssd">External USB 3.2 Gen 1 Portable SSD (500–1,000 MB/s, Samsung T7)</option>
+                  </optgroup>
+                  <optgroup label="💿 Mechanical Hard Disk Drives (HDD)">
+                    <option value="hdd_7200_pro">High-Performance 7200 RPM Enterprise HDD (250 MB/s, WD Black)</option>
+                    <option value="hdd_7200">Standard Desktop 7200 RPM HDD (150–180 MB/s, WD Blue / Barracuda)</option>
+                    <option value="hdd_5400">Laptop / Eco 5400 RPM Mechanical HDD (80–120 MB/s, High Seek Delay)</option>
+                    <option value="hdd_usb">External USB 3.0 / 2.0 Hard Drive (Slow Bandwidth, Stutter Risk)</option>
+                  </optgroup>
                 </select>
                 <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
