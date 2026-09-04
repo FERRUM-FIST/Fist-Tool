@@ -303,144 +303,2712 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
   // ==========================================================================
-  // 7. UNIVERSAL HARDWARE & FPS DATABASE ENGINE
+  // 7. UNIVERSAL HARDWARE & FPS DATABASE ENGINE (EXHAUSTIVE CPUS, GPUS & RAM)
   // ==========================================================================
   const CPU_DATABASE = [
-    // AMD Ryzen 7000 / 9000 & X3D
-    { name: 'AMD Ryzen 9 7950X3D (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 9 7950X (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 9 7900X3D (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 9 7900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 7800X3D (8 Cores)', cores: 8, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 7700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 7700 (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 7600X (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 7600 (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
-    // AMD Ryzen 5000 Series
-    { name: 'AMD Ryzen 9 5950X (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 9 5900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 5800X3D (8 Cores)', cores: 8, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 5800X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 5700X3D (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 5700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 5700G (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 5600X (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 5600 (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 5600G (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 5500 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Ryzen 3 4100 (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
-    // AMD Ryzen 3000 / 2000 / 1000 & Older
-    { name: 'AMD Ryzen 9 3900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Ryzen 7 3700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 3600X (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 3600 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 2600 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Ryzen 5 1600 (6 Cores)', cores: 6, tier: 'budget', vendor: 'amd' },
-    { name: 'AMD Ryzen 3 3300X (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
-    { name: 'AMD Ryzen 3 3100 (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
-    { name: 'AMD Ryzen 3 2200G (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
-    { name: 'AMD FX-8350 / FX-6300 (6-8 Cores)', cores: 6, tier: 'budget', vendor: 'amd' },
-    { name: 'AMD Athlon 3000G / 200GE (2 Cores)', cores: 2, tier: 'budget', vendor: 'amd' },
-    // Intel 12th / 13th / 14th Gen
-    { name: 'Intel Core i9-14900K / 14900KF (24 Cores)', cores: 24, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i9-13900K / 13900KF (24 Cores)', cores: 24, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i9-12900K / 12900KF (16 Cores)', cores: 16, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i7-14700K / 14700KF (20 Cores)', cores: 20, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i7-13700K / 13700KF (16 Cores)', cores: 16, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i7-12700K / 12700F (12 Cores)', cores: 12, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-14600K / 14600KF (14 Cores)', cores: 14, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-13600K / 13600KF (14 Cores)', cores: 14, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-13400 / 13400F (10 Cores)', cores: 10, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-12600K / 12600KF (10 Cores)', cores: 10, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-12400 / 12400F (6 Cores)', cores: 6, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i3-14100 / 14100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    { name: 'Intel Core i3-13100 / 13100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    { name: 'Intel Core i3-12100 / 12100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    // Intel 10th / 11th Gen
-    { name: 'Intel Core i9-11900K / 10900K (10 Cores)', cores: 10, tier: 'flagship', vendor: 'intel' },
-    { name: 'Intel Core i7-11700K / 10700K (8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i5-11600K / 11400F (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
-    { name: 'Intel Core i5-10600K / 10400F (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
-    { name: 'Intel Core i3-10105F / 10100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    // Intel 6th - 9th Gen & Older
-    { name: 'Intel Core i9-9900K / 9900KS (8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i7-9700K / 8700K (6-8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
-    { name: 'Intel Core i7-7700K / 6700K / 4790K / 3770K (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    { name: 'Intel Core i5-9400F / 8400 (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
-    { name: 'Intel Core i5-7400 / 6500 / 4590 / 3470 / 2500K (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    { name: 'Intel Core i3-9100 / 8100 / 7100 / 4130 (2-4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
-    { name: 'Intel Pentium Gold / Celeron (2 Cores)', cores: 2, tier: 'budget', vendor: 'intel' }
-  ];
+  {
+    "name": "Intel Core Ultra 9 285K (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 7 265K (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 7 265KF (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 5 245K (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 5 245KF (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 9 185H (16 Cores Mobile)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 7 165H (16 Cores Mobile)",
+    "cores": 16,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 7 155H (16 Cores Mobile)",
+    "cores": 16,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 5 135H (14 Cores Mobile)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core Ultra 5 125H (14 Cores Mobile)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900KS (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900K (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900KF (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900 (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900F (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-14700K (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-14700KF (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-14700 (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-14700F (20 Cores)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14600K (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14600KF (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14600 (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14500 (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14400 (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14400F (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-14100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-14100F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900KS (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900K (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900KF (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900 (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900F (24 Cores)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-13700K (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-13700KF (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-13700 (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-13700F (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13600K (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13600KF (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13500 (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13400 (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13400F (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-13100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-13100F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-12900KS (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-12900K (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-12900KF (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-12900 (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-12700K (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-12700KF (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-12700 (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-12700F (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12600K (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12600KF (10 Cores)",
+    "cores": 10,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12600 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12500 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12400 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12400F (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-12100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-12100F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-11900K (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-11900KF (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-11900 (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-11700K (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-11700KF (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-11700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-11600K (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-11500 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-11400 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-11400F (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-10900K (10 Cores)",
+    "cores": 10,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-10900KF (10 Cores)",
+    "cores": 10,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-10850K (10 Cores)",
+    "cores": 10,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-10700K (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-10700KF (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-10700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-10700F (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-10600K (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-10500 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-10400 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-10400F (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-10105 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-10105F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-10100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-10100F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-9900KS (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-9900K (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-9900KF (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-9700K (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-9700KF (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-9700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-9700F (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-9600K (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-9600KF (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-9400 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-9400F (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-9100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-9100F (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-8700K (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-8700 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-8600K (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-8400 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-8100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-7700K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-7700 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-7600K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-7500 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-7400 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-7100 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-6700K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-6700 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-6600K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-6500 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-6400 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-6100 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-4790K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-4790 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-4770K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-4770 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-4690K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-4590 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-4460 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-4160 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-4130 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-3770K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-3770 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-3570K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-3470 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i3-3220 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-2600K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-2600 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-2500K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-2400 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core 2 Quad Q9650 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core 2 Quad Q6600 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core 2 Duo E8400 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core 2 Duo E7500 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E5-2678 v3 (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E5-2680 v4 (14 Cores)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E5-2690 v3 (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E5-2650 v2 (8 Cores)",
+    "cores": 8,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E3-1270 v3 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Xeon E3-1230 v2 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Pentium Gold G7400 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Pentium Gold G6400 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Pentium Gold G5400 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Celeron G6900 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Celeron G5905 (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Processor N100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Processor N95 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-14900HX (24 Cores Mobile)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13980HX (24 Cores Mobile)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i9-13900HX (24 Cores Mobile)",
+    "cores": 24,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-14700HX (20 Cores Mobile)",
+    "cores": 20,
+    "tier": "flagship",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-13700HX (16 Cores Mobile)",
+    "cores": 16,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-12700H (14 Cores Mobile)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-14500HX (14 Cores Mobile)",
+    "cores": 14,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-13500H (12 Cores Mobile)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-12500H (12 Cores Mobile)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-11800H (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-11400H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-10750H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-10300H (4 Cores Mobile)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-9750H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-9300H (4 Cores Mobile)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i7-1165G7 (4 Cores Mobile)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Core i5-1135G7 (4 Cores Mobile)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "intel"
+  },
+  {
+    "name": "AMD Ryzen 9 9950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 9900X (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 9700X (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 9600X (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 8700G (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 8600G (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 8500G (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7950X3D (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7900X3D (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7900X (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7900 (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 7800X3D (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 7700X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 7700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 7600X (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 7600 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 7500F (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 5950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 5900X (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 5900 (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5800X3D (8 Cores)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5800X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5700X3D (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5700X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5700G (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600X3D (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600X (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600 (6 Cores)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600G (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600GT (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5500 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5500GT (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 4500 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 4600G (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 4100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 3950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 3900XT (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 3900X (12 Cores)",
+    "cores": 12,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 3800XT (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 3800X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 3700X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3600XT (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3600X (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3600 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3500X (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3500 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 3300X (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 3100 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 3400G (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 3200G (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 2700X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 2700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 2600X (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 2600 (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 1600 AF (6 Cores)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 1600X (6 Cores)",
+    "cores": 6,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 1600 (6 Cores)",
+    "cores": 6,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 2400G (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 2200G (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 1800X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 1700X (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 1700 (8 Cores)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 1500X (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 1400 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 1300X (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 3 1200 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 7980X (64 Cores)",
+    "cores": 64,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 7970X (32 Cores)",
+    "cores": 32,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 3990X (64 Cores)",
+    "cores": 64,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 3970X (32 Cores)",
+    "cores": 32,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 2950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen Threadripper 1950X (16 Cores)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-9590 (8 Cores)",
+    "cores": 8,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-8370 (8 Cores)",
+    "cores": 8,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-8350 (8 Cores)",
+    "cores": 8,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-8320 (8 Cores)",
+    "cores": 8,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-6350 (6 Cores)",
+    "cores": 6,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-6300 (6 Cores)",
+    "cores": 6,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-4350 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD FX-4300 (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Athlon 3000G (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Athlon 240GE (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Athlon 200GE (2 Cores)",
+    "cores": 2,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Athlon X4 860K (4 Cores)",
+    "cores": 4,
+    "tier": "budget",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7945HX (16 Cores Mobile)",
+    "cores": 16,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 7940HS (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 7840HS (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 7735HS (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 7640HS (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 7535HS (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 6900HX (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 6800H (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 6600H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 9 5900HX (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 5800H (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 5600H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 7 4800H (8 Cores Mobile)",
+    "cores": 8,
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Ryzen 5 4600H (6 Cores Mobile)",
+    "cores": 6,
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "Qualcomm Snapdragon X Elite (12 Cores)",
+    "cores": 12,
+    "tier": "high",
+    "vendor": "arm"
+  },
+  {
+    "name": "Qualcomm Snapdragon X Plus (10 Cores)",
+    "cores": 10,
+    "tier": "mid",
+    "vendor": "arm"
+  }
+];
 
   const GPU_DATABASE = [
-    // NVIDIA RTX 40 Series
-    { name: 'NVIDIA GeForce RTX 4090 (24GB)', tier: 'flagship', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 4080 Super / 4080 (16GB)', tier: 'flagship', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 4070 Ti Super / 4070 Ti (12-16GB)', tier: 'flagship', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 4070 Super / 4070 (12GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 4060 Ti (8GB/16GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 4060 (8GB)', tier: 'mid', vendor: 'nvidia' },
-    // NVIDIA RTX 30 Series
-    { name: 'NVIDIA GeForce RTX 3090 Ti / 3090 (24GB)', tier: 'flagship', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 3080 Ti / 3080 (10-12GB)', tier: 'flagship', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 3070 Ti / 3070 (8GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 3060 Ti (8GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 3060 (12GB)', tier: 'mid', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 3050 (8GB/6GB)', tier: 'mid', vendor: 'nvidia' },
-    // NVIDIA RTX 20 Series
-    { name: 'NVIDIA GeForce RTX 2080 Ti / 2080 Super (8-11GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 2070 Super / 2070 (8GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce RTX 2060 Super / 2060 (6-8GB)', tier: 'mid', vendor: 'nvidia' },
-    // NVIDIA GTX 16 & 10 Series
-    { name: 'NVIDIA GeForce GTX 1660 Ti / 1660 Super (6GB)', tier: 'mid', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1660 (6GB)', tier: 'mid', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1650 Super (4GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1650 (4GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1080 Ti / 1080 (8-11GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1070 Ti / 1070 (8GB)', tier: 'high', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1060 (6GB/3GB)', tier: 'mid', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1050 Ti (4GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 1050 (2GB/3GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 980 / 970 / 960 (2-4GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GTX 750 Ti / 750 (2GB/4GB)', tier: 'entry', vendor: 'nvidia' },
-    { name: 'NVIDIA GeForce GT 1030 / GT 730 / 710', tier: 'entry', vendor: 'nvidia' },
-    // AMD Radeon RX 7000 Series
-    { name: 'AMD Radeon RX 7900 XTX / 7900 XT (20-24GB)', tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Radeon RX 7800 XT (16GB)', tier: 'high', vendor: 'amd' },
-    { name: 'AMD Radeon RX 7700 XT (12GB)', tier: 'high', vendor: 'amd' },
-    { name: 'AMD Radeon RX 7600 XT / 7600 (8-16GB)', tier: 'mid', vendor: 'amd' },
-    // AMD Radeon RX 6000 Series
-    { name: 'AMD Radeon RX 6950 XT / 6900 XT (16GB)', tier: 'flagship', vendor: 'amd' },
-    { name: 'AMD Radeon RX 6800 XT / 6800 (16GB)', tier: 'high', vendor: 'amd' },
-    { name: 'AMD Radeon RX 6750 XT / 6700 XT (12GB)', tier: 'high', vendor: 'amd' },
-    { name: 'AMD Radeon RX 6650 XT / 6600 XT (8GB)', tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Radeon RX 6600 (8GB)', tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Radeon RX 6500 XT / 6400 (4GB)', tier: 'entry', vendor: 'amd' },
-    // AMD Radeon RX 5000 / 500 / 400
-    { name: 'AMD Radeon RX 5700 XT / 5700 (8GB)', tier: 'high', vendor: 'amd' },
-    { name: 'AMD Radeon RX 5600 XT / 5500 XT (6-8GB)', tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Radeon RX 590 / 580 (8GB)', tier: 'mid', vendor: 'amd' },
-    { name: 'AMD Radeon RX 570 (4GB/8GB)', tier: 'entry', vendor: 'amd' },
-    { name: 'AMD Radeon RX 560 / 550 / 460 (2-4GB)', tier: 'entry', vendor: 'amd' },
-    // Intel Arc Series
-    { name: 'Intel Arc A770 (16GB)', tier: 'high', vendor: 'intel' },
-    { name: 'Intel Arc A750 / A580 (8GB)', tier: 'mid', vendor: 'intel' },
-    { name: 'Intel Arc A380 / A310 (4-6GB)', tier: 'entry', vendor: 'intel' },
-    // Integrated Graphics
-    { name: 'Intel Iris Xe Graphics', tier: 'integrated', vendor: 'integrated' },
-    { name: 'Intel UHD Graphics 770 / 750 / 730', tier: 'integrated', vendor: 'integrated' },
-    { name: 'Intel UHD Graphics 630 / HD 530 / 620', tier: 'integrated', vendor: 'integrated' },
-    { name: 'Intel HD Graphics 4600 / 4400 / 4000', tier: 'integrated', vendor: 'integrated' },
-    { name: 'AMD Radeon 780M / 760M (Ryzen APU)', tier: 'entry', vendor: 'integrated' },
-    { name: 'AMD Radeon Vega 8 / Vega 7 / Vega 3', tier: 'integrated', vendor: 'integrated' }
-  ];
+  {
+    "name": "NVIDIA GeForce RTX 5090 (32GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5080 (16GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 5070 (12GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4090 (24GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080 Super (16GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080 (16GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Ti Super (16GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Ti (12GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Super (12GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 (12GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Ti (16GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Ti (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 (8GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3090 Ti (24GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3090 (24GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 Ti (12GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 (12GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 (10GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070 Ti (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070 (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060 Ti (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060 (12GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060 (8GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3050 (8GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3050 (6GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 Ti (11GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 Super (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2070 Super (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2070 (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060 Super (8GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060 (12GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060 (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1660 Ti (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1660 Super (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1660 (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650 Super (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650 (4GB GDDR6)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650 (4GB GDDR5)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1630 (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1080 Ti (11GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1080 (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1070 Ti (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1070 (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1060 (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1060 (3GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050 Ti (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050 (3GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 980 Ti (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 980 (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 970 (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 960 (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 960 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 950 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 780 Ti (3GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 780 (3GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 770 (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 770 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 760 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 750 Ti (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 750 Ti (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 750 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 750 (1GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 680 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 670 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 660 Ti (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 660 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 650 Ti (1-2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 650 (1GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 1030 (2GB GDDR5)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 1030 (2GB DDR4)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 740 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 730 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 710 (2GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GT 710 (1GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4090 Mobile (16GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4080 Mobile (12GB)",
+    "tier": "flagship",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4070 Mobile (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4060 Mobile (8GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 4050 Mobile (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 Ti Mobile (16GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3080 Mobile (8GB/16GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070 Ti Mobile (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3070 Mobile (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3060 Mobile (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3050 Ti Mobile (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 3050 Mobile (4GB/6GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2080 Mobile (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2070 Mobile (8GB)",
+    "tier": "high",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce RTX 2060 Mobile (6GB)",
+    "tier": "mid",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1660 Ti Mobile (6GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650 Ti Mobile (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1650 Mobile (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1060 Mobile (6GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "NVIDIA GeForce GTX 1050 Mobile (4GB)",
+    "tier": "entry",
+    "vendor": "nvidia"
+  },
+  {
+    "name": "AMD Radeon RX 7900 XTX (24GB)",
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7900 XT (20GB)",
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7900 GRE (16GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7800 XT (16GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7700 XT (12GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7600 XT (16GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 7600 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6950 XT (16GB)",
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6900 XT (16GB)",
+    "tier": "flagship",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6800 XT (16GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6800 (16GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6750 XT (12GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6700 XT (12GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6700 (10GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6650 XT (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6600 XT (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6600 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6500 XT (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 6400 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 5700 XT (8GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 5700 (8GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 5600 XT (6GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 5500 XT (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 5500 XT (4GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon VII (16GB)",
+    "tier": "high",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX Vega 64 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX Vega 56 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 590 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 580 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 580 (4GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 580 2048SP (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 570 (8GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 570 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 560 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 560 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 550 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 550 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 480 (8GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 480 (4GB)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 470 (8GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 470 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 460 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon RX 460 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 Fury X (4GB HBM)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 Fury (4GB HBM)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 Nano (4GB HBM)",
+    "tier": "mid",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 390X (8GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 390 (8GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 380X (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 380 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 290X (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 290 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 280X (3GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R9 270X (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R7 370 (4GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R7 360 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R7 260X (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R7 250 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon R7 240 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon HD 7970 (3GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon HD 7950 (3GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon HD 7870 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon HD 7850 (2GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "AMD Radeon HD 7770 (1GB)",
+    "tier": "entry",
+    "vendor": "amd"
+  },
+  {
+    "name": "Intel Arc B580 (12GB Battlemage)",
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc B570 (10GB Battlemage)",
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A770 (16GB)",
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A770 (8GB)",
+    "tier": "high",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A750 (8GB)",
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A580 (8GB)",
+    "tier": "mid",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A380 (6GB)",
+    "tier": "entry",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc A310 (4GB)",
+    "tier": "entry",
+    "vendor": "intel"
+  },
+  {
+    "name": "Intel Arc Graphics 140V (Lunar Lake)",
+    "tier": "mid",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Arc Graphics 130V (Lunar Lake)",
+    "tier": "mid",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Arc Graphics 8-Xe (Meteor Lake)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Arc Graphics 7-Xe (Meteor Lake)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Iris Xe Graphics (96 EUs)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Iris Xe Graphics (80 EUs)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Iris Plus Graphics G7",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel Iris Plus Graphics G4",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 770",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 750",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 730",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 630",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 620",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel UHD Graphics 610",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 630",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 530",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 520",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 4600",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 4400",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 4000",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 3000",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 2500",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "Intel HD Graphics 2000",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 890M (Ryzen AI 300)",
+    "tier": "mid",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 880M (Ryzen AI 300)",
+    "tier": "mid",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 780M (Ryzen 7000/8000 APU)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 760M (Ryzen APU)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 740M (Ryzen APU)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 680M (Ryzen 6000 APU)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon 660M (Ryzen 6000 APU)",
+    "tier": "entry",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon Vega 11 (Ryzen APU)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon Vega 8 (Ryzen APU)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon Vega 7 (Ryzen APU)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon Vega 6 (Ryzen APU)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  },
+  {
+    "name": "AMD Radeon Vega 3 (Athlon APU)",
+    "tier": "integrated",
+    "vendor": "integrated"
+  }
+];
 
-  // Auto-populate datalists across the entire page
+  const MEMORY_OPTIONS = [
+  {
+    "val": "4gb",
+    "label": "4 GB (or less) DDR3 / DDR4"
+  },
+  {
+    "val": "6gb",
+    "label": "6 GB DDR3 / DDR4"
+  },
+  {
+    "val": "8gb",
+    "label": "8 GB Single-Channel DDR3 / DDR4"
+  },
+  {
+    "val": "8gb_dual",
+    "label": "8 GB Dual-Channel (2x4GB)"
+  },
+  {
+    "val": "12gb",
+    "label": "12 GB Mixed-Channel"
+  },
+  {
+    "val": "16gb",
+    "label": "16 GB Dual-Channel DDR4-3200 / DDR5-5200 (Recommended)"
+  },
+  {
+    "val": "24gb",
+    "label": "24 GB Dual-Channel DDR5 (Non-Binary)"
+  },
+  {
+    "val": "32gb",
+    "label": "32 GB Dual-Channel DDR4-3600 / DDR5-6000+ (High Performance)"
+  },
+  {
+    "val": "48gb",
+    "label": "48 GB Dual-Channel DDR5 (Enthusiast)"
+  },
+  {
+    "val": "64gb",
+    "label": "64 GB Dual/Quad-Channel (Workstation / Creator)"
+  },
+  {
+    "val": "128gb",
+    "label": "128 GB+ Ultra High-Capacity Workstation"
+  }
+];
+
+  const STORAGE_OPTIONS = [
+  {
+    "val": "nvme_gen4",
+    "label": "NVMe PCIe 4.0 / 5.0 SSD (Ultra Fast, Instant Shader Loading)"
+  },
+  {
+    "val": "nvme_gen3",
+    "label": "NVMe PCIe 3.0 SSD (Fast Streaming)"
+  },
+  {
+    "val": "sata_ssd",
+    "label": "2.5\" SATA III SSD (Standard Solid State)"
+  },
+  {
+    "val": "hdd",
+    "label": "Mechanical HDD (7200 / 5400 RPM, Potential Stutter)"
+  }
+];
+
+  // Populate datalists across the entire website for instant autocomplete
   document.querySelectorAll('#hw-cpu-list').forEach(dl => {
     dl.innerHTML = CPU_DATABASE.map(c => `<option value="${c.name}"></option>`).join('');
   });
   document.querySelectorAll('#hw-gpu-list').forEach(dl => {
     dl.innerHTML = GPU_DATABASE.map(g => `<option value="${g.name}"></option>`).join('');
+  });
+  document.querySelectorAll('#hw-ram-list').forEach(dl => {
+    dl.innerHTML = MEMORY_OPTIONS.map(m => `<option value="${m.label}"></option>`).join('');
   });
 
   const hwCheckerCards = document.querySelectorAll('.hw-checker-card');
@@ -449,7 +3017,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameSelect = card.querySelector('#hw-game');
     const cpuInput = card.querySelector('#hw-cpu');
     const gpuInput = card.querySelector('#hw-gpu');
-    const ramSelect = card.querySelector('#hw-ram');
+    const ramInput = card.querySelector('#hw-ram');
+    const storageSelect = card.querySelector('#hw-storage');
     const resSelect = card.querySelector('#hw-res');
     const checkBtn = card.querySelector('#hw-check-btn');
     const autodetectBtn = card.querySelector('#hw-autodetect-btn');
@@ -463,6 +3032,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailEngine = card.querySelector('#hw-detail-engine');
     const detailCpu = card.querySelector('#hw-detail-cpu');
     const detailRam = card.querySelector('#hw-detail-ram');
+    const detailStorage = card.querySelector('#hw-detail-storage');
     const detailDpi = card.querySelector('#hw-detail-dpi');
     const detailLatency = card.querySelector('#hw-detail-latency');
 
@@ -470,73 +3040,112 @@ document.addEventListener('DOMContentLoaded', () => {
       const game = gameSelect ? gameSelect.value : 'gameloop';
       const cpuVal = (cpuInput ? cpuInput.value : '').trim();
       const gpuVal = (gpuInput ? gpuInput.value : '').trim();
-      const ramVal = ramSelect ? ramSelect.value : '16gb';
+      const ramVal = (ramInput ? ramInput.value : '').trim();
+      const storageVal = storageSelect ? storageSelect.value : 'nvme_gen4';
       const resVal = resSelect ? resSelect.value : '1080p';
 
       const cpuLower = cpuVal.toLowerCase();
       const gpuLower = gpuVal.toLowerCase();
+      const ramLower = ramVal.toLowerCase();
 
-      // 1. Analyze CPU
+      // 1. Analyze CPU from exhaustive database or token search
       let cpuMatch = CPU_DATABASE.find(c => cpuLower.includes(c.name.toLowerCase()) || c.name.toLowerCase().includes(cpuLower));
+      
+      if (!cpuMatch) {
+        const cpuTokens = cpuLower.replace(/[^a-z0-9]/gi, ' ').split(/\s+/).filter(t => t.length > 1);
+        if (cpuTokens.length > 0) {
+          const matches = CPU_DATABASE.filter(c => {
+            const cLower = c.name.toLowerCase();
+            return cpuTokens.every(t => cLower.includes(t));
+          });
+          if (matches.length > 0) {
+            matches.sort((a, b) => a.name.length - b.name.length);
+            cpuMatch = matches[0];
+          }
+        }
+      }
+
       let cores = cpuMatch ? cpuMatch.cores : 6;
       let cpuTier = cpuMatch ? cpuMatch.tier : 'mid';
 
       if (!cpuMatch) {
-        if (cpuLower.includes('i9') || cpuLower.includes('ryzen 9') || cpuLower.includes('threadripper') || cpuLower.includes('14900') || cpuLower.includes('13900')) {
+        if (cpuLower.includes('threadripper') || cpuLower.includes('9950') || cpuLower.includes('7950') || cpuLower.includes('5950') || cpuLower.includes('14900') || cpuLower.includes('13900') || cpuLower.includes('285k')) {
           cores = 16; cpuTier = 'flagship';
-        } else if (cpuLower.includes('i7') || cpuLower.includes('ryzen 7') || cpuLower.includes('x3d') || cpuLower.includes('7800') || cpuLower.includes('5800') || cpuLower.includes('13700') || cpuLower.includes('12700')) {
+        } else if (cpuLower.includes('7900') || cpuLower.includes('5900') || cpuLower.includes('3900') || cpuLower.includes('14700') || cpuLower.includes('13700') || cpuLower.includes('12700') || cpuLower.includes('265k')) {
+          cores = 12; cpuTier = 'flagship';
+        } else if (cpuLower.includes('x3d') || cpuLower.includes('7800') || cpuLower.includes('5800') || cpuLower.includes('5700') || cpuLower.includes('9700') || cpuLower.includes('11700') || cpuLower.includes('10700') || cpuLower.includes('9900k') || cpuLower.includes('ryzen 7') || cpuLower.includes('i7')) {
           cores = 8; cpuTier = 'high';
-        } else if (cpuLower.includes('i5') || cpuLower.includes('ryzen 5') || cpuLower.includes('5600') || cpuLower.includes('12400') || cpuLower.includes('10400') || cpuLower.includes('3600')) {
+        } else if (cpuLower.includes('9600') || cpuLower.includes('7600') || cpuLower.includes('5600') || cpuLower.includes('3600') || cpuLower.includes('14600') || cpuLower.includes('13600') || cpuLower.includes('12600') || cpuLower.includes('12400') || cpuLower.includes('10400') || cpuLower.includes('ryzen 5') || cpuLower.includes('i5')) {
           cores = 6; cpuTier = 'high';
-        } else if (cpuLower.includes('i3') || cpuLower.includes('ryzen 3') || cpuLower.includes('pentium') || cpuLower.includes('athlon') || cpuLower.includes('celeron') || cpuLower.includes('10100') || cpuLower.includes('12100')) {
+        } else if (cpuLower.includes('i3') || cpuLower.includes('ryzen 3') || cpuLower.includes('pentium') || cpuLower.includes('athlon') || cpuLower.includes('celeron') || cpuLower.includes('10100') || cpuLower.includes('12100') || cpuLower.includes('4100') || cpuLower.includes('3100')) {
           cores = 4; cpuTier = 'budget';
         }
       }
 
-      // 2. Analyze GPU
+      // 2. Analyze GPU from exhaustive database or token search
       let gpuMatch = GPU_DATABASE.find(g => gpuLower.includes(g.name.toLowerCase()) || g.name.toLowerCase().includes(gpuLower));
+      
+      if (!gpuMatch) {
+        const gpuTokens = gpuLower.replace(/[^a-z0-9]/gi, ' ').split(/\s+/).filter(t => t.length > 1);
+        if (gpuTokens.length > 0) {
+          const matches = GPU_DATABASE.filter(g => {
+            const gLower = g.name.toLowerCase();
+            return gpuTokens.every(t => gLower.includes(t));
+          });
+          if (matches.length > 0) {
+            matches.sort((a, b) => a.name.length - b.name.length);
+            gpuMatch = matches[0];
+          }
+        }
+      }
+
       let gpuTier = gpuMatch ? gpuMatch.tier : 'mid';
       let gpuVendor = gpuMatch ? gpuMatch.vendor : 'nvidia';
 
       if (!gpuMatch) {
-        const isAmd = gpuLower.includes('amd') || gpuLower.includes('radeon') || gpuLower.includes('rx ');
-        const isIntel = gpuLower.includes('intel') || gpuLower.includes('arc') || gpuLower.includes('iris') || gpuLower.includes('uhd');
+        const isAmd = gpuLower.includes('amd') || gpuLower.includes('radeon') || gpuLower.includes('rx ') || gpuLower.includes('vega');
+        const isIntel = gpuLower.includes('intel') || gpuLower.includes('arc') || gpuLower.includes('iris') || gpuLower.includes('uhd') || gpuLower.includes('hd graphics');
         gpuVendor = isAmd ? 'amd' : (isIntel ? 'intel' : 'nvidia');
 
-        if (gpuLower.includes('4090') || gpuLower.includes('4080') || gpuLower.includes('7900') || gpuLower.includes('3090') || gpuLower.includes('3080') || gpuLower.includes('6950') || gpuLower.includes('6900')) {
+        if (gpuLower.includes('5090') || gpuLower.includes('5080') || gpuLower.includes('4090') || gpuLower.includes('4080') || gpuLower.includes('7900') || gpuLower.includes('3090') || gpuLower.includes('3080') || gpuLower.includes('6950') || gpuLower.includes('6900')) {
           gpuTier = 'flagship';
-        } else if (gpuLower.includes('4070') || gpuLower.includes('3070') || gpuLower.includes('7800') || gpuLower.includes('7700') || gpuLower.includes('6800') || gpuLower.includes('6700') || gpuLower.includes('a770')) {
+        } else if (gpuLower.includes('4070') || gpuLower.includes('3070') || gpuLower.includes('7800') || gpuLower.includes('7700') || gpuLower.includes('6800') || gpuLower.includes('6700') || gpuLower.includes('b580') || gpuLower.includes('a770')) {
           gpuTier = 'high';
-        } else if (gpuLower.includes('3060') || gpuLower.includes('4060') || gpuLower.includes('2060') || gpuLower.includes('1660') || gpuLower.includes('6600') || gpuLower.includes('580') || gpuLower.includes('590') || gpuLower.includes('3050') || gpuLower.includes('a750')) {
+        } else if (gpuLower.includes('4060') || gpuLower.includes('3060') || gpuLower.includes('2060') || gpuLower.includes('1660') || gpuLower.includes('7600') || gpuLower.includes('6600') || gpuLower.includes('580') || gpuLower.includes('590') || gpuLower.includes('5700') || gpuLower.includes('5600') || gpuLower.includes('3050') || gpuLower.includes('a750') || gpuLower.includes('a580')) {
           gpuTier = 'mid';
-        } else if (gpuLower.includes('1650') || gpuLower.includes('1050') || gpuLower.includes('750') || gpuLower.includes('560') || gpuLower.includes('550') || gpuLower.includes('460') || gpuLower.includes('1030') || gpuLower.includes('960')) {
+        } else if (gpuLower.includes('1650') || gpuLower.includes('1050') || gpuLower.includes('750') || gpuLower.includes('560') || gpuLower.includes('550') || gpuLower.includes('460') || gpuLower.includes('1030') || gpuLower.includes('960') || gpuLower.includes('970') || gpuLower.includes('950') || gpuLower.includes('6400') || gpuLower.includes('6500')) {
           gpuTier = 'entry';
-        } else if (gpuLower.includes('iris') || gpuLower.includes('uhd') || gpuLower.includes('vega') || gpuLower.includes('hd graphics')) {
+        } else if (gpuLower.includes('iris') || gpuLower.includes('uhd') || gpuLower.includes('vega') || gpuLower.includes('hd graphics') || gpuLower.includes('780m') || gpuLower.includes('890m')) {
           gpuTier = 'integrated';
           gpuVendor = 'integrated';
         }
       }
+
+      // 3. Analyze RAM capacity with word boundary precision
+      const is4gb = /\b(3|4)\s*gb\b/i.test(ramLower);
+      const is6gb = /\b6\s*gb\b/i.test(ramLower);
+      const is8gb = /\b8\s*gb\b/i.test(ramLower);
 
       // ==========================================
       // EXACT USER OPTIMIZATION RULES ENFORCEMENT
       // ==========================================
 
       // Rule 1: Processor Allocation (4 for 4-6 cores, 6 for 8 cores, 8 for 12+ cores)
-      let cpuAlloc = '4 Cores';
+      let cpuAlloc = '4 Cores (Quad/Hexa Core)';
       if (cores >= 12) {
         cpuAlloc = '8 Cores (12+ Core CPU)';
       } else if (cores >= 8) {
         cpuAlloc = '6 Cores (8-Core CPU)';
-      } else {
-        cpuAlloc = '4 Cores (Quad/Hexa Core)';
       }
 
-      // Rule 2: Memory Allocation (6GB for 8GB users, 8GB for >8GB users)
-      let ramAlloc = '8192 MB (8GB)';
-      if (ramVal === '8gb') {
+      // Rule 2: Memory Allocation (6GB for 8GB users, 8GB for >8GB users, 3/4GB for <=6GB)
+      let ramAlloc = '8192 MB (High Cache)';
+      if (is4gb) {
+        ramAlloc = '3072 MB (4GB System)';
+      } else if (is6gb) {
+        ramAlloc = '4096 MB (6GB System)';
+      } else if (is8gb) {
         ramAlloc = '6144 MB (6GB)';
-      } else if (ramVal === '32gb') {
-        ramAlloc = '8192 MB (High Cache)';
       }
 
       // Rule 3: Rendering Engine (DirectX+ for AMD, DirectX+/OpenGL+ for Nvidia)
@@ -549,8 +3158,15 @@ document.addEventListener('DOMContentLoaded', () => {
         engine = 'DirectX+ (Low Overhead)';
       }
 
-      // Rule 4: DPI (160 low-end, 240 mid, 400/480 high-end)
-      let dpiStr = '1080p • 240 DPI';
+      // Rule 4: Storage Optimization
+      let storagePacing = 'NVMe Gen 4/5 (Instant)';
+      let isHdd = storageVal === 'hdd';
+      if (storageVal === 'nvme_gen4') storagePacing = 'NVMe Gen 4/5 (Instant)';
+      else if (storageVal === 'nvme_gen3') storagePacing = 'NVMe Gen 3 (Fast Streaming)';
+      else if (storageVal === 'sata_ssd') storagePacing = 'SATA SSD (Optimized)';
+      else storagePacing = 'HDD (I/O Buffered & Paged)';
+
+      // Rule 5: DPI (160 low-end, 240 mid, 400/480 high-end)
       let dpiVal = '240 DPI';
       const isHighEndRig = (cpuTier === 'flagship' || cpuTier === 'high') && (gpuTier === 'flagship' || gpuTier === 'high');
       const isLowEndRig = (cpuTier === 'budget') && (gpuTier === 'entry' || gpuTier === 'integrated');
@@ -562,15 +3178,15 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         dpiVal = '240 DPI';
       }
-      dpiStr = `${resVal.toUpperCase()} • ${dpiVal}`;
+      const dpiStr = `${resVal.toUpperCase()} • ${dpiVal}`;
 
-      // Rule 5: CPU Smoothness Rule
+      // Rule 6: CPU Smoothness Rule
       // High-End CPU + Low-End GPU shows 120 FPS on Smooth graphics
       let tier = 'Esports Tier';
       let fps = '120 FPS';
       let summary = 'Optimal Settings: Smooth + 120 FPS • Zero Stutter Guaranteed';
       let preset = 'Smooth + Ultra Extreme (120 FPS)';
-      let latency = '~2.8ms (-78% Fist Tool)';
+      let latency = isHdd ? '~3.4ms (I/O Cache Active)' : '~2.8ms (-78% Fist Tool)';
       let color = 'var(--color-cyan)';
       let shadowColor = 'rgba(0, 229, 255, 0.45)';
       let bgColor = 'rgba(0, 229, 255, 0.04)';
@@ -719,7 +3335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         summary = 'System Responsiveness: 78% lower DWM input latency, 85% fewer kernel interrupts';
         cpuAlloc = 'All Cores Unparked';
         ramAlloc = 'Cleaned & Standby Cleared';
-        dpiStr = `${resVal.toUpperCase()} • Native`;
+        dpiVal = 'Native';
         latency = '0.500ms Timer Resolution';
         color = 'var(--color-cyan)';
       }
@@ -743,6 +3359,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (detailEngine) detailEngine.innerText = engine;
       if (detailCpu) detailCpu.innerText = cpuAlloc;
       if (detailRam) detailRam.innerText = ramAlloc;
+      if (detailStorage) detailStorage.innerText = storagePacing;
       if (detailDpi) detailDpi.innerText = dpiStr;
       if (detailLatency) {
         detailLatency.innerText = latency;
@@ -767,11 +3384,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Detect Cores
         const threads = navigator.hardwareConcurrency || 8;
         let detectedCpu = 'AMD Ryzen 5 5600 (6 Cores)';
-        if (threads >= 24) detectedCpu = 'Intel Core i9-14900K / 14900KF (24 Cores)';
+        if (threads >= 24) detectedCpu = 'Intel Core i9-14900K (24 Cores)';
         else if (threads >= 16) detectedCpu = 'AMD Ryzen 7 7800X3D (8 Cores)';
         else if (threads >= 12) detectedCpu = 'AMD Ryzen 5 5600 (6 Cores)';
-        else if (threads >= 8) detectedCpu = 'Intel Core i3-12100 / 12100F (4 Cores)';
-        else detectedCpu = 'Intel Pentium Gold / Celeron (2 Cores)';
+        else if (threads >= 8) detectedCpu = 'Intel Core i3-12100 (4 Cores)';
+        else detectedCpu = 'Intel Pentium Gold G7400 (2 Cores)';
 
         if (cpuInput) cpuInput.value = detectedCpu;
 
@@ -796,7 +3413,7 @@ document.addEventListener('DOMContentLoaded', () => {
               } else if (rLower.includes('radeon') || rLower.includes('amd')) {
                 detectedGpu = 'AMD Radeon RX 6600 (8GB)';
               } else if (rLower.includes('intel') || rLower.includes('iris')) {
-                detectedGpu = 'Intel Iris Xe Graphics';
+                detectedGpu = 'Intel Iris Xe Graphics (96 EUs)';
               }
             }
           }
@@ -805,10 +3422,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gpuInput) gpuInput.value = detectedGpu;
 
         // 3. Detect RAM
-        if (navigator.deviceMemory && ramSelect) {
-          if (navigator.deviceMemory >= 16) ramSelect.value = '16gb';
-          else if (navigator.deviceMemory >= 32) ramSelect.value = '32gb';
-          else ramSelect.value = '8gb';
+        if (navigator.deviceMemory && ramInput) {
+          if (navigator.deviceMemory >= 16) ramInput.value = '16 GB Dual-Channel DDR4-3200 / DDR5-5200 (Recommended)';
+          else if (navigator.deviceMemory >= 32) ramInput.value = '32 GB Dual-Channel DDR4-3600 / DDR5-6000+ (High Performance)';
+          else ramInput.value = '8 GB Dual-Channel (2x4GB)';
         }
 
         // 4. Detect Resolution
@@ -832,11 +3449,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Attach reactive listeners to all inputs
-    [gameSelect, ramSelect, resSelect].forEach(sel => {
+    [gameSelect, storageSelect, resSelect].forEach(sel => {
       if (sel) sel.addEventListener('change', calculatePerformance);
     });
 
-    [cpuInput, gpuInput].forEach(inp => {
+    [cpuInput, gpuInput, ramInput].forEach(inp => {
       if (inp) {
         inp.addEventListener('input', calculatePerformance);
         inp.addEventListener('change', calculatePerformance);

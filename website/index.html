@@ -388,19 +388,29 @@
               </div>
             </div>
 
-            <div class="hw-form-group">
-              <label for="hw-ram">System Memory (RAM)</label>
+                        <div class="hw-form-group">
+              <label for="hw-ram">Search / Select Memory (RAM)</label>
               <div class="select-wrapper">
-                <select id="hw-ram" class="hw-select">
-                  <option value="8gb">8 GB (or less)</option>
-                  <option value="16gb" selected>16 GB Dual-Channel</option>
-                  <option value="32gb">32 GB+ High-Speed</option>
+                <input type="text" id="hw-ram" class="hw-select hw-search-input" list="hw-ram-list" placeholder="Search / Select RAM (e.g. 16 GB Dual-Channel)..." value="16 GB Dual-Channel DDR4-3200 / DDR5-5200 (Recommended)" autocomplete="off">
+                <datalist id="hw-ram-list"></datalist>
+                <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+            </div>
+
+            <div class="hw-form-group">
+              <label for="hw-storage">Primary Storage Drive</label>
+              <div class="select-wrapper">
+                <select id="hw-storage" class="hw-select">
+                  <option value="nvme_gen4" selected>NVMe PCIe 4.0 / 5.0 SSD (Ultra Fast)</option>
+                  <option value="nvme_gen3">NVMe PCIe 3.0 SSD (Fast Streaming)</option>
+                  <option value="sata_ssd">2.5" SATA III SSD (Standard Solid State)</option>
+                  <option value="hdd">Mechanical HDD (7200 / 5400 RPM)</option>
                 </select>
                 <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </div>
             </div>
 
-            <div class="hw-form-group">
+            <div class="hw-form-group full-width">
               <label for="hw-res">Target Resolution</label>
               <div class="select-wrapper">
                 <select id="hw-res" class="hw-select">
@@ -427,7 +437,7 @@
             <p class="hw-res-summary" id="hw-res-desc">Smooth + Ultra Extreme • Zero Stutter Guaranteed</p>
           </div>
 
-          <div class="hw-details-grid">
+                    <div class="hw-details-grid">
             <div class="hw-detail-item">
               <div class="hw-detail-label">In-Game Preset</div>
               <div class="hw-detail-val" id="hw-detail-preset">Smooth + 120 FPS</div>
@@ -445,12 +455,16 @@
               <div class="hw-detail-val" id="hw-detail-ram">8192 MB (8GB)</div>
             </div>
             <div class="hw-detail-item">
+              <div class="hw-detail-label">Storage Optimization</div>
+              <div class="hw-detail-val" id="hw-detail-storage">NVMe Gen 4/5 (Instant)</div>
+            </div>
+            <div class="hw-detail-item">
               <div class="hw-detail-label">Resolution & DPI</div>
               <div class="hw-detail-val" id="hw-detail-dpi">1080p • 240 DPI</div>
             </div>
-            <div class="hw-detail-item">
-              <div class="hw-detail-label">Input Latency</div>
-              <div class="hw-detail-val" id="hw-detail-latency" style="color: var(--color-green);">~2.8ms (-78%)</div>
+            <div class="hw-detail-item full-width">
+              <div class="hw-detail-label">Input & System Latency</div>
+              <div class="hw-detail-val" id="hw-detail-latency" style="color: var(--color-cyan);">~2.8ms (-78% Fist Tool)</div>
             </div>
           </div>
         </div>

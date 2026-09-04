@@ -1653,6 +1653,10 @@ kbd {
   text-align: left;
 }
 
+.hw-detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
 .hw-detail-label {
   font-size: 10.5px;
   text-transform: uppercase;
