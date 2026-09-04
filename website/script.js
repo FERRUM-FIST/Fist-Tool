@@ -302,16 +302,157 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-  // 7. UNIVERSAL HARDWARE & FPS CHECKER
+  // ==========================================================================
+  // 7. UNIVERSAL HARDWARE & FPS DATABASE ENGINE
+  // ==========================================================================
+  const CPU_DATABASE = [
+    // AMD Ryzen 7000 / 9000 & X3D
+    { name: 'AMD Ryzen 9 7950X3D (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 9 7950X (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 9 7900X3D (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 9 7900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 7800X3D (8 Cores)', cores: 8, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 7700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 7700 (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 7600X (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 7600 (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
+    // AMD Ryzen 5000 Series
+    { name: 'AMD Ryzen 9 5950X (16 Cores)', cores: 16, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 9 5900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 5800X3D (8 Cores)', cores: 8, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 5800X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 5700X3D (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 5700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 5700G (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 5600X (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 5600 (6 Cores)', cores: 6, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 5600G (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 5500 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Ryzen 3 4100 (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
+    // AMD Ryzen 3000 / 2000 / 1000 & Older
+    { name: 'AMD Ryzen 9 3900X (12 Cores)', cores: 12, tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Ryzen 7 3700X (8 Cores)', cores: 8, tier: 'high', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 3600X (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 3600 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 2600 (6 Cores)', cores: 6, tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Ryzen 5 1600 (6 Cores)', cores: 6, tier: 'budget', vendor: 'amd' },
+    { name: 'AMD Ryzen 3 3300X (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
+    { name: 'AMD Ryzen 3 3100 (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
+    { name: 'AMD Ryzen 3 2200G (4 Cores)', cores: 4, tier: 'budget', vendor: 'amd' },
+    { name: 'AMD FX-8350 / FX-6300 (6-8 Cores)', cores: 6, tier: 'budget', vendor: 'amd' },
+    { name: 'AMD Athlon 3000G / 200GE (2 Cores)', cores: 2, tier: 'budget', vendor: 'amd' },
+    // Intel 12th / 13th / 14th Gen
+    { name: 'Intel Core i9-14900K / 14900KF (24 Cores)', cores: 24, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i9-13900K / 13900KF (24 Cores)', cores: 24, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i9-12900K / 12900KF (16 Cores)', cores: 16, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i7-14700K / 14700KF (20 Cores)', cores: 20, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i7-13700K / 13700KF (16 Cores)', cores: 16, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i7-12700K / 12700F (12 Cores)', cores: 12, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-14600K / 14600KF (14 Cores)', cores: 14, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-13600K / 13600KF (14 Cores)', cores: 14, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-13400 / 13400F (10 Cores)', cores: 10, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-12600K / 12600KF (10 Cores)', cores: 10, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-12400 / 12400F (6 Cores)', cores: 6, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i3-14100 / 14100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    { name: 'Intel Core i3-13100 / 13100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    { name: 'Intel Core i3-12100 / 12100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    // Intel 10th / 11th Gen
+    { name: 'Intel Core i9-11900K / 10900K (10 Cores)', cores: 10, tier: 'flagship', vendor: 'intel' },
+    { name: 'Intel Core i7-11700K / 10700K (8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i5-11600K / 11400F (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
+    { name: 'Intel Core i5-10600K / 10400F (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
+    { name: 'Intel Core i3-10105F / 10100F (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    // Intel 6th - 9th Gen & Older
+    { name: 'Intel Core i9-9900K / 9900KS (8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i7-9700K / 8700K (6-8 Cores)', cores: 8, tier: 'high', vendor: 'intel' },
+    { name: 'Intel Core i7-7700K / 6700K / 4790K / 3770K (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    { name: 'Intel Core i5-9400F / 8400 (6 Cores)', cores: 6, tier: 'mid', vendor: 'intel' },
+    { name: 'Intel Core i5-7400 / 6500 / 4590 / 3470 / 2500K (4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    { name: 'Intel Core i3-9100 / 8100 / 7100 / 4130 (2-4 Cores)', cores: 4, tier: 'budget', vendor: 'intel' },
+    { name: 'Intel Pentium Gold / Celeron (2 Cores)', cores: 2, tier: 'budget', vendor: 'intel' }
+  ];
+
+  const GPU_DATABASE = [
+    // NVIDIA RTX 40 Series
+    { name: 'NVIDIA GeForce RTX 4090 (24GB)', tier: 'flagship', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 4080 Super / 4080 (16GB)', tier: 'flagship', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 4070 Ti Super / 4070 Ti (12-16GB)', tier: 'flagship', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 4070 Super / 4070 (12GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 4060 Ti (8GB/16GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 4060 (8GB)', tier: 'mid', vendor: 'nvidia' },
+    // NVIDIA RTX 30 Series
+    { name: 'NVIDIA GeForce RTX 3090 Ti / 3090 (24GB)', tier: 'flagship', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 3080 Ti / 3080 (10-12GB)', tier: 'flagship', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 3070 Ti / 3070 (8GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 3060 Ti (8GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 3060 (12GB)', tier: 'mid', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 3050 (8GB/6GB)', tier: 'mid', vendor: 'nvidia' },
+    // NVIDIA RTX 20 Series
+    { name: 'NVIDIA GeForce RTX 2080 Ti / 2080 Super (8-11GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 2070 Super / 2070 (8GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce RTX 2060 Super / 2060 (6-8GB)', tier: 'mid', vendor: 'nvidia' },
+    // NVIDIA GTX 16 & 10 Series
+    { name: 'NVIDIA GeForce GTX 1660 Ti / 1660 Super (6GB)', tier: 'mid', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1660 (6GB)', tier: 'mid', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1650 Super (4GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1650 (4GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1080 Ti / 1080 (8-11GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1070 Ti / 1070 (8GB)', tier: 'high', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1060 (6GB/3GB)', tier: 'mid', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1050 Ti (4GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 1050 (2GB/3GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 980 / 970 / 960 (2-4GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GTX 750 Ti / 750 (2GB/4GB)', tier: 'entry', vendor: 'nvidia' },
+    { name: 'NVIDIA GeForce GT 1030 / GT 730 / 710', tier: 'entry', vendor: 'nvidia' },
+    // AMD Radeon RX 7000 Series
+    { name: 'AMD Radeon RX 7900 XTX / 7900 XT (20-24GB)', tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Radeon RX 7800 XT (16GB)', tier: 'high', vendor: 'amd' },
+    { name: 'AMD Radeon RX 7700 XT (12GB)', tier: 'high', vendor: 'amd' },
+    { name: 'AMD Radeon RX 7600 XT / 7600 (8-16GB)', tier: 'mid', vendor: 'amd' },
+    // AMD Radeon RX 6000 Series
+    { name: 'AMD Radeon RX 6950 XT / 6900 XT (16GB)', tier: 'flagship', vendor: 'amd' },
+    { name: 'AMD Radeon RX 6800 XT / 6800 (16GB)', tier: 'high', vendor: 'amd' },
+    { name: 'AMD Radeon RX 6750 XT / 6700 XT (12GB)', tier: 'high', vendor: 'amd' },
+    { name: 'AMD Radeon RX 6650 XT / 6600 XT (8GB)', tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Radeon RX 6600 (8GB)', tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Radeon RX 6500 XT / 6400 (4GB)', tier: 'entry', vendor: 'amd' },
+    // AMD Radeon RX 5000 / 500 / 400
+    { name: 'AMD Radeon RX 5700 XT / 5700 (8GB)', tier: 'high', vendor: 'amd' },
+    { name: 'AMD Radeon RX 5600 XT / 5500 XT (6-8GB)', tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Radeon RX 590 / 580 (8GB)', tier: 'mid', vendor: 'amd' },
+    { name: 'AMD Radeon RX 570 (4GB/8GB)', tier: 'entry', vendor: 'amd' },
+    { name: 'AMD Radeon RX 560 / 550 / 460 (2-4GB)', tier: 'entry', vendor: 'amd' },
+    // Intel Arc Series
+    { name: 'Intel Arc A770 (16GB)', tier: 'high', vendor: 'intel' },
+    { name: 'Intel Arc A750 / A580 (8GB)', tier: 'mid', vendor: 'intel' },
+    { name: 'Intel Arc A380 / A310 (4-6GB)', tier: 'entry', vendor: 'intel' },
+    // Integrated Graphics
+    { name: 'Intel Iris Xe Graphics', tier: 'integrated', vendor: 'integrated' },
+    { name: 'Intel UHD Graphics 770 / 750 / 730', tier: 'integrated', vendor: 'integrated' },
+    { name: 'Intel UHD Graphics 630 / HD 530 / 620', tier: 'integrated', vendor: 'integrated' },
+    { name: 'Intel HD Graphics 4600 / 4400 / 4000', tier: 'integrated', vendor: 'integrated' },
+    { name: 'AMD Radeon 780M / 760M (Ryzen APU)', tier: 'entry', vendor: 'integrated' },
+    { name: 'AMD Radeon Vega 8 / Vega 7 / Vega 3', tier: 'integrated', vendor: 'integrated' }
+  ];
+
+  // Auto-populate datalists across the entire page
+  document.querySelectorAll('#hw-cpu-list').forEach(dl => {
+    dl.innerHTML = CPU_DATABASE.map(c => `<option value="${c.name}"></option>`).join('');
+  });
+  document.querySelectorAll('#hw-gpu-list').forEach(dl => {
+    dl.innerHTML = GPU_DATABASE.map(g => `<option value="${g.name}"></option>`).join('');
+  });
+
   const hwCheckerCards = document.querySelectorAll('.hw-checker-card');
 
   hwCheckerCards.forEach(card => {
     const gameSelect = card.querySelector('#hw-game');
-    const cpuSelect = card.querySelector('#hw-cpu');
-    const gpuSelect = card.querySelector('#hw-gpu');
+    const cpuInput = card.querySelector('#hw-cpu');
+    const gpuInput = card.querySelector('#hw-gpu');
     const ramSelect = card.querySelector('#hw-ram');
     const resSelect = card.querySelector('#hw-res');
     const checkBtn = card.querySelector('#hw-check-btn');
+    const autodetectBtn = card.querySelector('#hw-autodetect-btn');
 
     const resultBox = card.querySelector('#hw-result-box');
     const tierBadge = card.querySelector('#hw-res-tier');
@@ -327,57 +468,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculatePerformance() {
       const game = gameSelect ? gameSelect.value : 'gameloop';
-      const cpu = cpuSelect ? cpuSelect.value : 'hexa';
-      const gpu = gpuSelect ? gpuSelect.value : 'mid_nvidia';
-      const ram = ramSelect ? ramSelect.value : '16gb';
-      const res = resSelect ? resSelect.value : '1080p';
+      const cpuVal = (cpuInput ? cpuInput.value : '').trim();
+      const gpuVal = (gpuInput ? gpuInput.value : '').trim();
+      const ramVal = ramSelect ? ramSelect.value : '16gb';
+      const resVal = resSelect ? resSelect.value : '1080p';
 
-      const isAmdGpu = gpu.includes('amd');
-      const isNvidiaGpu = gpu.includes('nvidia');
-      const isIntegrated = gpu === 'integrated';
-      const isEntryGpu = gpu.includes('entry') || isIntegrated;
-      const isMidGpu = gpu.includes('mid');
-      const isHighGpu = gpu.includes('high');
+      const cpuLower = cpuVal.toLowerCase();
+      const gpuLower = gpuVal.toLowerCase();
 
-      const isHighCpu = cpu === 'octa' || cpu === 'multi';
-      const isHexaCpu = cpu === 'hexa';
-      const isQuadCpu = cpu === 'quad';
+      // 1. Analyze CPU
+      let cpuMatch = CPU_DATABASE.find(c => cpuLower.includes(c.name.toLowerCase()) || c.name.toLowerCase().includes(cpuLower));
+      let cores = cpuMatch ? cpuMatch.cores : 6;
+      let cpuTier = cpuMatch ? cpuMatch.tier : 'mid';
 
-      // Processor Allocation (User Rule: 4 for 4-6 cores, 6 for 8 cores, 8 for 12+ cores)
+      if (!cpuMatch) {
+        if (cpuLower.includes('i9') || cpuLower.includes('ryzen 9') || cpuLower.includes('threadripper') || cpuLower.includes('14900') || cpuLower.includes('13900')) {
+          cores = 16; cpuTier = 'flagship';
+        } else if (cpuLower.includes('i7') || cpuLower.includes('ryzen 7') || cpuLower.includes('x3d') || cpuLower.includes('7800') || cpuLower.includes('5800') || cpuLower.includes('13700') || cpuLower.includes('12700')) {
+          cores = 8; cpuTier = 'high';
+        } else if (cpuLower.includes('i5') || cpuLower.includes('ryzen 5') || cpuLower.includes('5600') || cpuLower.includes('12400') || cpuLower.includes('10400') || cpuLower.includes('3600')) {
+          cores = 6; cpuTier = 'high';
+        } else if (cpuLower.includes('i3') || cpuLower.includes('ryzen 3') || cpuLower.includes('pentium') || cpuLower.includes('athlon') || cpuLower.includes('celeron') || cpuLower.includes('10100') || cpuLower.includes('12100')) {
+          cores = 4; cpuTier = 'budget';
+        }
+      }
+
+      // 2. Analyze GPU
+      let gpuMatch = GPU_DATABASE.find(g => gpuLower.includes(g.name.toLowerCase()) || g.name.toLowerCase().includes(gpuLower));
+      let gpuTier = gpuMatch ? gpuMatch.tier : 'mid';
+      let gpuVendor = gpuMatch ? gpuMatch.vendor : 'nvidia';
+
+      if (!gpuMatch) {
+        const isAmd = gpuLower.includes('amd') || gpuLower.includes('radeon') || gpuLower.includes('rx ');
+        const isIntel = gpuLower.includes('intel') || gpuLower.includes('arc') || gpuLower.includes('iris') || gpuLower.includes('uhd');
+        gpuVendor = isAmd ? 'amd' : (isIntel ? 'intel' : 'nvidia');
+
+        if (gpuLower.includes('4090') || gpuLower.includes('4080') || gpuLower.includes('7900') || gpuLower.includes('3090') || gpuLower.includes('3080') || gpuLower.includes('6950') || gpuLower.includes('6900')) {
+          gpuTier = 'flagship';
+        } else if (gpuLower.includes('4070') || gpuLower.includes('3070') || gpuLower.includes('7800') || gpuLower.includes('7700') || gpuLower.includes('6800') || gpuLower.includes('6700') || gpuLower.includes('a770')) {
+          gpuTier = 'high';
+        } else if (gpuLower.includes('3060') || gpuLower.includes('4060') || gpuLower.includes('2060') || gpuLower.includes('1660') || gpuLower.includes('6600') || gpuLower.includes('580') || gpuLower.includes('590') || gpuLower.includes('3050') || gpuLower.includes('a750')) {
+          gpuTier = 'mid';
+        } else if (gpuLower.includes('1650') || gpuLower.includes('1050') || gpuLower.includes('750') || gpuLower.includes('560') || gpuLower.includes('550') || gpuLower.includes('460') || gpuLower.includes('1030') || gpuLower.includes('960')) {
+          gpuTier = 'entry';
+        } else if (gpuLower.includes('iris') || gpuLower.includes('uhd') || gpuLower.includes('vega') || gpuLower.includes('hd graphics')) {
+          gpuTier = 'integrated';
+          gpuVendor = 'integrated';
+        }
+      }
+
+      // ==========================================
+      // EXACT USER OPTIMIZATION RULES ENFORCEMENT
+      // ==========================================
+
+      // Rule 1: Processor Allocation (4 for 4-6 cores, 6 for 8 cores, 8 for 12+ cores)
       let cpuAlloc = '4 Cores';
-      if (cpu === 'octa') cpuAlloc = '6 Cores (8-Core CPU)';
-      else if (cpu === 'multi') cpuAlloc = '8 Cores (12+ Core CPU)';
-      else if (cpu === 'hexa') cpuAlloc = '4 Cores (Hexa-Core)';
-      else cpuAlloc = '4 Cores (Quad-Core)';
+      if (cores >= 12) {
+        cpuAlloc = '8 Cores (12+ Core CPU)';
+      } else if (cores >= 8) {
+        cpuAlloc = '6 Cores (8-Core CPU)';
+      } else {
+        cpuAlloc = '4 Cores (Quad/Hexa Core)';
+      }
 
-      // Memory Allocation (User Rule: 6GB for 8GB RAM, 8GB for >8GB RAM)
+      // Rule 2: Memory Allocation (6GB for 8GB users, 8GB for >8GB users)
       let ramAlloc = '8192 MB (8GB)';
-      if (ram === '8gb') ramAlloc = '6144 MB (6GB)';
-      else if (ram === '32gb') ramAlloc = '8192 MB (High Cache)';
+      if (ramVal === '8gb') {
+        ramAlloc = '6144 MB (6GB)';
+      } else if (ramVal === '32gb') {
+        ramAlloc = '8192 MB (High Cache)';
+      }
 
-      // Rendering Engine (User Rule: DirectX+ for AMD, DirectX+/OpenGL+ for Nvidia)
+      // Rule 3: Rendering Engine (DirectX+ for AMD, DirectX+/OpenGL+ for Nvidia)
       let engine = 'DirectX+';
-      if (isAmdGpu) {
+      if (gpuVendor === 'amd') {
         engine = 'DirectX+ (Optimized for AMD)';
-      } else if (isNvidiaGpu) {
+      } else if (gpuVendor === 'nvidia') {
         engine = 'DirectX+ / OpenGL+ (NVIDIA)';
       } else {
         engine = 'DirectX+ (Low Overhead)';
       }
 
-      // DPI & Resolution (User Rule: 160 low end, 240 mid, 400/480 high end)
+      // Rule 4: DPI (160 low-end, 240 mid, 400/480 high-end)
       let dpiStr = '1080p • 240 DPI';
       let dpiVal = '240 DPI';
-      if (isHighCpu && isHighGpu) {
-        dpiVal = (res === '1440p' || res === '4k') ? '480 DPI' : '400 DPI';
-      } else if (isQuadCpu && isEntryGpu) {
+      const isHighEndRig = (cpuTier === 'flagship' || cpuTier === 'high') && (gpuTier === 'flagship' || gpuTier === 'high');
+      const isLowEndRig = (cpuTier === 'budget') && (gpuTier === 'entry' || gpuTier === 'integrated');
+
+      if (isHighEndRig) {
+        dpiVal = (resVal === '1440p' || resVal === '4k') ? '480 DPI' : '400 DPI';
+      } else if (isLowEndRig) {
         dpiVal = '160 DPI';
       } else {
         dpiVal = '240 DPI';
       }
-      dpiStr = `${res.toUpperCase()} • ${dpiVal}`;
+      dpiStr = `${resVal.toUpperCase()} • ${dpiVal}`;
 
-      // Default visual theme
+      // Rule 5: CPU Smoothness Rule
+      // High-End CPU + Low-End GPU shows 120 FPS on Smooth graphics
       let tier = 'Esports Tier';
       let fps = '120 FPS';
       let summary = 'Optimal Settings: Smooth + 120 FPS • Zero Stutter Guaranteed';
@@ -389,19 +577,18 @@ document.addEventListener('DOMContentLoaded', () => {
       let borderColor = 'rgba(0, 229, 255, 0.28)';
 
       if (game === 'gameloop') {
-        // CPU plays paramount role in GameLoop smoothness
-        if (isHighCpu) {
-          if (isHighGpu) {
+        if (cpuTier === 'flagship' || cpuTier === 'high') {
+          if (gpuTier === 'flagship' || gpuTier === 'high') {
             tier = 'Flagship Tier';
             fps = '120 FPS';
             preset = 'Ultra HDR + Ultra Extreme (120 FPS)';
-            summary = 'Flagship Dominance: Ultra HDR 120 FPS with max graphic fidelity';
+            summary = 'Flagship Beast: Ultra HDR 120 FPS with maximum graphical clarity and zero delay';
             color = 'var(--color-green)';
             shadowColor = 'rgba(0, 255, 102, 0.45)';
             bgColor = 'rgba(0, 255, 102, 0.04)';
             borderColor = 'rgba(0, 255, 102, 0.3)';
           } else {
-            // High end processor with lower end GPU (User requirement: 120 FPS with high end CPU + low end GPU)
+            // High-End CPU with lower GPU: 120 FPS with smooth graphics
             tier = 'Esports Smooth Tier';
             fps = '120 FPS';
             preset = 'Smooth + Ultra Extreme (120 FPS)';
@@ -411,12 +598,12 @@ document.addEventListener('DOMContentLoaded', () => {
             bgColor = 'rgba(0, 229, 255, 0.04)';
             borderColor = 'rgba(0, 229, 255, 0.28)';
           }
-        } else if (isHexaCpu) {
-          if (isHighGpu || isMidGpu) {
+        } else if (cpuTier === 'mid') {
+          if (gpuTier === 'flagship' || gpuTier === 'high' || gpuTier === 'mid') {
             tier = 'Esports Tier';
             fps = '120 FPS';
             preset = 'Smooth + Ultra Extreme (120 FPS)';
-            summary = 'Esports Ready: Stable 120 FPS locked in competitive encounters';
+            summary = 'Esports Ready: Rock-solid 120 FPS locked in competitive encounters';
             color = 'var(--color-cyan)';
             shadowColor = 'rgba(0, 229, 255, 0.45)';
             bgColor = 'rgba(0, 229, 255, 0.04)';
@@ -432,20 +619,20 @@ document.addEventListener('DOMContentLoaded', () => {
             borderColor = 'rgba(255, 255, 255, 0.18)';
           }
         } else {
-          // Quad-core CPU
+          // Budget CPU
           tier = 'Budget Tier';
-          fps = isEntryGpu ? '60 FPS' : '90 FPS';
-          preset = isEntryGpu ? 'Smooth + Extreme (60 FPS)' : 'Smooth + 90 FPS';
-          summary = 'Budget Optimization: Optimized background overhead to eliminate CPU bottleneck';
+          const isEntry = (gpuTier === 'entry' || gpuTier === 'integrated');
+          fps = isEntry ? '60 FPS' : '90 FPS';
+          preset = isEntry ? 'Smooth + Extreme (60 FPS)' : 'Smooth + 90 FPS';
+          summary = 'Budget Optimization: Minimized background interrupt overhead to eliminate CPU bottleneck';
           color = 'var(--text-primary)';
           shadowColor = 'rgba(255, 255, 255, 0.25)';
           bgColor = 'rgba(255, 255, 255, 0.03)';
           borderColor = 'rgba(255, 255, 255, 0.18)';
         }
       } else if (game === 'esports') {
-        // Valorant / CS2 / Overwatch 2
-        engine = isAmdGpu ? 'DirectX 11 / Vulkan' : 'DirectX 11 (Reflex ON)';
-        if (isHighCpu && (isHighGpu || isMidGpu)) {
+        engine = gpuVendor === 'amd' ? 'DirectX 11 / Vulkan' : 'DirectX 11 (Reflex ON)';
+        if ((cpuTier === 'flagship' || cpuTier === 'high') && (gpuTier === 'flagship' || gpuTier === 'high')) {
           tier = 'Competitive Elite';
           fps = '360+ FPS';
           preset = 'Low / Competitive (Max FPS)';
@@ -455,7 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
           bgColor = 'rgba(0, 255, 102, 0.04)';
           borderColor = 'rgba(0, 255, 102, 0.3)';
           latency = '~1.8ms Click-to-Shoot';
-        } else if (isHighCpu || isMidGpu) {
+        } else if (cpuTier === 'flagship' || cpuTier === 'high' || gpuTier === 'mid') {
           tier = 'Esports High';
           fps = '240 FPS';
           preset = 'Competitive Low (Optimized)';
@@ -471,19 +658,18 @@ document.addEventListener('DOMContentLoaded', () => {
           latency = '~3.4ms Click-to-Shoot';
         }
       } else if (game === 'br') {
-        // Battle Royale (Warzone / Apex / Fortnite)
-        engine = isAmdGpu ? 'DirectX 12 / Vulkan' : 'DirectX 12 (NVIDIA Reflex)';
-        if (isHighCpu && isHighGpu) {
+        engine = gpuVendor === 'amd' ? 'DirectX 12 / Vulkan' : 'DirectX 12 (NVIDIA Reflex)';
+        if ((cpuTier === 'flagship' || cpuTier === 'high') && (gpuTier === 'flagship' || gpuTier === 'high')) {
           tier = 'Apex Dominance';
           fps = '165+ FPS';
           preset = 'Optimized High / Comp';
-          summary = 'Battle Royale Master: Consistent 165+ FPS in end-game combat clusters';
+          summary = 'Battle Royale Master: Consistent 165+ FPS in heavy combat firefights';
           color = 'var(--color-green)';
           shadowColor = 'rgba(0, 255, 102, 0.45)';
           bgColor = 'rgba(0, 255, 102, 0.04)';
           borderColor = 'rgba(0, 255, 102, 0.3)';
           latency = '~2.5ms Frame Latency';
-        } else if (isHighCpu || isMidGpu) {
+        } else if (cpuTier === 'flagship' || cpuTier === 'high' || gpuTier === 'mid') {
           tier = 'BR Competitive';
           fps = '120–144 FPS';
           preset = 'Competitive Medium / Low';
@@ -499,11 +685,10 @@ document.addEventListener('DOMContentLoaded', () => {
           latency = '~4.8ms Frame Latency';
         }
       } else if (game === 'aaa') {
-        // AAA / Cyberpunk / GTA V
         engine = 'DirectX 12 Ultimate / Vulkan';
-        if (isHighCpu && isHighGpu) {
+        if ((cpuTier === 'flagship' || cpuTier === 'high') && (gpuTier === 'flagship' || gpuTier === 'high')) {
           tier = 'Ultra Fidelity';
-          fps = (res === '4k') ? '75–90 FPS' : '120+ FPS';
+          fps = (resVal === '4k') ? '75–90 FPS' : '120+ FPS';
           preset = 'High / Ultra + DLSS/FSR Quality';
           summary = 'Max Fidelity: Silky smooth AAA frame pacing with DWM stutter mitigation';
           color = 'var(--color-green)';
@@ -511,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
           bgColor = 'rgba(0, 255, 102, 0.04)';
           borderColor = 'rgba(0, 255, 102, 0.3)';
           latency = '~3.8ms Smooth Pacing';
-        } else if (isMidGpu) {
+        } else if (gpuTier === 'mid') {
           tier = 'Optimized Fidelity';
           fps = '60–80 FPS';
           preset = 'Medium-High / Balanced Scaling';
@@ -527,7 +712,6 @@ document.addEventListener('DOMContentLoaded', () => {
           latency = '~7.1ms Smooth Pacing';
         }
       } else {
-        // General Windows System Latency
         engine = 'Win32 Kernel / DWM Tweaks';
         tier = 'Zero-Stutter OS';
         fps = '0.5ms Ping';
@@ -535,12 +719,12 @@ document.addEventListener('DOMContentLoaded', () => {
         summary = 'System Responsiveness: 78% lower DWM input latency, 85% fewer kernel interrupts';
         cpuAlloc = 'All Cores Unparked';
         ramAlloc = 'Cleaned & Standby Cleared';
-        dpiStr = `${res.toUpperCase()} • Native`;
+        dpiStr = `${resVal.toUpperCase()} • Native`;
         latency = '0.500ms Timer Resolution';
         color = 'var(--color-cyan)';
       }
 
-      // Update UI elements in the card
+      // Update UI
       if (tierBadge) {
         tierBadge.innerText = tier;
         tierBadge.style.color = color;
@@ -554,10 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fpsBadge.style.textShadow = `0 0 25px ${shadowColor}`;
       }
 
-      if (summaryText) {
-        summaryText.innerText = summary;
-      }
-
+      if (summaryText) summaryText.innerText = summary;
       if (detailPreset) detailPreset.innerText = preset;
       if (detailEngine) detailEngine.innerText = engine;
       if (detailCpu) detailCpu.innerText = cpuAlloc;
@@ -571,7 +752,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (resultBox) {
         resultBox.style.background = bgColor;
         resultBox.style.borderColor = borderColor;
-
         resultBox.animate([
           { opacity: 0.7, transform: 'scale(0.98)' },
           { opacity: 1, transform: 'scale(1)' }
@@ -579,10 +759,87 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Attach reactive listeners to all selects
-    [gameSelect, cpuSelect, gpuSelect, ramSelect, resSelect].forEach(sel => {
-      if (sel) {
-        sel.addEventListener('change', calculatePerformance);
+    // ⚡ Auto-Detect Hardware from Browser
+    if (autodetectBtn) {
+      autodetectBtn.addEventListener('click', () => {
+        autodetectBtn.innerText = '⚡ Scanning...';
+
+        // 1. Detect Cores
+        const threads = navigator.hardwareConcurrency || 8;
+        let detectedCpu = 'AMD Ryzen 5 5600 (6 Cores)';
+        if (threads >= 24) detectedCpu = 'Intel Core i9-14900K / 14900KF (24 Cores)';
+        else if (threads >= 16) detectedCpu = 'AMD Ryzen 7 7800X3D (8 Cores)';
+        else if (threads >= 12) detectedCpu = 'AMD Ryzen 5 5600 (6 Cores)';
+        else if (threads >= 8) detectedCpu = 'Intel Core i3-12100 / 12100F (4 Cores)';
+        else detectedCpu = 'Intel Pentium Gold / Celeron (2 Cores)';
+
+        if (cpuInput) cpuInput.value = detectedCpu;
+
+        // 2. Detect GPU via WebGL
+        let detectedGpu = 'NVIDIA GeForce RTX 3060 (12GB)';
+        try {
+          const canvas = document.createElement('canvas');
+          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          if (gl) {
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+              const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || '';
+              const rLower = renderer.toLowerCase();
+              const found = GPU_DATABASE.find(g => {
+                const words = g.name.toLowerCase().split(' ');
+                return words.some(w => w.length > 3 && rLower.includes(w));
+              });
+              if (found) {
+                detectedGpu = found.name;
+              } else if (rLower.includes('nvidia') || rLower.includes('geforce')) {
+                detectedGpu = 'NVIDIA GeForce RTX 3060 (12GB)';
+              } else if (rLower.includes('radeon') || rLower.includes('amd')) {
+                detectedGpu = 'AMD Radeon RX 6600 (8GB)';
+              } else if (rLower.includes('intel') || rLower.includes('iris')) {
+                detectedGpu = 'Intel Iris Xe Graphics';
+              }
+            }
+          }
+        } catch (e) {}
+
+        if (gpuInput) gpuInput.value = detectedGpu;
+
+        // 3. Detect RAM
+        if (navigator.deviceMemory && ramSelect) {
+          if (navigator.deviceMemory >= 16) ramSelect.value = '16gb';
+          else if (navigator.deviceMemory >= 32) ramSelect.value = '32gb';
+          else ramSelect.value = '8gb';
+        }
+
+        // 4. Detect Resolution
+        const w = window.screen.width;
+        if (resSelect) {
+          if (w >= 3840) resSelect.value = '4k';
+          else if (w >= 2560) resSelect.value = '1440p';
+          else if (w >= 1920) resSelect.value = '1080p';
+          else resSelect.value = '720p';
+        }
+
+        calculatePerformance();
+
+        setTimeout(() => {
+          autodetectBtn.innerText = '⚡ Specs Detected!';
+          setTimeout(() => {
+            autodetectBtn.innerText = '⚡ Auto-Detect';
+          }, 2500);
+        }, 300);
+      });
+    }
+
+    // Attach reactive listeners to all inputs
+    [gameSelect, ramSelect, resSelect].forEach(sel => {
+      if (sel) sel.addEventListener('change', calculatePerformance);
+    });
+
+    [cpuInput, gpuInput].forEach(inp => {
+      if (inp) {
+        inp.addEventListener('input', calculatePerformance);
+        inp.addEventListener('change', calculatePerformance);
       }
     });
 

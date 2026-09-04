@@ -182,31 +182,20 @@
               </div>
 
               <div class="hw-form-group">
-                <label for="hw-cpu">Processor (CPU)</label>
+                <label for="hw-cpu">Search / Select Processor (CPU)</label>
                 <div class="select-wrapper">
-                  <select id="hw-cpu" class="hw-select">
-                    <option value="quad">Quad-Core (Core i3 / Ryzen 3 / Older i5)</option>
-                    <option value="hexa" selected>Hexa-Core (Core i5 8th-14th Gen / Ryzen 5)</option>
-                    <option value="octa">Octa-Core (Core i7 / Ryzen 7 / X3D)</option>
-                    <option value="multi">Multi-Core 12+ (Core i9 / Ryzen 9 / Threadripper)</option>
-                  </select>
-                  <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <input type="text" id="hw-cpu" class="hw-select hw-search-input" list="hw-cpu-list" placeholder="Search CPU (e.g. i5-12400F, Ryzen 5 5600)..." value="AMD Ryzen 5 5600 (6 Cores)" autocomplete="off">
+                  <datalist id="hw-cpu-list"></datalist>
+                  <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </div>
               </div>
 
               <div class="hw-form-group">
-                <label for="hw-gpu">Graphics Card (GPU)</label>
+                <label for="hw-gpu">Search / Select Graphics (GPU)</label>
                 <div class="select-wrapper">
-                  <select id="hw-gpu" class="hw-select">
-                    <option value="integrated">Integrated (Intel UHD/Iris, AMD Vega)</option>
-                    <option value="entry_nvidia">NVIDIA Entry (GTX 750Ti / 1050 / 1650)</option>
-                    <option value="entry_amd">AMD Entry (RX 460 / 550 / 560 / Vega)</option>
-                    <option value="mid_nvidia" selected>NVIDIA Mid-Range (GTX 1660 / RTX 2060 / 3060)</option>
-                    <option value="mid_amd">AMD Mid-Range (RX 580 / 5500XT / 6600)</option>
-                    <option value="high_nvidia">NVIDIA High-End (RTX 3070 / 4070 / 4080 / 4090)</option>
-                    <option value="high_amd">AMD High-End (RX 6700XT / 7800XT / 7900XTX)</option>
-                  </select>
-                  <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <input type="text" id="hw-gpu" class="hw-select hw-search-input" list="hw-gpu-list" placeholder="Search GPU (e.g. RTX 3060, GTX 1650, RX 6600)..." value="NVIDIA GeForce RTX 3060 (12GB)" autocomplete="off">
+                  <datalist id="hw-gpu-list"></datalist>
+                  <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </div>
               </div>
 
@@ -237,7 +226,8 @@
             </div>
 
             <div class="hw-btn-wrapper">
-              <button id="hw-check-btn" class="btn btn-primary" style="width: 100%; justify-content: center; height: 46px; margin-top: 8px;">Calculate Optimal Settings</button>
+              <button id="hw-check-btn" class="btn btn-primary">Calculate Optimal Settings</button>
+              <button id="hw-autodetect-btn" type="button" class="btn btn-detect" title="Auto-detect hardware from browser">⚡ Auto-Detect</button>
             </div>
           </div>
           
