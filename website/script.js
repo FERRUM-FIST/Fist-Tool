@@ -2937,246 +2937,246 @@ document.addEventListener('DOMContentLoaded', () => {
   const MEMORY_OPTIONS = [
   {
     "val": "2gb",
-    "label": "2 GB DDR2 / DDR3 (Ultra Budget / Legacy)"
+    "label": "2 GB DDR2 / DDR3 (Legacy)"
   },
   {
     "val": "4gb_s",
-    "label": "4 GB Single-Channel DDR3-1333 / DDR3-1600"
+    "label": "4 GB Single DDR3"
   },
   {
     "val": "4gb_d",
-    "label": "4 GB Dual-Channel (2x2GB) DDR3"
+    "label": "4 GB Dual (2x2GB) DDR3"
   },
   {
     "val": "4gb",
-    "label": "4 GB Single-Channel DDR4-2133 / 2400"
+    "label": "4 GB Single DDR4"
   },
   {
     "val": "6gb",
-    "label": "6 GB Mixed-Channel (4GB + 2GB) DDR3 / DDR4"
+    "label": "6 GB Mixed (4GB + 2GB)"
   },
   {
     "val": "8gb_d3",
-    "label": "8 GB Single-Channel DDR3-1600"
+    "label": "8 GB Single DDR3-1600"
   },
   {
     "val": "8gb_d3_dual",
-    "label": "8 GB Dual-Channel (2x4GB) DDR3-1600 / 1866"
+    "label": "8 GB Dual (2x4GB) DDR3"
   },
   {
     "val": "8gb_d4_2400",
-    "label": "8 GB Single-Channel DDR4-2400 / 2666"
+    "label": "8 GB Single DDR4-2400"
   },
   {
     "val": "8gb_d4_3200",
-    "label": "8 GB Single-Channel DDR4-3200"
+    "label": "8 GB Single DDR4-3200"
   },
   {
     "val": "8gb",
-    "label": "8 GB Dual-Channel (2x4GB) DDR4-2666"
+    "label": "8 GB Dual (2x4GB) DDR4-2666"
   },
   {
     "val": "8gb_dual",
-    "label": "8 GB Dual-Channel (2x4GB) DDR4-3200"
+    "label": "8 GB Dual (2x4GB) DDR4-3200"
   },
   {
     "val": "8gb_d5",
-    "label": "8 GB Single/Dual-Channel DDR5-4800"
+    "label": "8 GB Single DDR5-4800"
   },
   {
     "val": "12gb",
-    "label": "12 GB Mixed-Channel (8GB + 4GB) DDR4-2666 / 3200"
+    "label": "12 GB Mixed (8GB + 4GB)"
   },
   {
     "val": "16gb_single",
-    "label": "16 GB Single-Channel (1x16GB) DDR4-2666 / 3200"
+    "label": "16 GB Single DDR4-3200"
   },
   {
     "val": "16gb_d4_2666",
-    "label": "16 GB Dual-Channel (2x8GB) DDR4-2666"
+    "label": "16 GB Dual (2x8GB) DDR4-2666"
   },
   {
     "val": "16gb",
-    "label": "16 GB Dual-Channel (2x8GB) DDR4-3200 CL16 (Standard Gaming)"
+    "label": "16 GB Dual (2x8GB) DDR4-3200"
   },
   {
     "val": "16gb_d4_3600",
-    "label": "16 GB Dual-Channel (2x8GB) DDR4-3600 CL16 / CL18 (Esports Optimized)"
+    "label": "16 GB Dual (2x8GB) DDR4-3600"
   },
   {
     "val": "16gb_d4_4000",
-    "label": "16 GB Dual-Channel (2x8GB) DDR4-4000+ Samsung B-Die (Ultra Low Latency)"
+    "label": "16 GB Dual (2x8GB) DDR4-4000"
   },
   {
     "val": "16gb_d5_4800",
-    "label": "16 GB Dual-Channel (2x8GB) DDR5-4800 / DDR5-5200"
+    "label": "16 GB Dual (2x8GB) DDR5-4800"
   },
   {
     "val": "16gb_d5_5600",
-    "label": "16 GB Dual-Channel (2x8GB) DDR5-5600 / DDR5-6000"
+    "label": "16 GB Dual (2x8GB) DDR5-5600"
   },
   {
-    "val": "16gb_d5_6400",
-    "label": "16 GB Dual-Channel (2x8GB) DDR5-6400+ (High Speed)"
+    "val": "16gb_d5_6000",
+    "label": "16 GB Dual (2x8GB) DDR5-6000"
   },
   {
     "val": "24gb",
-    "label": "24 GB Dual-Channel (2x12GB) DDR5-5600 / DDR5-6000 (Non-Binary High Perf)"
+    "label": "24 GB Dual (2x12GB) DDR5-6000"
   },
   {
     "val": "32gb_single",
-    "label": "32 GB Single-Channel (1x32GB) DDR4 / DDR5"
+    "label": "32 GB Single DDR4 / DDR5"
   },
   {
     "val": "32gb_d4_3200",
-    "label": "32 GB Dual-Channel (2x16GB) DDR4-3200 CL16"
+    "label": "32 GB Dual (2x16GB) DDR4-3200"
   },
   {
     "val": "32gb_d4_3600",
-    "label": "32 GB Dual-Channel (2x16GB) DDR4-3600 CL16 / CL18 (Esports Tier)"
+    "label": "32 GB Dual (2x16GB) DDR4-3600"
   },
   {
     "val": "32gb_d4_4000",
-    "label": "32 GB Dual-Channel (2x16GB) DDR4-4000+ Tuned"
+    "label": "32 GB Dual (2x16GB) DDR4-4000"
   },
   {
     "val": "32gb_d5_5200",
-    "label": "32 GB Dual-Channel (2x16GB) DDR5-5200 / DDR5-5600"
+    "label": "32 GB Dual (2x16GB) DDR5-5200"
   },
   {
     "val": "32gb",
-    "label": "32 GB Dual-Channel (2x16GB) DDR5-6000 CL30 (AMD EXPO / Intel XMP Sweet Spot)"
+    "label": "32 GB Dual (2x16GB) DDR5-6000"
   },
   {
     "val": "32gb_d5_6400",
-    "label": "32 GB Dual-Channel (2x16GB) DDR5-6400 / DDR5-7200+ (Extreme Enthusiast)"
+    "label": "32 GB Dual (2x16GB) DDR5-6400"
   },
   {
     "val": "32gb_quad",
-    "label": "32 GB Quad-Channel (4x8GB) DDR4 / DDR5"
+    "label": "32 GB Quad (4x8GB) DDR4/DDR5"
   },
   {
     "val": "48gb",
-    "label": "48 GB Dual-Channel (2x24GB) DDR5-6000 / DDR5-6400 (Non-Binary Enthusiast)"
+    "label": "48 GB Dual (2x24GB) DDR5-6000"
   },
   {
     "val": "64gb_d4_3200",
-    "label": "64 GB Dual-Channel (2x32GB) DDR4-3200 / DDR4-3600"
+    "label": "64 GB Dual (2x32GB) DDR4-3200"
   },
   {
     "val": "64gb",
-    "label": "64 GB Dual-Channel (2x32GB) DDR5-6000 (Creator / Streamer)"
+    "label": "64 GB Dual (2x32GB) DDR5-6000"
   },
   {
     "val": "64gb_quad",
-    "label": "64 GB Quad-Channel (4x16GB) DDR4 / DDR5 Workstation"
+    "label": "64 GB Quad (4x16GB) Workstation"
   },
   {
     "val": "96gb",
-    "label": "96 GB Dual-Channel (2x48GB) DDR5-6000+ High Capacity"
+    "label": "96 GB Dual (2x48GB) DDR5-6000"
   },
   {
     "val": "128gb",
-    "label": "128 GB Quad-Channel (4x32GB) DDR4 / DDR5 Ultra Workstation"
+    "label": "128 GB Quad (4x32GB) Workstation"
   },
   {
     "val": "192gb",
-    "label": "192 GB Quad-Channel (4x48GB) DDR5 Extreme Workstation"
+    "label": "192 GB Quad (4x48GB) Workstation"
   },
   {
     "val": "256gb",
-    "label": "256 GB+ Octa-Channel / ECC Registered Server Memory"
+    "label": "256 GB+ Enterprise Server ECC"
   }
 ];
 
   const STORAGE_OPTIONS = [
   {
-    "val": "nvme_gen5",
-    "label": "NVMe PCIe 5.0 x4 SSD (14,000+ MB/s, Gen 5 DirectStorage Ultra)",
-    "tier": "gen5",
-    "desc": "NVMe Gen 5 (Instant <0.5ms Shaders)"
-  },
-  {
     "val": "nvme_gen4_pro",
-    "label": "NVMe PCIe 4.0 x4 Pro SSD (7,000+ MB/s, Samsung 990 Pro / WD SN850X / KC3000)",
+    "label": "NVMe Gen 4 Pro (Samsung 990 / SN850X)",
     "tier": "gen4",
     "desc": "NVMe Gen 4 Pro (Instant Shaders)"
   },
   {
+    "val": "nvme_gen5",
+    "label": "NVMe Gen 5 Ultra (DirectStorage)",
+    "tier": "gen5",
+    "desc": "NVMe Gen 5 (Instant <0.5ms Shaders)"
+  },
+  {
     "val": "nvme_gen4",
-    "label": "NVMe PCIe 4.0 x4 SSD (5,000 MB/s, Crucial P3 Plus / WD SN770 / Lexar NM790)",
+    "label": "NVMe Gen 4 Fast (Crucial P3 / SN770)",
     "tier": "gen4",
     "desc": "NVMe Gen 4 (Instant Shaders)"
   },
   {
     "val": "nvme_gen4_dramless",
-    "label": "NVMe PCIe 4.0 DRAM-less SSD (4,000\u20135,000 MB/s, Host Memory Buffer HMB)",
+    "label": "NVMe Gen 4 DRAM-less HMB",
     "tier": "gen4",
     "desc": "NVMe Gen 4 HMB (Fast Pacing)"
   },
   {
     "val": "nvme_gen3_pro",
-    "label": "NVMe PCIe 3.0 x4 SSD (3,500 MB/s, Samsung 970 EVO Plus / Crucial P2 / WD SN570)",
+    "label": "NVMe Gen 3 (Samsung 970 / SN570)",
     "tier": "gen3",
     "desc": "NVMe Gen 3 (Fast Streaming)"
   },
   {
     "val": "nvme_gen3",
-    "label": "NVMe PCIe 3.0 x2 / Budget M.2 NVMe (1,800\u20132,400 MB/s)",
+    "label": "NVMe Gen 3 Budget M.2 NVMe",
     "tier": "gen3",
     "desc": "NVMe Gen 3 (Fast Streaming)"
   },
   {
     "val": "sata_ssd_pro",
-    "label": "2.5\" SATA III SSD with DRAM Cache (560 MB/s, Samsung 870 EVO / Crucial MX500)",
+    "label": "2.5\" SATA SSD (870 EVO / MX500)",
     "tier": "sata_ssd",
     "desc": "SATA SSD DRAM (Optimized)"
   },
   {
     "val": "sata_ssd",
-    "label": "2.5\" SATA III SSD DRAM-less (500 MB/s, Kingston A400 / WD Green / Crucial BX500)",
+    "label": "2.5\" SATA SSD Budget (WD / Kingston)",
     "tier": "sata_ssd",
     "desc": "SATA SSD (Optimized)"
   },
   {
     "val": "m2_sata",
-    "label": "M.2 SATA III SSD (500\u2013550 MB/s, SATA Protocol M.2)",
+    "label": "M.2 SATA III Solid State SSD",
     "tier": "sata_ssd",
     "desc": "M.2 SATA (Optimized)"
   },
   {
     "val": "usb_nvme",
-    "label": "External USB 3.2 Gen 2x2 Portable NVMe SSD (2,000 MB/s, SanDisk Extreme / Samsung T9)",
+    "label": "External USB 3.2 NVMe SSD",
     "tier": "gen3",
     "desc": "USB 3.2 NVMe (Fast Streaming)"
   },
   {
     "val": "usb_sata_ssd",
-    "label": "External USB 3.2 Gen 1 Portable SSD (500\u20131,000 MB/s, Samsung T7 / Crucial X6)",
+    "label": "External USB Portable SSD",
     "tier": "sata_ssd",
     "desc": "External SSD (Optimized)"
   },
   {
     "val": "hdd_7200_pro",
-    "label": "High-Performance 7200 RPM Enterprise HDD (250 MB/s, WD Black / Seagate FireCuda)",
+    "label": "High-Speed 7200 RPM HDD (WD Black)",
     "tier": "hdd",
     "desc": "HDD 7200 RPM (I/O Buffered)"
   },
   {
     "val": "hdd_7200",
-    "label": "Standard Desktop 7200 RPM Mechanical HDD (150\u2013180 MB/s, WD Blue / Seagate Barracuda)",
+    "label": "Standard 7200 RPM HDD (WD Blue)",
     "tier": "hdd",
     "desc": "HDD 7200 RPM (Paged & Buffered)"
   },
   {
     "val": "hdd_5400",
-    "label": "Laptop / Eco 5400 RPM Mechanical HDD (80\u2013120 MB/s, High Seek Latency)",
+    "label": "Laptop 5400 RPM HDD (High Delay)",
     "tier": "hdd",
     "desc": "HDD 5400 RPM (High Seek Delay)"
   },
   {
     "val": "hdd_usb",
-    "label": "External USB 3.0 / 2.0 Portable Hard Drive (Slower Bandwidth, Stutter Risk)",
+    "label": "External USB HDD (Stutter Risk)",
     "tier": "hdd",
     "desc": "External HDD (High Seek Delay)"
   }
@@ -3193,36 +3193,12 @@ document.addEventListener('DOMContentLoaded', () => {
     dl.innerHTML = MEMORY_OPTIONS.map(m => `<option value="${m.label}"></option>`).join('');
   });
 
-  // Populate storage dropdowns with categorized optgroups
+  // Populate storage dropdowns with clean dark options (no ugly white optgroups)
   document.querySelectorAll('#hw-storage').forEach(sel => {
     if (sel.tagName === 'SELECT') {
-      sel.innerHTML = `
-        <optgroup label="⚡ Ultra High-Speed NVMe PCIe 5.0 / 4.0">
-          <option value="nvme_gen4_pro" selected>NVMe PCIe 4.0 x4 Pro (7,000+ MB/s, Samsung 990 Pro / WD SN850X)</option>
-          <option value="nvme_gen5">NVMe PCIe 5.0 x4 SSD (14,000+ MB/s, Gen 5 DirectStorage Ultra)</option>
-          <option value="nvme_gen4">NVMe PCIe 4.0 x4 SSD (5,000 MB/s, Crucial P3 Plus / WD SN770)</option>
-          <option value="nvme_gen4_dramless">NVMe PCIe 4.0 DRAM-less HMB SSD (4,000–5,000 MB/s)</option>
-        </optgroup>
-        <optgroup label="🚀 Mainstream NVMe PCIe 3.0">
-          <option value="nvme_gen3_pro">NVMe PCIe 3.0 x4 SSD (3,500 MB/s, Samsung 970 EVO Plus / SN570)</option>
-          <option value="nvme_gen3">NVMe PCIe 3.0 x2 / Budget M.2 NVMe (1,800–2,400 MB/s)</option>
-        </optgroup>
-        <optgroup label="💾 2.5&quot; &amp; M.2 SATA III Solid State Drives (SSD)">
-          <option value="sata_ssd_pro">2.5&quot; SATA III SSD with DRAM (560 MB/s, Samsung 870 EVO / MX500)</option>
-          <option value="sata_ssd">2.5&quot; SATA III SSD DRAM-less (500 MB/s, Kingston A400 / WD Green)</option>
-          <option value="m2_sata">M.2 SATA III SSD (500–550 MB/s, M.2 Solid State)</option>
-        </optgroup>
-        <optgroup label="📦 External USB Portable SSDs">
-          <option value="usb_nvme">External USB 3.2 Gen 2x2 Portable NVMe (2,000 MB/s, SanDisk Extreme)</option>
-          <option value="usb_sata_ssd">External USB 3.2 Gen 1 Portable SSD (500–1,000 MB/s, Samsung T7)</option>
-        </optgroup>
-        <optgroup label="💿 Mechanical Hard Disk Drives (HDD)">
-          <option value="hdd_7200_pro">High-Performance 7200 RPM Enterprise HDD (250 MB/s, WD Black)</option>
-          <option value="hdd_7200">Standard Desktop 7200 RPM HDD (150–180 MB/s, WD Blue / Barracuda)</option>
-          <option value="hdd_5400">Laptop / Eco 5400 RPM Mechanical HDD (80–120 MB/s, High Seek Delay)</option>
-          <option value="hdd_usb">External USB 3.0 / 2.0 Hard Drive (Slow Bandwidth, Stutter Risk)</option>
-        </optgroup>
-      `;
+      sel.innerHTML = STORAGE_OPTIONS.map(s => 
+        `<option value="${s.val}"${s.val === 'nvme_gen4_pro' ? ' selected' : ''}>${s.label}</option>`
+      ).join('');
     }
   });
 
@@ -3753,7 +3729,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cpuInput) cpuInput.value = detectedCpu;
 
         // 4. Intelligent RAM Detection (deviceMemory + jsHeapSizeLimit + threads)
-        let detectedRam = '16 GB Dual-Channel (2x8GB) DDR4-3200 CL16 (Standard Gaming)';
+        let detectedRam = '16 GB Dual (2x8GB) DDR4-3200';
         const devMem = navigator.deviceMemory || 8;
         let heapLimit = 0;
         if (window.performance && performance.memory) {
@@ -3762,14 +3738,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (devMem >= 8) {
           if (threads >= 16 || heapLimit > 4100000000) {
-            detectedRam = '32 GB Dual-Channel (2x16GB) DDR5-6000 CL30 (AMD EXPO / Intel XMP Sweet Spot)';
+            detectedRam = '32 GB Dual (2x16GB) DDR5-6000';
           } else {
-            detectedRam = '16 GB Dual-Channel (2x8GB) DDR4-3200 CL16 (Standard Gaming)';
+            detectedRam = '16 GB Dual (2x8GB) DDR4-3200';
           }
         } else if (devMem === 4) {
-          detectedRam = '8 GB Dual-Channel (2x4GB) DDR4-3200';
+          detectedRam = '8 GB Dual (2x4GB) DDR4-3200';
         } else {
-          detectedRam = '4 GB Single-Channel DDR4-2133 / 2400';
+          detectedRam = '4 GB Single DDR4';
         }
         if (ramInput) ramInput.value = detectedRam;
 
