@@ -31,10 +31,10 @@
 <table>
   <tr>
     <td width="30%" align="center">
-      <img src="https://raw.githubusercontent.com/FERRUM-FIST/Optimizer-App/main/assets/animated_logo.gif" width="140" alt="Fist Tool" />
+      <img src="https://raw.githubusercontent.com/FERRUM-FIST/Fist-Tool/main/assets/animated_logo.gif" width="140" alt="Fist Tool" />
     </td>
     <td width="70%">
-      <h3><a href="https://github.com/FERRUM-FIST/Optimizer-App">Fist Tool — Ultimate Windows & GameLoop Optimizer</a></h3>
+      <h3><a href="https://github.com/FERRUM-FIST/Fist-Tool">Fist Tool — Ultimate Windows & GameLoop Optimizer</a></h3>
       <p>A comprehensive system latency optimizer and GameLoop engine management suite. Features 130+ hardware-filtered tweaks, real-time telemetry gauges, ADB kernel touch latency reduction, and PUBG Mobile data management.</p>
       <p>
         <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-0078D6?style=flat-square&logo=windows" />

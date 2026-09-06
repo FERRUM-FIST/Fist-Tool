@@ -44,7 +44,7 @@
 
 ## 📥 Download & Installation
 
-1. Go to the [Releases](https://github.com/FERRUM-FIST/Optimizer-App/releases) page.
+1. Go to the [Releases](https://github.com/FERRUM-FIST/Fist-Tool/releases) page.
 2. Download **`FistTool_Setup.exe`**.
 3. Run the installer and follow the setup wizard.
 4. Launch **Fist Tool** as Administrator and start optimizing!
