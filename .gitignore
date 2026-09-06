@@ -28,3 +28,11 @@ dist/*.tar.gz
 !README.md
 !assets/
 !.gitignore
+
+# Native C++ Compiler Artifacts
+dist/
+*.obj
+*.exp
+*.lib
+vendor/
+

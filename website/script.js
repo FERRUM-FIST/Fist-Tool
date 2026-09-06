@@ -3585,7 +3585,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <svg class="btn-icon hw-detect-spinner" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
           <span>Scanning Specs...</span>
         `;
-        autodetectBtn.disabled = true;
+        // 0. Use Native C++ Bare-Metal CPUID & DXGI if running in desktop app
+        if (window.fistNative && window.chrome && window.chrome.webview) {
+          window.fistNative.getHardware();
+          return;
+        }
 
         // 1. Detect Cores & Single-Core Speed via Micro-Benchmark
         const threads = navigator.hardwareConcurrency || 8;
@@ -3894,3 +3898,163 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ========================================================================
+  // 9. NATIVE C++ DESKTOP BRIDGE & GAMING HUD (When running in FistTool.exe)
+  // ========================================================================
+  if (window.chrome && window.chrome.webview) {
+    document.body.classList.add('fist-native-app');
+
+    const toastContainer = document.createElement('div');
+    toastContainer.id = 'fist-hud-toast-container';
+    toastContainer.style.cssText = `
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    `;
+    document.body.appendChild(toastContainer);
+
+    function showFistToast(title, message) {
+      const toast = document.createElement('div');
+      toast.className = 'fist-hud-toast';
+      toast.style.cssText = `
+        background: rgba(14, 18, 28, 0.95);
+        border: 1px solid rgba(0, 240, 255, 0.4);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.15);
+        backdrop-filter: blur(16px);
+        border-radius: 10px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #FFFFFF;
+        font-family: 'Space Grotesk', sans-serif;
+        min-width: 280px;
+        pointer-events: auto;
+        animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      `;
+      toast.innerHTML = `
+        <div style="color: #00F0FF; display: flex; align-items: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div>
+          <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.5px; color: #00F0FF;">${title}</div>
+          <div style="font-size: 11px; color: #8E8E9A; margin-top: 2px;">${message}</div>
+        </div>
+      `;
+      toastContainer.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    const dock = document.createElement('div');
+    dock.id = 'fist-native-dock';
+    dock.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99998;
+      background: rgba(10, 13, 20, 0.94);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8), 0 0 30px rgba(0, 240, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 999px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #E2E8F0;
+    `;
+
+    dock.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 999px; color: #00F0FF;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: #00F0FF; box-shadow: 0 0 8px #00F0FF; display: inline-block;"></span>
+        <span>0.5ms Timer Active</span>
+      </div>
+      <button id="dock-clean-ram" class="btn btn-secondary btn-sm" style="border-radius: 999px; padding: 6px 14px; font-size: 11px; gap: 6px; background: rgba(255,255,255,0.06);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+        Clean RAM
+      </button>
+      <button id="dock-boost-fps" class="btn btn-primary btn-sm" style="border-radius: 999px; padding: 6px 14px; font-size: 11px; gap: 6px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Apply 120 FPS
+      </button>
+      <button id="dock-boost-gl" class="btn btn-secondary btn-sm" style="border-radius: 999px; padding: 6px 14px; font-size: 11px; gap: 6px; background: rgba(255,255,255,0.06);">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+        GameLoop Turbo
+      </button>
+    `;
+    document.body.appendChild(dock);
+
+    document.getElementById('dock-clean-ram')?.addEventListener('click', () => {
+      if (window.fistNative) window.fistNative.cleanRam();
+    });
+    document.getElementById('dock-boost-fps')?.addEventListener('click', () => {
+      if (window.fistNative) window.fistNative.applyAll();
+    });
+    document.getElementById('dock-boost-gl')?.addEventListener('click', () => {
+      if (window.fistNative) window.fistNative.boostGameLoop();
+    });
+
+    window.chrome.webview.addEventListener('message', event => {
+      const data = event.data;
+      if (!data) return;
+
+      if (data.type === 'hardware_data') {
+        showFistToast('Hardware Detected (C++ CPUID)', `${data.cpuName} • ${data.gpuName}`);
+        
+        const cpuInputs = document.querySelectorAll('#cpuInput');
+        cpuInputs.forEach(inp => { inp.value = data.cpuName; });
+
+        const gpuInputs = document.querySelectorAll('#gpuInput');
+        gpuInputs.forEach(inp => { inp.value = data.gpuName; });
+
+        const ramInputs = document.querySelectorAll('#ramInput');
+        ramInputs.forEach(inp => {
+          if (data.ramTotalGB >= 24) inp.value = '32GB';
+          else if (data.ramTotalGB >= 12) inp.value = '16GB';
+          else inp.value = '8GB';
+        });
+
+        const checkBtns = document.querySelectorAll('#checkBtn');
+        checkBtns.forEach(btn => btn.click());
+
+        const autodetectBtns = document.querySelectorAll('#autodetectBtn');
+        autodetectBtns.forEach(btn => {
+          btn.innerHTML = `
+            <svg class="btn-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span style="color:#00F0FF;">Specs Loaded</span>
+          `;
+          btn.disabled = false;
+        });
+      }
+
+      if (data.type === 'ram_cleaned') {
+        showFistToast('System RAM Cleaned', `Trimmed ${data.freedMB.toFixed(1)} MB across all processes.`);
+      }
+
+      if (data.type === 'tweaks_applied') {
+        showFistToast('120 FPS Tweaks Applied', `Successfully applied ${data.count} core latency optimizations in < 2ms!`);
+      }
+
+      if (data.type === 'gameloop_boosted') {
+        showFistToast('GameLoop Priority', data.status ? 'Process priority set to REALTIME / HIGH.' : 'GameLoop not currently running.');
+      }
+    });
+
+    setTimeout(() => {
+      if (window.fistNative) window.fistNative.getHardware();
+    }, 400);
+  }
